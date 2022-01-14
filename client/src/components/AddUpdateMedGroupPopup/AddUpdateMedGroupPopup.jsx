@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import './addUpdateMedGroupPopup.scss';
 
+// @@@@ CHANGE HARDCODED USER_ID TO DYNAIC USER_ID
 const AddUpdateMedGroupPopup = () => {
   const INITIAL_INPUT = {
     name: '',
@@ -12,14 +14,31 @@ const AddUpdateMedGroupPopup = () => {
   const [inputState, setInputState] = useState(INITIAL_INPUT);
   const { name, detail, complianceTime } = inputState;
 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const reqBody = {
+      name,
+      detail,
+      compliance_time: complianceTime,
+      user_id: 208,
+    };
+
+    console.log(name, detail, complianceTime);
+    axios
+      .post('/med_groups', reqBody)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
+
   const handleChange = e => {
     const { value, name } = e.target;
     setInputState({ ...inputState, [name]: value });
   };
 
   return (
-    <div>
-      <div className='overlay'></div>
+    <>
+      <div className='overlay' />
       <div className='med-group-popup'>
         <div>
           <h2>Add your medication group</h2>
@@ -27,7 +46,7 @@ const AddUpdateMedGroupPopup = () => {
             You can manage individual medicaitons in medication group
           </small>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <div>
               <input
@@ -53,13 +72,16 @@ const AddUpdateMedGroupPopup = () => {
                 name='complianceTime'
                 value={complianceTime}
                 onChange={handleChange}
-                placeholder='Compliance time'
+                placeholder='Compliance hour(24hr)'
               />
             </div>
           </div>
+          <div>
+            <button>Create medication group</button>
+          </div>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
