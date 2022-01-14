@@ -5,3 +5,128 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#Faker::Name.unique.name
+puts "Start seeding..."
+
+puts "Creating users..."
+
+jeff = User.create(
+    first_name: 'Jeff',
+    last_name: 'Kim',
+    email: 'jeff.kim@example.com',
+    password: '123'
+  )
+
+aaron = User.create(
+  first_name: 'Aaron',
+  last_name: 'Kim',
+  email: 'aaron.kim@example.com',
+  password: '123'
+)
+
+connor = User.create(
+  first_name: 'Connor',
+  last_name: 'Robert',
+  email: 'connor.robert@example.com',
+  password: '123'
+)
+
+50.times do
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.user[:email],
+    password: '123'
+  )
+end
+
+puts "Creating med groups..."
+
+med_group1 = MedGroup.create(
+  name: 'Protein',
+  detail: 'after workout',
+  user_id: jeff.id
+)
+
+med_group2 = MedGroup.create(
+  name: 'Vitamins',
+  detail: 'take daily',
+  compliance_time: 10,
+  user_id: aaron.id,
+  message_to: jeff.id
+)
+
+med_group3 = MedGroup.create(
+  name: 'Vitamins',
+  detail: 'take daily',
+  compliance_time: 10,
+  user_id: connor.id,
+  message_to: aaron.id
+)
+
+puts "Creating meds..."
+
+Med.create(
+  name: 'WHEY protein',
+  dosage: 22,
+  measure: 'g',
+  med_group_id: med_group1.id
+)
+
+Med.create(
+  name: 'Vitamin C',
+  dosage: 1000,
+  measure: 'mg',
+  num: 1,
+  pill_type: 'tablet',
+  med_group_id: med_group2.id
+)
+
+Med.create(
+  name: 'Vitamin D3',
+  dosage: 25,
+  measure: 'mcg',
+  num: 1,
+  pill_type: 'tablet',
+  med_group_id: med_group2.id
+)
+
+Med.create(
+  name: 'Vitamin C',
+  dosage: 500,
+  measure: 'mg',
+  num: 1,
+  pill_type: 'tablet',
+  med_group_id: med_group3.id
+)
+
+Med.create(
+  name: 'Multi vitamins',
+  num: 1,
+  pill_type: 'capsule',
+  med_group_id: med_group3.id
+)
+
+puts "Creating med group histories..."
+
+for i in 1..26 do
+  MedHistory.create(
+  med_group_id: med_group1.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..22)}:00")
+end
+
+
+for i in 1..26 do
+  MedHistory.create(
+  med_group_id: med_group2.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
+end
+
+for i in 1..26 do
+  MedHistory.create(
+  med_group_id: med_group3.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
+end
+
+puts "finish seeding!"
