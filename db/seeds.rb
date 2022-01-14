@@ -11,21 +11,21 @@ puts "Start seeding..."
 
 puts "Creating users..."
 
-User.create(
+jeff = User.create(
     first_name: 'Jeff',
     last_name: 'Kim',
     email: 'jeff.kim@example.com',
     password: '123'
   )
 
-User.create(
+aaron = User.create(
   first_name: 'Aaron',
   last_name: 'Kim',
   email: 'aaron.kim@example.com',
   password: '123'
 )
 
-User.create(
+connor = User.create(
   first_name: 'Connor',
   last_name: 'Robert',
   email: 'connor.robert@example.com',
@@ -43,26 +43,26 @@ end
 
 puts "Creating med groups..."
 
-MedGroup.create(
+med_group1 = MedGroup.create(
   name: 'Protein',
   detail: 'after workout',
-  user_id: 1
+  user_id: jeff.id
 )
 
-MedGroup.create(
+med_group2 = MedGroup.create(
   name: 'Vitamins',
   detail: 'take daily',
   compliance_time: 10,
-  user_id: 2,
-  message_to: 1
+  user_id: aaron.id,
+  message_to: jeff.id
 )
 
-MedGroup.create(
+med_group3 = MedGroup.create(
   name: 'Vitamins',
   detail: 'take daily',
   compliance_time: 10,
-  user_id: 3,
-  message_to: 2
+  user_id: connor.id,
+  message_to: aaron.id
 )
 
 puts "Creating meds..."
@@ -71,7 +71,7 @@ Med.create(
   name: 'WHEY protein',
   dosage: 22,
   measure: 'g',
-  med_group_id: 1
+  med_group_id: med_group1.id
 )
 
 Med.create(
@@ -80,7 +80,7 @@ Med.create(
   measure: 'mg',
   num: 1,
   pill_type: 'tablet',
-  med_group_id: 2
+  med_group_id: med_group2.id
 )
 
 Med.create(
@@ -89,7 +89,7 @@ Med.create(
   measure: 'mcg',
   num: 1,
   pill_type: 'tablet',
-  med_group_id: 2
+  med_group_id: med_group2.id
 )
 
 Med.create(
@@ -98,33 +98,35 @@ Med.create(
   measure: 'mg',
   num: 1,
   pill_type: 'tablet',
-  med_group_id: 3
+  med_group_id: med_group3.id
 )
 
 Med.create(
   name: 'Multi vitamins',
   num: 1,
   pill_type: 'capsule',
-  med_group_id: 3
+  med_group_id: med_group3.id
 )
 
 puts "Creating med group histories..."
 
-for i in 1..23 do
+for i in 1..26 do
   MedHistory.create(
-  med_group_id: 1
-).update(created_at: "Jan #{i} 2022")
+  med_group_id: med_group1.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..22)}:00")
 end
 
 
-for i in 1..23 do
+for i in 1..26 do
   MedHistory.create(
-  med_group_id: 2
-).update(created_at: "Jan #{i} 2022 #{rand(7..15)}:00")
+  med_group_id: med_group2.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..23 do
+for i in 1..26 do
   MedHistory.create(
-  med_group_id: 3
-).update(created_at: "Jan #{i} 2022 #{rand(7..15)}:00")
+  med_group_id: med_group3.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
+
+puts "finish seeding!"
