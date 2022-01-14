@@ -1,0 +1,2 @@
+class BondJoinsController < ApplicationController
+end

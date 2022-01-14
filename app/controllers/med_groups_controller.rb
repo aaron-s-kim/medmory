@@ -1,0 +1,2 @@
+class MedGroupsController < ApplicationController
+end
