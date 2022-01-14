@@ -8,7 +8,7 @@ const Logo = () => {
     <div className='logo-container'>
       <Link to='/'>
         <img
-          style={{ width: '80px', height: '80px' }}
+          style={{ width: '60px', height: '60px' }}
           src={logoImage}
           alt='logo'
         />
