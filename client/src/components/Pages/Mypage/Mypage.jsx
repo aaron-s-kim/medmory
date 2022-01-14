@@ -1,9 +1,13 @@
 import React from 'react';
+import { useUser } from 'context/UserContext';
 
-import './mypage.scss';
+import './mypage.scss'
+
 
 const Mypage = () => {
-  return <div className='mypage'>MY PAGE</div>;
+  const user = useUser()
+
+  return <div className='mypage'>MY PAGE {user}</div>;
 };
 
 export default Mypage;
