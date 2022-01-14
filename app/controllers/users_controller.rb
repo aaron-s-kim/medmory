@@ -18,10 +18,10 @@ class UsersController < ApplicationController
         user: user.to_json(except: [:created_at, :updated_at, :password_digest]),
         medGroup: med_group.to_json(except: [:created_at, :updated_at], include: [:meds]),
         historyToday: med_history_today[0].to_json(except: [:updated_at]),
-        historyWeek:  med_history_week.to_json(except: [:updated_at]),
+        historyWeek: med_history_week.to_json(except: [:updated_at]),
       }
     else
-      render json: { error: "User credentials are invalid."}
+      render json: { error: "User credentials are invalid."}, status: 400
     end 
   end
 
