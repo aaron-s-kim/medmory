@@ -1,0 +1,11 @@
+@import '../../assets/styles/variable';
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+  .link-group {
+    display: flex;
+    align-items: center;
+  }
+}
