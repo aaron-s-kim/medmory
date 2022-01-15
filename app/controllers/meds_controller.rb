@@ -23,7 +23,7 @@ class MedsController < ApplicationController
   private 
 
   def med_params
-    params.require(:med).permit(:name, :dosage, :med_group_id)
+    params.require(:med).permit(:name, :dosage, :measure, :num, :pill_type, :med_group_id)
   end
 
 end

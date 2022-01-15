@@ -55,7 +55,7 @@ class MedGroupsController < ApplicationController
   private
 
   def med_group_params
-    params.require(:med_group).permit(:name, :note, :message_to, :user_id)
+    params.require(:med_group).permit(:name, :detail, :message_to, :user_id, :compliance_time)
   end
   
 end
