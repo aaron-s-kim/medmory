@@ -6,6 +6,7 @@ import Navigation from './components/Navigation/Navigation';
 import Homepage from './components/Pages/Homepage/Homepage';
 import Mypage from './components/Pages/Mypage/Mypage';
 import AddUpdateMedGroupPopup from './components/AddUpdateMedGroupPopup/AddUpdateMedGroupPopup';
+import AddMedPopup from 'components/AddMedPopup/AddMedPopup';
 
 import 'App.scss';
 
@@ -22,6 +23,8 @@ const App = () => {
             path='/med-group-add'
             element={<AddUpdateMedGroupPopup />}
           />
+
+          <Route exact path='/med-add' element={<AddMedPopup />} />
         </Routes>
       </UserProvider>
     </div>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import Overlay from 'components/Overlay/Overlay';
+
 import './addUpdateMedGroupPopup.scss';
 
 // @@@@ CHANGE HARDCODED USER_ID TO DYNAIC USER_ID
@@ -38,7 +40,7 @@ const AddUpdateMedGroupPopup = () => {
 
   return (
     <>
-      <div className='overlay' />
+      <Overlay />
       <div className='med-group-popup'>
         <div>
           <h2>Add your medication group</h2>
@@ -77,7 +79,7 @@ const AddUpdateMedGroupPopup = () => {
             </div>
           </div>
           <div>
-            <button>Create medication group</button>
+            <button>Save medication group</button>
           </div>
         </form>
       </div>

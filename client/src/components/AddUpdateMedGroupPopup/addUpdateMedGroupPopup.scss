@@ -1,14 +1,6 @@
 @import '../../assets/styles/variable';
 
-.overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: $dark;
-  opacity: 0.8;
-}
+
 
 .med-group-popup {
   z-index: 999;
