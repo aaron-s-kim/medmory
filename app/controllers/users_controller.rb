@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
     if user && user.authenticate(user_params[:password_digest])
       session[:user_id] = user.id
-
       user_data(user)
     else
       render json: { error: "User credentials are invalid."}, status: 400
