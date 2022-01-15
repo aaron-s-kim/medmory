@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navigation from 'components/Navigation/Navigation';
 import Homepage from 'components/Pages/Homepage/Homepage';
 import Mypage from 'components/Pages/Mypage/Mypage';
+import Graphpage from 'components/Pages/Graphpage/Graphpage';
 
 import 'App.scss';
 
@@ -19,9 +20,12 @@ const App = () => {
           <Routes>
             <Route exact path='/' element={<Homepage />} />
             <Route exact path='/mypage' element={<Mypage />} />
+            <Route exact path='/graphpage' element={<Graphpage />} />
+
           </Routes>
             <AddMedgroup />
             <MedGroupList />
+
       </Provider>
       
     </div>
