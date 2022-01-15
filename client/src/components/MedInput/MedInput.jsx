@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 import './medInput.scss';
 
@@ -8,43 +7,31 @@ const MedInput = ({ id, setMedInputArr }) => {
   const INITIAL_INPUT = {
     name: '',
     dosage: '',
+    measure: 'mg',
     num: '',
-    pillType: '',
+    pillType: 'tablet',
   };
 
   const [inputState, setInputState] = useState(INITIAL_INPUT);
   const { name, dosage, num, measure, pillType } = inputState;
 
-  // const handleSubmit = () => {
-  //   const reqBody = {
-  //     name,
-  //     dosage,
-  //     num,
-  //     pill_type: pillType,
-  //     med_group_id: 208,
-  //   };
+  const handleChangeOnMedInputArr = (value, name) => {
+    setMedInputArr(prevMedInputArr => {
+      const medInputArrBeforeChange = prevMedInputArr;
+      medInputArrBeforeChange.splice(id, 1, {
+        ...inputState,
+        [name]: value,
+      });
 
-  //   console.log(name, dosage, num, pillType);
-  //   // axios
-  //   //   .post('/med_groups', reqBody)
-  //   //   .then(res => console.log(res))
-  //   //   .catch(err => console.log(err))
-  //   //   .finally(() => afterSubmit());()
-  // };
+      return medInputArrBeforeChange;
+    });
+  };
 
   const handleChange = e => {
     const { value, name } = e.target;
     setInputState({ ...inputState, [name]: value });
 
-
-    // setMedInputArr(prevMedInputArr => {
-    //   const medInputArrBeforeChange = prevMedInputArr;
-    //   const medInputArrAfterChange = medInputArrBeforeChange.splice(id, 1, {
-    //     ...medInput,
-    //     [name]: value,
-    //   });
-    //   console.log(medInputArrAfterChange);
-    // });
+    handleChangeOnMedInputArr(value, name);
   };
 
   return (
@@ -55,7 +42,7 @@ const MedInput = ({ id, setMedInputArr }) => {
           name='name'
           value={name}
           onChange={handleChange}
-          placeholder='Medicine group name'
+          placeholder='Medication name'
         />
       </div>
       <div>
