@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { UserProvider } from 'context/UserContext';
 
 import Navigation from './components/Navigation/Navigation';
 import Homepage from './components/Pages/Homepage/Homepage';
@@ -10,10 +9,12 @@ import AddMedPopup from './components/AddMedPopup/AddMedPopup';
 
 import 'App.scss';
 
+import { Provider, AddMedgroup, MedGroupList } from 'context/UserContext';
+
 const App = () => {
   return (
     <div className='app'>
-      <UserProvider>
+      <Provider>
         <Navigation />
         <Routes>
           <Route exact path='/' element={<Homepage />} />
@@ -26,7 +27,7 @@ const App = () => {
 
           <Route exact path='/med-add' element={<AddMedPopup />} />
         </Routes>
-      </UserProvider>
+      </Provider>
     </div>
   );
 };
