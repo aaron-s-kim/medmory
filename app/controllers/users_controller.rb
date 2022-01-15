@@ -34,4 +34,26 @@ class UsersController < ApplicationController
           userMedGroupArr: user_med_group_data(user)
         }
     end
+
+    def filtered_user (user)
+      {
+        id: user.id,
+        firstName: user.first_name,
+        lastName: user.last_name,
+        email: user.email,
+        imageUrl: user.image_url,
+        easyMode: user.easy_mode
+      }
+    end
+  
+    def user_med_group_data (user)
+      user.med_groups.map do |med_group|
+        {
+          name: med_group.name,
+          detail: med_group.detail,
+          complianceTime: med_group.compliance_time,
+          isCompliedToday: med_group.med_histories.where("created_at > '#{Date.today.to_s(:long)}'")[0] ? true: false
+        }
+      end
+    end
 end
