@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Logo from '../Logo/Logo';
-import CustomLink from '../CustomLink/CustomLink';
+import Logo from 'components/Logo/Logo';
+import CustomLink from 'components/CustomLink/CustomLink';
 
 import './navigation.scss';
 

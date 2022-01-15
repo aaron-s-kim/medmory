@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SignInForm from '../../SignInForm/SignInForm';
+import SignInForm from 'components/SignInForm/SignInForm';
 
 import './homepage.scss';
 
