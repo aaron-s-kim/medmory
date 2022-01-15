@@ -4,6 +4,7 @@ import axios from 'axios';
 import Overlay from 'components/Overlay/Overlay';
 import MedInput from 'components/MedInput/MedInput';
 
+// @@@@ CHANGE HARDCODED MED_GROUP_ID TO DYNAIC MED_GROUP_ID
 const AddMedPopup = () => {
   const INITIAL_MED_INPUT = {
     name: '',
@@ -19,27 +20,10 @@ const AddMedPopup = () => {
     setMedInputArr(prevMedInputArr => [...prevMedInputArr, INITIAL_MED_INPUT]);
   };
 
-  // const saveMedication = medInput => {
-  //   const reqBody = {
-  //     name: medInput.name,
-  //     dosage: medInput.dosage,
-  //     num: medInput.num,
-  //     pill_type: medInput.pillType,
-  //     med_group_id: 208,
-  //   };
-
-  //   console.log(reqBody);
-  //   axios
-  //     .post('/med_groups', reqBody)
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log(err))
-  //     .finally(() => afterSubmit());
-  // };
-
   const saveMedicationsInDB = medArr => {
     medArr.forEach(medInput => {
       if (medInput.name === '') return;
-      
+
       const reqBody = {
         name: medInput.name,
         dosage: medInput.dosage,

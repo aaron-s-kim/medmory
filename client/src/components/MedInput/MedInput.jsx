@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import './medInput.scss';
 
-// @@@@ CHANGE HARDCODED MED_GROUP_ID TO DYNAIC MED_GROUP_ID
 const MedInput = ({ id, setMedInputArr }) => {
   const INITIAL_INPUT = {
     name: '',
