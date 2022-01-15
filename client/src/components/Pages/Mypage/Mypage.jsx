@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { StateContext } from '../../../App';
+import { StateContext } from '../../../context/StateProvider';
 
 import './mypage.scss';
 

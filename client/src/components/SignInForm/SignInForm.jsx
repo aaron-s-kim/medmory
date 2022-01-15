@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { SetStateContext } from '../../App';
+import { SetStateContext } from '../../context/StateProvider';
 
 import './signInForm.scss';
 
