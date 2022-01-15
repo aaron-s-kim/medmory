@@ -6,6 +6,7 @@ import Homepage from './components/Pages/Homepage/Homepage';
 import Mypage from './components/Pages/Mypage/Mypage';
 import AddUpdateMedGroupPopup from './components/AddUpdateMedGroupPopup/AddUpdateMedGroupPopup';
 import AddMedPopup from './components/AddMedPopup/AddMedPopup';
+import Graphpage from './components/Pages/Graphpage/Graphpage';
 
 import 'App.scss';
 
@@ -27,6 +28,8 @@ const App = () => {
           />
 
           <Route exact path='/med-add' element={<AddMedPopup />} />
+          <Route exact path='/graphpage' element={<Graphpage />} />
+
         </Routes>
       </Provider>
     </div>
