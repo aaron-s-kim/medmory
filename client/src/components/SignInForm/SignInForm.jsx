@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+
+import { SetStateContext } from '../../App';
 
 import './signInForm.scss';
 
-const INITIAL_INPUT = {
-  email: '',
-  password: '',
-};
-
 const SignInForm = () => {
+  const setState = useContext(SetStateContext);
+
+  const INITIAL_INPUT = {
+    email: '',
+    password: '',
+  };
   const [inputState, setInputState] = useState(INITIAL_INPUT);
   const { email, password } = inputState;
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('email:', email);
-    console.log('password:', password);
 
     const reqBody = {
       email,
@@ -23,15 +24,15 @@ const SignInForm = () => {
     };
 
     axios
-      .post('http://localhost:3000/auth/sign-in', reqBody)
-      .then(res =>
-        console.log({
+      .post('/auth/sign-in', reqBody)
+      .then(res => {
+        setState({
           user: JSON.parse(res.data.user),
           medGroup: JSON.parse(res.data.medGroup),
           historyToday: JSON.parse(res.data.historyToday),
           historyTenDays: JSON.parse(res.data.historyTenDays),
-        })
-      )
+        });
+      })
       .catch(err => console.error(err));
   };
 

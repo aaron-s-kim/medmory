@@ -4,6 +4,7 @@ import React, { useState, useContext } from "react";
 export const initialState = {
   medGroupList: ['test-medGroup']
 }
+
 export const ACTIONS = {
   ADD_MED_GROUP: 'add-med-group',
   DELETE_MED_GROUP: 'delete-med-group',
