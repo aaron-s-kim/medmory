@@ -8,15 +8,16 @@ import AddUpdateMedGroupPopup from './components/AddUpdateMedGroupPopup/AddUpdat
 import AddMedPopup from './components/AddMedPopup/AddMedPopup';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
 
+import StateProvider from './context/StateProvider';
+
 import 'App.scss';
 
 import { Provider, AddMedgroup, MedGroupList } from 'context/UserContext';
 
 const App = () => {
   return (
-    <div className='app'>
-
-      <Provider>
+    <StateProvider>
+      <div className='app'>
         <Navigation />
         <Routes>
           <Route exact path='/' element={<Homepage />} />
@@ -31,8 +32,8 @@ const App = () => {
           <Route exact path='/graphpage' element={<Graphpage />} />
 
         </Routes>
-      </Provider>
-    </div>
+      </div>
+    </StateProvider>
   );
 };
 

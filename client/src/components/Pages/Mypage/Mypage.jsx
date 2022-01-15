@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import './mypage.scss'
+import { StateContext } from '../../../context/StateProvider';
 
+import './mypage.scss';
 
 const Mypage = () => {
+  const state = useContext(StateContext);
 
   return (
     <div className='mypage'>
-      MY PAGE
+      {state.isAuth ? (
+        <div>
+          <p>user signed in</p>
+          <h2>
+            user: {state.user.firstName} {state.user.lastName}
+          </h2>
+          <h2>email: {state.user.email}</h2>
+        </div>
+      ) : (
+        <p>user not signed in yet</p>
+      )}
     </div>
-  )
+  );
 };
 
 export default Mypage;
