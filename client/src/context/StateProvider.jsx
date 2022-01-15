@@ -4,7 +4,11 @@ export const StateContext = React.createContext();
 export const SetStateContext = React.createContext();
 
 const StateProvider = ({ children }) => {
-  const INITIAL_STATE = {};
+  const INITIAL_STATE = {
+    isAuth: false,
+    user: null,
+    userMedGroupArr: [],
+  };
   const [state, setState] = useState(INITIAL_STATE);
 
   return (

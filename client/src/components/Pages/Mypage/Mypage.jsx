@@ -9,10 +9,13 @@ const Mypage = () => {
 
   return (
     <div className='mypage'>
-      {state.user ? (
+      {state.isAuth ? (
         <div>
-          <h2>user: {state.user.first_name}</h2>
-          <h2>med group name: {state.medGroup.name}</h2>
+          <p>user signed in</p>
+          <h2>
+            user: {state.user.firstName} {state.user.lastName}
+          </h2>
+          <h2>email: {state.user.email}</h2>
         </div>
       ) : (
         <p>user not signed in yet</p>

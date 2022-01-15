@@ -25,14 +25,14 @@ const SignInForm = () => {
 
     axios
       .post('/auth/sign-in', reqBody)
-      .then(res => {
-        setState({
-          user: JSON.parse(res.data.user),
-          medGroup: JSON.parse(res.data.medGroup),
-          historyToday: JSON.parse(res.data.historyToday),
-          historyTenDays: JSON.parse(res.data.historyTenDays),
-        });
-      })
+      .then(res =>
+        setState(prevState => ({
+          ...prevState,
+          isAuth: true,
+          user: res.data.user,
+          userMedGroupArr: res.data.userMedGroupArr,
+        }))
+      )
       .catch(err => console.error(err));
   };
 
@@ -66,7 +66,7 @@ const SignInForm = () => {
             />
           </div>
         </div>
-        <button>Sign In</button>
+        <button type='submit'>Sign In</button>
       </form>
     </>
   );
