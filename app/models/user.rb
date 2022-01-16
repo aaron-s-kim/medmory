@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :med_groups, dependent: :destroy
-  has_one :bond_join
+  has_many :bond_invites, dependent: :destroy 
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, 

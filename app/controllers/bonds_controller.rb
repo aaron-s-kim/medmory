@@ -2,7 +2,12 @@ class BondsController < ApplicationController
 
   def show
     bond = Bond.find_by(id: params[:id])
-    render json: bond.to_json(except: [:created_at, :updated_at], include: [:bond_joins])
+    bond_users = User.where(bond_id: params[:id])
+
+    render json: {
+      bond: bond,
+      usersInBond: filtered_users_array(bond_users)
+    }
   end
  
   def create

@@ -17,17 +17,17 @@ Bond.create(
 )
 
 Bond.create(
-  name: 'First bond',
+  name: 'Second bond',
   image_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cheatsheet.com%2Fentertainment%2Fthe-office-rainn-wilson-gave-most-dwight-answer-asked-punched-junk.html%2F&psig=AOvVaw3lkRtnkynYuyGda5nGKSdH&ust=1642382352536000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCDiquNtfUCFQAAAAAdAAAAABAD',
 )
 
 Bond.create(
-  name: 'First bond',
+  name: 'Third bond',
   image_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cheatsheet.com%2Fentertainment%2Fthe-office-rainn-wilson-gave-most-dwight-answer-asked-punched-junk.html%2F&psig=AOvVaw3lkRtnkynYuyGda5nGKSdH&ust=1642382352536000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCDiquNtfUCFQAAAAAdAAAAABAD',
 )
 
 Bond.create(
-  name: 'First bond',
+  name: 'Last bond',
   image_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cheatsheet.com%2Fentertainment%2Fthe-office-rainn-wilson-gave-most-dwight-answer-asked-punched-junk.html%2F&psig=AOvVaw3lkRtnkynYuyGda5nGKSdH&ust=1642382352536000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCDiquNtfUCFQAAAAAdAAAAABAD',
 )
 

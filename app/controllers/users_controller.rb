@@ -30,19 +30,9 @@ class UsersController < ApplicationController
     def user_data (user)
       render json: { 
           user: filtered_user(user),
-          userMedGroupArr: user_med_group_data(user)
+          userMedGroupArr: user_med_group_data(user),
+          bond: user_bond_data(user)
         }
-    end
-
-    def filtered_user (user)
-      {
-        id: user.id,
-        firstName: user.first_name,
-        lastName: user.last_name,
-        email: user.email,
-        imageUrl: user.image_url,
-        easyMode: user.easy_mode
-      }
     end
   
     def user_med_group_data (user)
@@ -55,4 +45,9 @@ class UsersController < ApplicationController
         }
       end
     end
+
+    def user_bond_data (user)
+      Bond.find_by(id: user.bond_id)
+    end
+    
 end
