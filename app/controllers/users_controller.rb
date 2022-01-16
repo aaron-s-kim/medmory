@@ -56,6 +56,7 @@ class UsersController < ApplicationController
     def user_med_group_data (user)
       user.med_groups.map do |med_group|
         {
+          id: med_group.id, # <== blame aaron: added this line
           name: med_group.name,
           detail: med_group.detail,
           complianceTime: med_group.compliance_time,
