@@ -10,27 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_114624) do
+ActiveRecord::Schema.define(version: 2022_01_16_020559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bond_joins", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "bond_id", null: false
+  create_table "bond_invites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "bond_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bond_id"], name: "index_bond_joins_on_bond_id"
-    t.index ["user_id"], name: "index_bond_joins_on_user_id"
+    t.index ["bond_id"], name: "index_bond_invites_on_bond_id"
+    t.index ["user_id"], name: "index_bond_invites_on_user_id"
   end
 
   create_table "bonds", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_bonds_on_user_id"
   end
 
   create_table "med_groups", force: :cascade do |t|
@@ -73,12 +71,14 @@ ActiveRecord::Schema.define(version: 2022_01_14_114624) do
     t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
+    t.integer "bond_id"
+    t.index ["bond_id"], name: "index_users_on_bond_id"
   end
 
-  add_foreign_key "bond_joins", "bonds"
-  add_foreign_key "bond_joins", "users"
-  add_foreign_key "bonds", "users"
+  add_foreign_key "bond_invites", "bonds"
+  add_foreign_key "bond_invites", "users"
   add_foreign_key "med_groups", "users"
   add_foreign_key "med_histories", "med_groups"
   add_foreign_key "meds", "med_groups"
+  add_foreign_key "users", "bonds"
 end

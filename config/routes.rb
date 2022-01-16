@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
   resources :bonds 
-  resources :bond_joins, only: [:create, :destroy]
+  resources :bond_invites, only: [:create, :destroy]
   resources :med_groups 
   resources :meds, only: [:show, :create, :destroy]
   resources :med_histories, only: [:show, :create]

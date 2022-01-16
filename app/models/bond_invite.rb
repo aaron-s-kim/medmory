@@ -1,0 +1,2 @@
+class BondInvite < ApplicationRecord
+end

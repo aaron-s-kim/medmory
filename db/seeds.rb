@@ -9,6 +9,28 @@
 #Faker::Name.unique.name
 puts "Start seeding..."
 
+puts "Creating a bond..."
+
+Bond.create(
+  name: 'First bond',
+  image_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cheatsheet.com%2Fentertainment%2Fthe-office-rainn-wilson-gave-most-dwight-answer-asked-punched-junk.html%2F&psig=AOvVaw3lkRtnkynYuyGda5nGKSdH&ust=1642382352536000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCDiquNtfUCFQAAAAAdAAAAABAD',
+)
+
+Bond.create(
+  name: 'Second bond',
+  image_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cheatsheet.com%2Fentertainment%2Fthe-office-rainn-wilson-gave-most-dwight-answer-asked-punched-junk.html%2F&psig=AOvVaw3lkRtnkynYuyGda5nGKSdH&ust=1642382352536000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCDiquNtfUCFQAAAAAdAAAAABAD',
+)
+
+Bond.create(
+  name: 'Third bond',
+  image_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cheatsheet.com%2Fentertainment%2Fthe-office-rainn-wilson-gave-most-dwight-answer-asked-punched-junk.html%2F&psig=AOvVaw3lkRtnkynYuyGda5nGKSdH&ust=1642382352536000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCDiquNtfUCFQAAAAAdAAAAABAD',
+)
+
+Bond.create(
+  name: 'Last bond',
+  image_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cheatsheet.com%2Fentertainment%2Fthe-office-rainn-wilson-gave-most-dwight-answer-asked-punched-junk.html%2F&psig=AOvVaw3lkRtnkynYuyGda5nGKSdH&ust=1642382352536000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCDiquNtfUCFQAAAAAdAAAAABAD',
+)
+
 puts "Creating users..."
 
 jeff = User.create(
@@ -38,7 +60,8 @@ connor = User.create(
     last_name: Faker::Name.last_name,
     email: Faker::Internet.user[:email],
     password: '123',
-    image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}"
+    image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}",
+    bond_id: rand(2..4)
   )
 end
 
@@ -129,5 +152,22 @@ for i in 1..26 do
   med_group_id: med_group3.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
+
+puts "Creating bond invites..."
+
+BondInvite.create(
+  user_id: 1,
+  bond_id: 1
+)
+
+BondInvite.create(
+  user_id: 1,
+  bond_id: 3
+)
+
+BondInvite.create(
+  user_id: 1,
+  bond_id: 3
+)
 
 puts "finish seeding!"
