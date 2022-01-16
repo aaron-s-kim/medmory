@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :meds, only: [:show, :create, :destroy]
   resources :med_histories, only: [:show, :create]
 
+  get 'auth/user', to: 'users#get_auth_user_data'
   post 'auth/sign-in', to: 'users#sign_in'
   delete 'auth/sign-out/:user_id', to: 'users#sign_out'
 end
