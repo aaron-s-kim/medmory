@@ -12,6 +12,7 @@ const Mypage = () => {
       {state.isAuth ? (
         <div>
           <p>user signed in</p>
+          <img src={state.user.imageUrl} alt="user_avatar" width="140" />
           <h2>
             user: {state.user.firstName} {state.user.lastName}
           </h2>

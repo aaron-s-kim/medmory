@@ -37,7 +37,8 @@ connor = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.user[:email],
-    password: '123'
+    password: '123',
+    image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}"
   )
 end
 
