@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-
+import StateProvider from './context/StateProvider';
 
 import 'index.css';
 import App from 'App';
@@ -9,9 +9,11 @@ import reportWebVitals from 'reportWebVitals';
 
 ReactDOM.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <StateProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </StateProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
