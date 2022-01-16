@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_16_011159) do
+ActiveRecord::Schema.define(version: 2022_01_16_020559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2022_01_16_011159) do
     t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
+    t.integer "bond_id"
+    t.index ["bond_id"], name: "index_users_on_bond_id"
   end
 
   add_foreign_key "bond_invites", "bonds"
@@ -78,4 +80,5 @@ ActiveRecord::Schema.define(version: 2022_01_16_011159) do
   add_foreign_key "med_groups", "users"
   add_foreign_key "med_histories", "med_groups"
   add_foreign_key "meds", "med_groups"
+  add_foreign_key "users", "bonds"
 end

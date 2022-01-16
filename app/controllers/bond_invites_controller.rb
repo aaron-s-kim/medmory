@@ -1,0 +1,2 @@
+class BondInvitesController < ApplicationController
+end
