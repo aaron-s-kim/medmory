@@ -5,6 +5,14 @@ class UsersController < ApplicationController
     user_data(user)
   end
 
+  def get_auth_user_data
+    if session[:user_id]
+      user = User.find_by(id: session[:user_id])
+      user_data(user)
+    end
+  end
+  
+
   def sign_in
     user = User.find_by({email: user_params[:email].downcase})
 
@@ -30,9 +38,19 @@ class UsersController < ApplicationController
     def user_data (user)
       render json: { 
           user: filtered_user(user),
-          userMedGroupArr: user_med_group_data(user),
-          bond: user_bond_data(user)
+          userMedGroupArr: user_med_group_data(user)
         }
+    end
+
+    def filtered_user (user)
+      {
+        id: user.id,
+        firstName: user.first_name,
+        lastName: user.last_name,
+        email: user.email,
+        imageUrl: user.image_url,
+        easyMode: user.easy_mode
+      }
     end
   
     def user_med_group_data (user)
@@ -45,9 +63,4 @@ class UsersController < ApplicationController
         }
       end
     end
-
-    def user_bond_data (user)
-      Bond.find_by(id: user.bond_id)
-    end
-    
 end
