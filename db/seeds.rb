@@ -130,4 +130,28 @@ for i in 1..26 do
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
+puts "Creating a bond..."
+
+Bond.create(
+  name: 'First bond',
+  image_url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cheatsheet.com%2Fentertainment%2Fthe-office-rainn-wilson-gave-most-dwight-answer-asked-punched-junk.html%2F&psig=AOvVaw3lkRtnkynYuyGda5nGKSdH&ust=1642382352536000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCDiquNtfUCFQAAAAAdAAAAABAD',
+)
+
+puts "Creating bond invites..."
+
+BondInvite.create(
+  user_id: 1,
+  bond_id: 1
+)
+
+BondInvite.create(
+  user_id: 1,
+  bond_id: 3
+)
+
+BondInvite.create(
+  user_id: 1,
+  bond_id: 3
+)
+
 puts "finish seeding!"
