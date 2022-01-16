@@ -1,2 +1,29 @@
 class BondInvitesController < ApplicationController
+  def create
+    bond_invite = BondInvite.new(bond_invite_params)
+
+    if bond_invite.save
+      render json: bond_invite
+    else
+      render json: { error: "Bond invite cannot be created."}
+    end 
+  end
+  
+  def destroy
+    bond_invite = BondInvite.find_by(id: params[:id])
+
+    if bond_invite.destroy
+      render json: { message: "Bond invite has been deleted"}
+    else
+      render json: { error: bond_invite.errors.full_messages }, status: 422
+    end
+  end
+  
+
+  private
+
+  def bond_invite_params
+    params.require(:bond_invite).permit(:user_id, :bond_id)
+  end
+
 end
