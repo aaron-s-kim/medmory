@@ -4,6 +4,8 @@
       width: 60%;
       margin-top: 2em;
       margin-left: 20%;
+      padding: 0.5em 1em;
+      font-size: 1em;
     }
   }
 
@@ -11,9 +13,12 @@
     width: 60%;
     margin-top: 2em;
     margin-left: 20%;
+    font-size: 0.8em;
 
     .user-on-search {
+      width: 100%;
       display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 1.4em;
       border: solid black 1px;
@@ -27,6 +32,13 @@
           background-size: cover;
           border-radius: 50%;
         }
+      }
+
+      .invite-btn {
+        cursor: pointer;
+        border: solid black 1px;
+        padding: 0.5em;
+        border-radius: 5px;
       }
     }
   }
