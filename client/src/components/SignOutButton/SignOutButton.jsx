@@ -13,7 +13,6 @@ const SignOutButton = () => {
   const setState = useContext(SetStateContext);
 
   const signOut = () => {
-    console.log('signout start');
     axios
       .delete(`/auth/sign-out/${user.id}`)
       .then(() => setState(INITIAL_STATE))
