@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def sign_out
-    session.delete(params[:user_id])
+    session[:user_id] = nil
     render json: { message: "User has signed out." }
   end
 
