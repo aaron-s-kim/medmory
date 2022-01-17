@@ -1,13 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 
 import { StateContext, SetStateContext } from '../../../context/StateProvider';
 import './mypage.scss';
 import default_avatar from 'assets/images/avatar.png';
+import Popup from './Popup';
 
 const Mypage = () => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const setState = useContext(SetStateContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
 
   const complianceClick = e => {
     const value = e.currentTarget.getAttribute('medgroupid');
@@ -54,6 +60,7 @@ const Mypage = () => {
               <p>No medication groups have been created</p>
             : userMedGroupArr.map((medGroupItem, index) => 
               <div key={ index }>
+                {JSON.stringify(medGroupItem)}
                 <p><a href={/med_groups/ + medGroupItem.id}><strong>Name:</strong>{medGroupItem.name}</a></p>
                 {medGroupItem.isCompliedToday ?
                   <p>*Medication has been taken*</p>
@@ -62,6 +69,23 @@ const Mypage = () => {
                   </button>
                 }
                 <br />
+
+                <input
+                  type="button"
+                  value="Click to Open Popup"
+                  onClick={togglePopup}
+                />
+
+                <p>Lorem ipsum dolor sit amet</p>
+                {isOpen && <Popup
+                  content={<>
+                    <b>Design your Popup</b>
+                    <p>p element inside Popup.</p>
+                    <button>Test button</button>
+                  </>}
+                  handleClose={togglePopup}
+                />}
+
               </div>
             )}
             
