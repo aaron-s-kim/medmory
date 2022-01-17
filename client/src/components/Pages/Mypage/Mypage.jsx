@@ -5,16 +5,15 @@ import { StateContext, SetStateContext } from '../../../context/StateProvider';
 import './mypage.scss';
 import default_avatar from 'assets/images/avatar.png';
 
-
 const Mypage = () => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const setState = useContext(SetStateContext);
 
   const complianceClick = e => {
-    const value = e.currentTarget.getAttribute("medgroupid")
+    const value = e.currentTarget.getAttribute('medgroupid');
     const reqBody = {
-      med_group_id: value
-    }
+      med_group_id: value,
+    };
 
     axios
       .post('/med_histories', reqBody)
@@ -32,7 +31,6 @@ const Mypage = () => {
 
   return (
     <div className='mypage'>
-
       {isAuth && user ? (
         <div>
           <p>--user signed in--</p>
@@ -52,7 +50,6 @@ const Mypage = () => {
 
           <div className='user-med-group'>
             <h2>Medication Group</h2>
-
             {!userMedGroupArr.length ?
               <p>No medication groups have been created</p>
             : userMedGroupArr.map((medGroupItem, index) => 
@@ -69,7 +66,6 @@ const Mypage = () => {
             )}
             
           </div>
-          
         </div>
       ) : (
         <p>--user not signed in yet--</p>

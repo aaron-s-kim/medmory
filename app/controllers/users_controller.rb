@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     if session[:user_id]
       user = User.find_by(id: session[:user_id])
       user_data(user)
+    else
+      render json: { error: 'No user found' }, status: 400
     end
   end
   
