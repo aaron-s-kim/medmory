@@ -54,7 +54,7 @@ const Mypage = () => {
               <p>No medication groups have been created</p>
             : userMedGroupArr.map((medGroupItem, index) => 
               <div key={ index }>
-                <p><strong>Name:</strong>{medGroupItem.name}</p>
+                <p><a href={/med_groups/ + medGroupItem.id}><strong>Name:</strong>{medGroupItem.name}</a></p>
                 {medGroupItem.isCompliedToday ?
                   <p>*Medication has been taken*</p>
                 : <button onClick={complianceClick} medgroupid={medGroupItem.id}>
