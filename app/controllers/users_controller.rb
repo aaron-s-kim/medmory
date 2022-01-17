@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     user_data(user)
   end
 
+  def index
+    users = User.all
+    render json: filtered_users_array(users)
+  end
+
   def update
     user = User.find_by(id: params[:id])
     if user && user.update(bond_id: user_params[:bond_id])
@@ -13,7 +18,6 @@ class UsersController < ApplicationController
       render json: { error: 'No user found' }, status: 400
     end
   end
-  
 
   def get_auth_user_data
     if session[:user_id]
