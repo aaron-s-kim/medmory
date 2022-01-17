@@ -1,0 +1,33 @@
+.searchpage {
+  .search-bar-container {
+    .search-bar {
+      width: 60%;
+      margin-top: 2em;
+      margin-left: 20%;
+    }
+  }
+
+  .search-result-container {
+    width: 60%;
+    margin-top: 2em;
+    margin-left: 20%;
+
+    .user-on-search {
+      display: flex;
+      align-items: center;
+      gap: 1.4em;
+      border: solid black 1px;
+      padding: 0.2em 1em;
+
+      .user-image-container {
+        .user-image {
+          width: 60px;
+          height: 60px;
+          background-position: center;
+          background-size: cover;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
