@@ -11,7 +11,7 @@ import defaultUserImage from '../../../assets/images/avatar.png';
 import './userSearchpage.scss';
 
 const UserSearchpage = () => {
-  const { user, isAuth } = useContext(StateContext);
+  const { user, isAuth, bond } = useContext(StateContext);
   const [searchWord, setSearchWord] = useState('');
   const [userResult, setUserResult] = useState([]);
 
@@ -29,6 +29,10 @@ const UserSearchpage = () => {
       setUserResult([]);
     }
   }, [searchWord]);
+
+  const inviteUserToBond = () => {
+    console.log('invite user button clicked');
+  };
 
   const handleChange = e => {
     const { value } = e.target;
@@ -70,6 +74,11 @@ const UserSearchpage = () => {
                 {user.firstName}, {user.lastName}
               </p>
               <p>{user.email}</p>
+              {bond && (
+                <p className='invite-btn' onClick={inviteUserToBond}>
+                  Invite +
+                </p>
+              )}
             </div>
           ))
         ) : (
