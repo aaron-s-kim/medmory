@@ -1,7 +1,7 @@
 class MedHistoriesController < ApplicationController
 
   def create
-    med_history = MedHistory.new(med_hisotry_params)
+    med_history = MedHistory.new(med_history_params)
     if med_history.save
       render json: med_history
     else
@@ -11,7 +11,7 @@ class MedHistoriesController < ApplicationController
 
   private
 
-  def med_hisotry_params
+  def med_history_params
     params.require(:med_history).permit(:med_group_id)
   end
   

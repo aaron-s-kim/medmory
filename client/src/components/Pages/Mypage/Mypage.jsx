@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
 
-import { StateContext } from '../../../context/StateProvider';
+import { StateContext, SetStateContext } from '../../../context/StateProvider';
 import './mypage.scss';
 import default_avatar from 'assets/images/avatar.png';
 
 
 const Mypage = () => {
-  const state = useContext(StateContext);
+  const { isAuth, user, userMedGroupArr } = useContext(StateContext);
+  const setState = useContext(SetStateContext);
 
   const complianceClick = e => {
     const value = e.currentTarget.getAttribute("medgroupid")
@@ -17,37 +18,45 @@ const Mypage = () => {
 
     axios
       .post('/med_histories', reqBody)
-      .then(res => console.log(res))
+      .then((res) => {
+        const mgItemArr = userMedGroupArr.map(medGroupItem => {
+          if (medGroupItem.id === Number(value)) {
+            medGroupItem.isCompliedToday = true;
+          }
+          return medGroupItem;
+        })
+        setState({ isAuth, user, userMedGroupArr: mgItemArr });
+      })
       .catch(err => console.log(err));
   };
 
   return (
     <div className='mypage'>
 
-      {state.isAuth ? (
+      {isAuth && user ? (
         <div>
           <p>--user signed in--</p>
           <br />
 
           <div className='user-profile'>
             <h2>User Profile</h2>
-            {state.user.imageUrl ? 
-              <img src={state.user.imageUrl} alt="user_avatar" width="140" />
-            : <img src={default_avatar} alt="default_avatar" width="140" />
-            }
-            <p>user: {state.user.firstName} {state.user.lastName}</p>
-            <p>email: {state.user.email}</p>
+            <img
+              src={user.imageUrl ? user.imageUrl : default_avatar}
+              alt="user_avatar"
+              width='140'
+            />
+            <p>user: {user.firstName} {user.lastName}</p>
+            <p>email: {user.email}</p>
           </div>
           <br />
 
           <div className='user-med-group'>
             <h2>Medication Group</h2>
 
-            {!state.userMedGroupArr.length ?
+            {!userMedGroupArr.length ?
               <p>No medication groups have been created</p>
-            : state.userMedGroupArr.map((medGroupItem, index) => 
+            : userMedGroupArr.map((medGroupItem, index) => 
               <div key={ index }>
-                {/* {JSON.stringify(medGroupItem)} */}
                 <p><strong>Name:</strong>{medGroupItem.name}</p>
                 {medGroupItem.isCompliedToday ?
                   <p>*Medication has been taken*</p>
