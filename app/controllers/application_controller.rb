@@ -14,6 +14,5 @@ class ApplicationController < ActionController::API
   def filtered_users_array (user_array)
     user_array.map {|user| filtered_user(user) }
   end
-  
 
 end
