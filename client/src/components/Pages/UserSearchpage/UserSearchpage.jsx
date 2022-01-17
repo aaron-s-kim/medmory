@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 
 import { StateContext } from 'context/StateProvider';
@@ -10,7 +11,7 @@ import defaultUserImage from '../../../assets/images/avatar.png';
 import './userSearchpage.scss';
 
 const UserSearchpage = () => {
-  const { user } = useContext(StateContext);
+  const { user, isAuth } = useContext(StateContext);
   const [searchWord, setSearchWord] = useState('');
   const [userResult, setUserResult] = useState([]);
 
@@ -33,6 +34,7 @@ const UserSearchpage = () => {
     const { value } = e.target;
     setSearchWord(value);
   };
+  if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='searchpage'>
       <div className='search-bar-container'>
