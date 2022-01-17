@@ -5,6 +5,7 @@ import Navigation from './components/Navigation/Navigation';
 import Homepage from './components/Pages/Homepage/Homepage';
 import Mypage from './components/Pages/Mypage/Mypage';
 import Bondpage from 'components/Pages/Bondpage/Bondpage';
+import UserSearchpage from 'components/Pages/UserSearchpage/UserSearchpage';
 import AddUpdateMedGroupPopup from './components/AddUpdateMedGroupPopup/AddUpdateMedGroupPopup';
 import AddMedPopup from './components/AddMedPopup/AddMedPopup';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
@@ -32,6 +33,7 @@ const App = () => {
         <Route exact path='/' component={isAuth ? Mypage : Homepage} />
         <Route exact path='/mypage' component={Mypage} />
         <Route exact path='/bond' component={Bondpage} />
+        <Route exact path='/user-search' component={UserSearchpage} />
         <Route exact path='/med-group-add' component={AddUpdateMedGroupPopup} />
 
         <Route exact path='/med-add' component={AddMedPopup} />
