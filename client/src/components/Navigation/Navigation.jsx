@@ -14,11 +14,11 @@ const Navigation = () => {
       <Logo />
 
       <div className='link-group'>
-        <CustomLink urlTo='/' linkName='Homepage' />
-        <CustomLink urlTo='/mypage' linkName='My page' />
         {isAuth && (
           <>
             <CustomLink urlTo='/bond' linkName='My bond' />
+            <CustomLink urlTo='/mypage' linkName='My page' />
+            <CustomLink urlTo='/user-search' linkName='Search' />
             <SignOutButton />
           </>
         )}
