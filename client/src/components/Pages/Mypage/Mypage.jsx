@@ -10,14 +10,11 @@ import Popup from './Popup';
 const Mypage = () => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const setState = useContext(SetStateContext);
-  const [show, setShow] = useState({});
+  const [showstate, setShowstate] = useState({});
 
-  const togglePopup = id => {
-    setShow(prev => ({ ...prev, [id]: !prev[id] }));
-    console.log(JSON.stringify(show));
-  };
+  // console.log("userMedGroupArr", userMedGroupArr)
 
-
+  // adds med_groups id to med_histories table > updates state isCompliedToday
   const complianceClick = e => {
     const value = e.currentTarget.getAttribute('medgroupid');
     const reqBody = { med_group_id: value };
@@ -34,6 +31,14 @@ const Mypage = () => {
         setState({ isAuth, user, userMedGroupArr: mgItemArr });
       })
       .catch(err => console.log(err));
+  };
+
+  const togglePopup = id => {
+    setShowstate(prev => ({ ...prev, [id]: !prev[id] }));
+    // console.log(JSON.stringify(showstate));
+    // showstate[id] ?
+    // console.log("popup closed")
+    // : console.log("popup open");
   };
 
   return (
@@ -66,13 +71,14 @@ const Mypage = () => {
                 <h3 onClick={() => togglePopup(medGroupItem.id)}>
                   <u>{medGroupItem.name}</u>
                 </h3>
-                {show[medGroupItem.id] ? 
+                {showstate[medGroupItem.id] ? 
                   <Popup
                     medGroupObj={medGroupItem}
                     handleClose={togglePopup}
-                    show={show}
-                    setShow={setShow}
+                    show={showstate}
+                    setShow={setShowstate}
                     togglePopup={togglePopup}
+                    // meds={medstate}
                   />
                   : null
                 }
