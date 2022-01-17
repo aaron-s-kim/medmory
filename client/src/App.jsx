@@ -34,7 +34,7 @@ const App = () => {
   return (
     <div className='app'>
       <Navigation />
-      {pendingInvite.length > 0 && <Notification />}
+      {pendingInvite && <Notification />}
       <Switch>
         <Route exact path='/' component={isAuth ? Mypage : Homepage} />
         <Route exact path='/mypage' component={Mypage} />
