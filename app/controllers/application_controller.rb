@@ -7,7 +7,8 @@ class ApplicationController < ActionController::API
       lastName: user.last_name,
       email: user.email,
       imageUrl: user.image_url,
-      easyMode: user.easy_mode
+      easyMode: user.easy_mode,
+      bond_id: user.bond_id
     }
   end
 

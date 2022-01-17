@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variable';
+
 .searchpage {
   .search-bar-container {
     .search-bar {
@@ -39,6 +41,11 @@
         border: solid black 1px;
         padding: 0.5em;
         border-radius: 5px;
+      }
+      .bonded {
+        cursor: unset;
+        background-color: $bright;
+        border: none;
       }
     }
   }

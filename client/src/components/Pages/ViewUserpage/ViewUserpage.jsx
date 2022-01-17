@@ -1,35 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
+
+import { StateContext } from 'context/StateProvider';
 
 import default_avatar from '../../../assets/images/avatar.png';
 
 const ViewUserpage = ({ match }) => {
-  const [userState, setUserState] = useState({});
-  const { user, userMedGroupArr } = userState;
+  const { isAuth } = useContext(StateContext);
+  const [viewUserState, setViewUserState] = useState({});
+  const { viewUser, userMedGroupArr } = viewUserState;
 
   useEffect(() => {
     axios
       .get(`/users/${match.params.userId}`)
-      .then(res => setUserState(res.data))
+      .then(res =>
+        setViewUserState({
+          ...res.data,
+          viewUser: res.data.user,
+        })
+      )
       .catch(err => console.log(err.response.data.error));
   }, []);
 
+  if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='mypage'>
-      {user && (
+      {viewUser && (
         <>
           <div>
             <div className='user-profile'>
               <h2>User Profile</h2>
               <img
-                src={user.imageUrl ? user.imageUrl : default_avatar}
+                src={viewUser.imageUrl ? viewUser.imageUrl : default_avatar}
                 alt='user_avatar'
                 width='140'
               />
               <p>
-                user: {user.firstName} {user.lastName}
+                user: {viewUser.firstName} {viewUser.lastName}
               </p>
-              <p>email: {user.email}</p>
+              <p>email: {viewUser.email}</p>
             </div>
             <br />
 

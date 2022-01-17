@@ -1,14 +1,18 @@
 import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { StateContext } from 'context/StateProvider';
 
 import logoImage from 'assets/images/logo.svg';
 import default_avatar from 'assets/images/avatar.png';
 
+import { getFilteredBondUsers } from 'utils/data-shape';
+
 import './bondpage.scss';
 
 const Bondpage = ({ history }) => {
-  const { isAuth, bond } = useContext(StateContext);
+  const { isAuth, bond, user } = useContext(StateContext);
 
+  if (!isAuth) return <Redirect to='/' />;
   return (
     <>
       {bond ? (
@@ -19,9 +23,9 @@ const Bondpage = ({ history }) => {
             width='300px'
             alt='bond'
           />
-          <h4>{bond.bondUsers.length} people in this bond:</h4>
+          <h4>{bond.bondUsers.length - 1} other people in this bond:</h4>
           <div className='bond-user-list'>
-            {bond.bondUsers.map(user => (
+            {getFilteredBondUsers(user.id, bond.bondUsers).map(user => (
               <div
                 key={user.id}
                 className='bond-user-container'

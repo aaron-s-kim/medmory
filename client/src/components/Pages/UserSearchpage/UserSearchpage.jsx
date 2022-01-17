@@ -74,11 +74,14 @@ const UserSearchpage = () => {
                 {user.firstName}, {user.lastName}
               </p>
               <p>{user.email}</p>
-              {bond && (
-                <p className='invite-btn' onClick={inviteUserToBond}>
-                  Invite +
-                </p>
-              )}
+              {bond &&
+                (user.bond_id ? (
+                  <p className='invite-btn bonded'>bonded</p>
+                ) : (
+                  <p className='invite-btn' onClick={inviteUserToBond}>
+                    Invite +
+                  </p>
+                ))}
             </div>
           ))
         ) : (
