@@ -25,15 +25,26 @@ const Popup = props => {
     <div className="popup-box">
       <div className="box">
         <span className="close-icon" onClick={() => togglePopup(medGroupObj.id)}>x</span>
-        <h3>Medication Group Details</h3>
-        <p>Group Name: {medGroupObj.name}</p>
-        <p>Frequency: {medGroupObj.detail}</p>
-        <p>Compliance Time: {medGroupObj.complianceTime}</p>
-        <p>Medication Taken Today: {medGroupObj.isCompliedToday ? "Yes" : "No"}</p>
+        <h3>Medication Group</h3>
+        <h4>{medGroupObj.name}</h4>
+        <ul>
+          <li>Frequency: {medGroupObj.detail}</li>
+          <li>Compliance Time: {medGroupObj.complianceTime}</li>
+          <li>Medication Taken Today: {medGroupObj.isCompliedToday ? "Yes" : "No"}</li>
+        </ul>
+        <hr />
+        
         <h3>Medications in Group</h3>
         {medstate.length ? (
-          medstate.map(medItem =>
-            JSON.stringify(medItem)
+          medstate.map(medItem => 
+            <div key={ medItem.id }>
+              {/* {JSON.stringify(medItem)} */}
+              <h4>{medItem.name}</h4>
+              <ul>
+                <li>dosage: {medItem.dosage} {medItem.measure}</li>
+                <li>pills: {medItem.numOfPill} {medItem.pillType}</li>
+              </ul>
+            </div>
           )
         ) : (
           <p><i>No medications added.</i></p>
