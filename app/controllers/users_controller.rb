@@ -41,7 +41,8 @@ class UsersController < ApplicationController
       render json: { 
           user: filtered_user(user),
           userMedGroupArr: user_med_group_data(user),
-          bond: user_bond_data(user)
+          bond: user_bond_data(user),
+          pendingInvite: user_pending_bond_invites(user)
         }
     end
   
@@ -59,6 +60,10 @@ class UsersController < ApplicationController
 
     def user_bond_data (user)
       Bond.find_by(id: user.bond_id)
+    end
+
+    def user_pending_bond_invites (user)
+      BondInvite.where(user_id: user.id)
     end
 
 end

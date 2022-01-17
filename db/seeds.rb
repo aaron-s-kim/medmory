@@ -161,13 +161,13 @@ BondInvite.create(
 )
 
 BondInvite.create(
-  user_id: 1,
-  bond_id: 3
+  user_id: 2,
+  bond_id: 1
 )
 
 BondInvite.create(
-  user_id: 1,
-  bond_id: 3
+  user_id: 3,
+  bond_id: 1
 )
 
 puts "finish seeding!"
