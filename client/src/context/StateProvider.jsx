@@ -7,6 +7,7 @@ export const INITIAL_STATE = {
   isAuth: false,
   user: null,
   userMedGroupArr: [],
+  bond: null,
 };
 const StateProvider = ({ children }) => {
   const [state, setState] = useState(INITIAL_STATE);
