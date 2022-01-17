@@ -59,7 +59,18 @@ class UsersController < ApplicationController
     end
 
     def user_bond_data (user)
-      Bond.find_by(id: user.bond_id)
+      bond = Bond.find_by(id: user.bond_id)
+      if bond
+        bond_users = User.where(bond_id: bond.id)
+        {
+          id: bond.id,
+          name: bond.name, 
+          image_url: bond.image_url,
+          bond_users: filtered_users_array(bond_users)
+        }
+      else
+        bond
+      end
     end
 
     def user_pending_bond_invites (user)
