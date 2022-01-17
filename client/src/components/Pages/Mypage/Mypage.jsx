@@ -42,17 +42,23 @@ const Mypage = () => {
 
           <div className='user-med-group'>
             <h2>Medication Group</h2>
+
             {!state.userMedGroupArr.length ?
               <p>No medication groups have been created</p>
             : state.userMedGroupArr.map((medGroupItem, index) => 
               <div key={ index }>
-                <p>Name: {medGroupItem.name}</p>
-                <button onClick={complianceClick} medgroupid={medGroupItem.id}>
-                  Confirm Medication Taken
-                </button>
-                <br /><br /><br />
+                {/* {JSON.stringify(medGroupItem)} */}
+                <p><strong>Name:</strong>{medGroupItem.name}</p>
+                {medGroupItem.isCompliedToday ?
+                  <p>*Medication has been taken*</p>
+                : <button onClick={complianceClick} medgroupid={medGroupItem.id}>
+                    Confirm Medication Taken
+                  </button>
+                }
+                <br />
               </div>
             )}
+            
           </div>
           
         </div>
