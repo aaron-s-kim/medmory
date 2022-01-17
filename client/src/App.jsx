@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import axios from 'axios';
 
 import Navigation from './components/Navigation/Navigation';
 import Homepage from './components/Pages/Homepage/Homepage';
@@ -13,6 +12,8 @@ import Notification from 'components/Notification/Notification';
 
 import { StateContext, SetStateContext } from './context/StateProvider';
 
+import { getAuthUserData } from 'utils/data-fetch';
+
 import 'App.scss';
 
 const App = () => {
@@ -20,15 +21,7 @@ const App = () => {
   const setState = useContext(SetStateContext);
 
   useEffect(() => {
-    axios
-      .get('auth/user')
-      .then(res =>
-        setState({
-          isAuth: true,
-          ...res.data,
-        })
-      )
-      .catch(err => console.log(err.response.data.error));
+    getAuthUserData(setState);
   }, []);
 
   return (

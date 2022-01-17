@@ -27,8 +27,8 @@ const SignInForm = () => {
       .post('/auth/sign-in', reqBody)
       .then(res =>
         setState({
-          isAuth: true,
           ...res.data,
+          isAuth: true,
         })
       )
       .catch(err => console.error(err));

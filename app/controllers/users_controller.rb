@@ -5,6 +5,16 @@ class UsersController < ApplicationController
     user_data(user)
   end
 
+  def update
+    user = User.find_by(id: params[:id])
+    if user && user.update(bond_id: user_params[:bond_id])
+      user_data(user)
+    else
+      render json: { error: 'No user found' }, status: 400
+    end
+  end
+  
+
   def get_auth_user_data
     if session[:user_id]
       user = User.find_by(id: session[:user_id])
@@ -12,8 +22,7 @@ class UsersController < ApplicationController
     else
       render json: { error: 'No user found' }, status: 400
     end
-  end
-  
+  end  
 
   def sign_in
     user = User.find_by({email: user_params[:email].downcase})
@@ -34,7 +43,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :password_digest)
+      params.require(:user).permit(:email, :password_digest, :bond_id)
     end
 
     def user_data (user)
@@ -59,7 +68,18 @@ class UsersController < ApplicationController
     end
 
     def user_bond_data (user)
-      Bond.find_by(id: user.bond_id)
+      bond = Bond.find_by(id: user.bond_id)
+      if bond
+        bond_users = User.where(bond_id: bond.id)
+        {
+          id: bond.id,
+          name: bond.name, 
+          imageUrl: bond.image_url,
+          bondUsers: filtered_users_array(bond_users)
+        }
+      else
+        bond
+      end
     end
 
     def user_pending_bond_invites (user)
@@ -69,6 +89,7 @@ class UsersController < ApplicationController
       bond_invite = bond_invite_array[0]
       bond = Bond.find_by(id: bond_invite.bond_id)
       {
+        id: bond_invite.id,
         bondId: bond.id,
         bondName: bond.name
       }
