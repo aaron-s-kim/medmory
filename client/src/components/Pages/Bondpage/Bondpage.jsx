@@ -3,7 +3,6 @@ import { StateContext } from 'context/StateProvider';
 
 import logoImage from 'assets/images/logo.svg';
 import default_avatar from 'assets/images/avatar.png';
-import axios from 'axios';
 
 const Bondpage = () => {
   const { isAuth, user, bond } = useContext(StateContext);
