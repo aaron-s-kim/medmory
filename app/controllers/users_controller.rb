@@ -63,7 +63,15 @@ class UsersController < ApplicationController
     end
 
     def user_pending_bond_invites (user)
-      BondInvite.where(user_id: user.id)
+      bond_invite_array = BondInvite.where(user_id: user.id)
+      return nil if bond_invite_array.length() == 0 
+
+      bond_invite = bond_invite_array[0]
+      bond = Bond.find_by(id: bond_invite.bond_id)
+      {
+        bondId: bond.id,
+        bondName: bond.name
+      }
     end
 
 end
