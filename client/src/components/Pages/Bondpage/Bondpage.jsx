@@ -4,8 +4,10 @@ import { StateContext } from 'context/StateProvider';
 import logoImage from 'assets/images/logo.svg';
 import default_avatar from 'assets/images/avatar.png';
 
-const Bondpage = () => {
-  const { isAuth, user, bond } = useContext(StateContext);
+import './bondpage.scss';
+
+const Bondpage = ({ history }) => {
+  const { isAuth, bond } = useContext(StateContext);
 
   return (
     <>
@@ -19,22 +21,23 @@ const Bondpage = () => {
           />
           <h4>{bond.bondUsers.length} people in this bond:</h4>
           <div className='bond-user-list'>
-            <ol>
-              {bond.bondUsers.map(user => (
-                <li key={user.id}>
-                  <p>
-                    <strong>{`${user.firstName} ${user.lastName}`}</strong>
-                  </p>
-                  <img
-                    src={user.imageUrl ? user.imageUrl : default_avatar}
-                    width='100px'
-                    alt='user'
-                  />
-                  <p>Email: {user.email}</p>
-                  <hr />
-                </li>
-              ))}
-            </ol>
+            {bond.bondUsers.map(user => (
+              <div
+                key={user.id}
+                className='bond-user-container'
+                onClick={() => history.push(`/view-user/${user.id}`)}
+              >
+                <img
+                  src={user.imageUrl ? user.imageUrl : default_avatar}
+                  width='70px'
+                  alt='user'
+                />
+                <p>
+                  <strong>{`${user.firstName} ${user.lastName}`}</strong>
+                </p>
+                <p>Email: {user.email}</p>
+              </div>
+            ))}
           </div>
         </>
       ) : (
