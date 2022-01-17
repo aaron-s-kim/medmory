@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getAuthUserData = setState => {
   axios
-    .get('auth/user')
+    .get('/auth/user')
     .then(res =>
       setState({
         ...res.data,
