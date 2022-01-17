@@ -12,5 +12,9 @@
   .notification-option-container {
     display: flex;
     gap: 1.2em;
+
+    > p {
+      cursor: pointer;
+    }
   }
 }
