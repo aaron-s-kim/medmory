@@ -9,25 +9,24 @@ import Bondpage from 'components/Pages/Bondpage/Bondpage';
 import AddUpdateMedGroupPopup from './components/AddUpdateMedGroupPopup/AddUpdateMedGroupPopup';
 import AddMedPopup from './components/AddMedPopup/AddMedPopup';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
+import Notification from 'components/Notification/Notification';
 
 import { StateContext, SetStateContext } from './context/StateProvider';
 
 import 'App.scss';
 
 const App = () => {
-  const { isAuth } = useContext(StateContext);
+  const { isAuth, pendingInvite } = useContext(StateContext);
   const setState = useContext(SetStateContext);
 
   useEffect(() => {
     axios
       .get('auth/user')
       .then(res =>
-        setState(prevState => ({
-          ...prevState,
+        setState({
           isAuth: true,
-          user: res.data.user,
-          userMedGroupArr: res.data.userMedGroupArr,
-        }))
+          ...res.data,
+        })
       )
       .catch(err => console.log(err.response.data.error));
   }, []);
@@ -35,6 +34,7 @@ const App = () => {
   return (
     <div className='app'>
       <Navigation />
+      {pendingInvite.length > 0 && <Notification />}
       <Switch>
         <Route exact path='/' component={isAuth ? Mypage : Homepage} />
         <Route exact path='/mypage' component={Mypage} />
