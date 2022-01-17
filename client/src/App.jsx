@@ -24,8 +24,8 @@ const App = () => {
       .get('auth/user')
       .then(res =>
         setState({
-          isAuth: true,
           ...res.data,
+          isAuth: true,
         })
       )
       .catch(err => console.log(err.response.data.error));
