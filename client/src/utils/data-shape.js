@@ -1,5 +1,5 @@
 export const getFilteredBondUsers = (authUserId, bondUserArr) =>
-  bondUserArr.map(user => user.id !== authUserId);
+  bondUserArr.filter(user => user.id !== authUserId);
 
 export const getFilteredUsers = (authUserId, searchWord, allUsers) =>
   allUsers.filter(user => {
