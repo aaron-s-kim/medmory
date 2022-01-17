@@ -8,6 +8,7 @@ export const INITIAL_STATE = {
   user: null,
   userMedGroupArr: [],
   bond: null,
+  pendingInvite: null,
 };
 const StateProvider = ({ children }) => {
   const [state, setState] = useState(INITIAL_STATE);

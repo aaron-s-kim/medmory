@@ -22,12 +22,10 @@ const App = () => {
     axios
       .get('auth/user')
       .then(res =>
-        setState(prevState => ({
-          ...prevState,
+        setState({
           isAuth: true,
-          user: res.data.user,
-          userMedGroupArr: res.data.userMedGroupArr,
-        }))
+          ...res.data,
+        })
       )
       .catch(err => console.log(err.response.data.error));
   }, []);

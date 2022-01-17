@@ -26,13 +26,10 @@ const SignInForm = () => {
     axios
       .post('/auth/sign-in', reqBody)
       .then(res =>
-        setState(prevState => ({
-          ...prevState,
+        setState({
           isAuth: true,
-          user: res.data.user,
-          userMedGroupArr: res.data.userMedGroupArr,
-          bond: res.data.bond
-        }))
+          ...res.data,
+        })
       )
       .catch(err => console.error(err));
   };
