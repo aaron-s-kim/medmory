@@ -1,3 +1,12 @@
+@import 'assets/styles/variable';
+
 .app {
   width: 100%;
+
+  .page-container {
+    background-color: $bright;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    min-height: 80vh;
+  }
 }

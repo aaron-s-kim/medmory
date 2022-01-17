@@ -6,7 +6,6 @@ import './mypage.scss';
 import default_avatar from 'assets/images/avatar.png';
 import Popup from './Popup';
 
-
 const Mypage = () => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const setState = useContext(SetStateContext);
@@ -21,13 +20,13 @@ const Mypage = () => {
 
     axios
       .post('/med_histories', reqBody)
-      .then((res) => {
+      .then(res => {
         const mgItemArr = userMedGroupArr.map(medGroupItem => {
           if (medGroupItem.id === Number(value)) {
             medGroupItem.isCompliedToday = true;
           }
           return medGroupItem;
-        })
+        });
         setState({ isAuth, user, userMedGroupArr: mgItemArr });
       })
       .catch(err => console.log(err));
@@ -42,57 +41,68 @@ const Mypage = () => {
   };
 
   return (
-    
     <div className='mypage'>
       {isAuth && user ? (
         <div>
-          <p>--user signed in--</p>
-          <br />
-
-          <div className='user-profile'>
-            <h2>User Profile</h2>
-            <img
-              src={user.imageUrl ? user.imageUrl : default_avatar}
-              alt="user_avatar"
-              width='140'
-            />
-            <p>user: {user.firstName} {user.lastName}</p>
-            <p>email: {user.email}</p>
+          <div className='user-profile-container'>
+            <div className='user-image'>
+              <img
+                src={user.imageUrl ? user.imageUrl : default_avatar}
+                alt='user_avatar'
+                width='140'
+              />
+            </div>
+            <div className='user-info-container'>
+              <div className='user-info'>
+                <p>
+                  <strong>User:</strong> {user.firstName} {user.lastName}
+                </p>
+                <p>
+                  <strong>Email:</strong> {user.email}
+                </p>
+              </div>
+              <div>
+                <p className='add-med-group-btn'>Add medication group</p>
+              </div>
+            </div>
           </div>
           <br />
 
           <div className='user-med-group'>
-
             <h2>Medication Group</h2>
-            {!userMedGroupArr.length ?
+            {!userMedGroupArr.length ? (
               <p>No medication groups have been created</p>
-            : userMedGroupArr.map(medGroupItem => 
-              <div key={ medGroupItem.id }>
-                <h3 onClick={() => togglePopup(medGroupItem.id)}>
-                  <u>{medGroupItem.name}</u>
-                </h3>
-                {showstate[medGroupItem.id] ? 
-                  <Popup
-                    medGroupObj={medGroupItem}
-                    handleClose={togglePopup}
-                    show={showstate}
-                    setShow={setShowstate}
-                    togglePopup={togglePopup}
-                    // meds={medstate}
-                  />
-                  : null
-                }
+            ) : (
+              userMedGroupArr.map(medGroupItem => (
+                <div key={medGroupItem.id}>
+                  <h3 onClick={() => togglePopup(medGroupItem.id)}>
+                    <u>{medGroupItem.name}</u>
+                  </h3>
+                  {showstate[medGroupItem.id] ? (
+                    <Popup
+                      medGroupObj={medGroupItem}
+                      handleClose={togglePopup}
+                      show={showstate}
+                      setShow={setShowstate}
+                      togglePopup={togglePopup}
+                      // meds={medstate}
+                    />
+                  ) : null}
 
-                {medGroupItem.isCompliedToday ?
-                  <p>*Medication has been taken*</p>
-                : <button onClick={complianceClick} medgroupid={medGroupItem.id}>
-                    Confirm Medication Taken
-                  </button>
-                }
-                <br />
-              </div>
+                  {medGroupItem.isCompliedToday ? (
+                    <p>*Medication has been taken*</p>
+                  ) : (
+                    <button
+                      onClick={complianceClick}
+                      medgroupid={medGroupItem.id}
+                    >
+                      Confirm Medication Taken
+                    </button>
+                  )}
+                  <br />
+                </div>
+              ))
             )}
-            
           </div>
         </div>
       ) : (
