@@ -15,7 +15,7 @@ const Popup = props => {
     ])
       .then((resultsArr) => {
         // console.log("resultsArr[0].data", resultsArr[0].data); // medGroup, meds, isCompliedToday, historyTenDays
-        console.log("resultsArr[0].data.meds", resultsArr[0].data.meds);
+        // console.log("resultsArr[0].data.meds", resultsArr[0].data.meds);
         const medsArr = resultsArr[0].data.meds;
         setMedstate(medsArr);
     });
