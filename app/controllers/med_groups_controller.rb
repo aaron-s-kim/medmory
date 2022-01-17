@@ -55,6 +55,7 @@ class MedGroupsController < ApplicationController
   def med_group_medications (med_group)
     med_group.meds.map do |med|
       {
+        id: med.id, # <== blame aaron: added this line
         name: med.name,
         dosage: med.dosage,
         measure: med.measure,
