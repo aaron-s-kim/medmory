@@ -31,6 +31,7 @@ const SignInForm = () => {
           isAuth: true,
           user: res.data.user,
           userMedGroupArr: res.data.userMedGroupArr,
+          bond: res.data.bond
         }))
       )
       .catch(err => console.error(err));

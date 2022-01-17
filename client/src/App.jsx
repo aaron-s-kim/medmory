@@ -12,7 +12,7 @@ import StateProvider from './context/StateProvider';
 
 import 'App.scss';
 
-import { Provider, AddMedgroup, MedGroupList } from 'context/UserContext';
+// import { Provider, AddMedgroup, MedGroupList } from 'context/UserContext';
 
 const App = () => {
   return (

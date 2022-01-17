@@ -8,6 +8,7 @@ const StateProvider = ({ children }) => {
     isAuth: false,
     user: null,
     userMedGroupArr: [],
+    bond: null,
   };
   const [state, setState] = useState(INITIAL_STATE);
 
