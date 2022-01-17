@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-    users = User.all
-    render json: filtered_users_array(users)
-  end
-
   def show
     user = User.find_by(id: params[:id])
     user_data(user)
@@ -18,7 +13,6 @@ class UsersController < ApplicationController
       render json: { error: 'No user found' }, status: 400
     end
   end
-  
 
   def get_auth_user_data
     if session[:user_id]
