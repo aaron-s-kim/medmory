@@ -6,20 +6,21 @@ import './mypage.scss';
 import default_avatar from 'assets/images/avatar.png';
 import Popup from './Popup';
 
+
 const Mypage = () => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const setState = useContext(SetStateContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [show, setShow] = useState({});
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  }
+  const togglePopup = id => {
+    setShow(prev => ({ ...prev, [id]: !prev[id] }));
+    console.log(JSON.stringify(show));
+  };
+
 
   const complianceClick = e => {
     const value = e.currentTarget.getAttribute('medgroupid');
-    const reqBody = {
-      med_group_id: value,
-    };
+    const reqBody = { med_group_id: value };
 
     axios
       .post('/med_histories', reqBody)
@@ -36,6 +37,7 @@ const Mypage = () => {
   };
 
   return (
+    
     <div className='mypage'>
       {isAuth && user ? (
         <div>
@@ -55,13 +57,26 @@ const Mypage = () => {
           <br />
 
           <div className='user-med-group'>
+
             <h2>Medication Group</h2>
             {!userMedGroupArr.length ?
               <p>No medication groups have been created</p>
-            : userMedGroupArr.map((medGroupItem, index) => 
-              <div key={ index }>
-                {JSON.stringify(medGroupItem)}
-                <p><a href={/med_groups/ + medGroupItem.id}><strong>Name:</strong>{medGroupItem.name}</a></p>
+            : userMedGroupArr.map(medGroupItem => 
+              <div key={ medGroupItem.id }>
+                <h3 onClick={() => togglePopup(medGroupItem.id)}>
+                  <u>{medGroupItem.name}</u>
+                </h3>
+                {show[medGroupItem.id] ? 
+                  <Popup
+                    medGroupObj={medGroupItem}
+                    handleClose={togglePopup}
+                    show={show}
+                    setShow={setShow}
+                    togglePopup={togglePopup}
+                  />
+                  : null
+                }
+
                 {medGroupItem.isCompliedToday ?
                   <p>*Medication has been taken*</p>
                 : <button onClick={complianceClick} medgroupid={medGroupItem.id}>
@@ -69,23 +84,6 @@ const Mypage = () => {
                   </button>
                 }
                 <br />
-
-                <input
-                  type="button"
-                  value="Click to Open Popup"
-                  onClick={togglePopup}
-                />
-
-                <p>Lorem ipsum dolor sit amet</p>
-                {isOpen && <Popup
-                  content={<>
-                    <b>Design your Popup</b>
-                    <p>p element inside Popup.</p>
-                    <button>Test button</button>
-                  </>}
-                  handleClose={togglePopup}
-                />}
-
               </div>
             )}
             
