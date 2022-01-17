@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import Navigation from './components/Navigation/Navigation';
@@ -14,12 +14,9 @@ import { StateContext, SetStateContext } from './context/StateProvider';
 
 import 'App.scss';
 
-// import { Provider, AddMedgroup, MedGroupList } from 'context/UserContext';
-
 const App = () => {
-  const state = useContext(StateContext);
+  const { isAuth } = useContext(StateContext);
   const setState = useContext(SetStateContext);
-  const { isAuth } = state;
 
   useEffect(() => {
     axios
@@ -35,7 +32,6 @@ const App = () => {
       .catch(err => console.log(err.response.data.error));
   }, []);
 
-  console.log(isAuth);
   return (
     <div className='app'>
       <Navigation />

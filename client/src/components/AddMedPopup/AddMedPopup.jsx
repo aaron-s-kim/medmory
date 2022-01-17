@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 
 import Overlay from 'components/Overlay/Overlay';
 import MedInput from 'components/MedInput/MedInput';
 
 // @@@@ CHANGE HARDCODED MED_GROUP_ID TO DYNAIC MED_GROUP_ID
-const AddMedPopup = () => {
+const AddMedPopup = ({ history }) => {
   const INITIAL_MED_INPUT = {
     name: '',
     dosage: '',
@@ -39,7 +40,7 @@ const AddMedPopup = () => {
         .catch(err => console.log(err));
     });
 
-    // go to my page
+    history.push('/mypage');
   };
 
   const handleSubmit = e => {
@@ -71,4 +72,4 @@ const AddMedPopup = () => {
   );
 };
 
-export default AddMedPopup;
+export default withRouter(AddMedPopup);

@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
+import { StateContext } from 'context/StateProvider';
 
 import Overlay from 'components/Overlay/Overlay';
 
 import './addUpdateMedGroupPopup.scss';
 
-// @@@@ CHANGE HARDCODED USER_ID TO DYNAIC USER_ID
-const AddUpdateMedGroupPopup = () => {
+const AddUpdateMedGroupPopup = ({ history }) => {
+  const { user } = useContext(StateContext);
   const INITIAL_INPUT = {
     name: '',
     detail: '',
@@ -19,18 +21,21 @@ const AddUpdateMedGroupPopup = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
+    if (name === '') return history.push('/mypage');
+
     const reqBody = {
       name,
       detail,
       compliance_time: complianceTime,
-      user_id: 208,
+      user_id: user.id,
     };
 
-    console.log(name, detail, complianceTime);
     axios
       .post('/med_groups', reqBody)
       .then(res => console.log(res))
       .catch(err => console.log(err));
+
+    history.push('/mypage');
   };
 
   const handleChange = e => {
@@ -87,4 +92,4 @@ const AddUpdateMedGroupPopup = () => {
   );
 };
 
-export default AddUpdateMedGroupPopup;
+export default withRouter(AddUpdateMedGroupPopup);
