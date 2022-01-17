@@ -9,12 +9,11 @@ import Popup from './Popup';
 const Mypage = () => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const setState = useContext(SetStateContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [showstate, setShowstate] = useState({});
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  }
+  // console.log("userMedGroupArr", userMedGroupArr)
 
+  // adds med_groups id to med_histories table > updates state isCompliedToday
   const complianceClick = e => {
     const value = e.currentTarget.getAttribute('medgroupid');
     const reqBody = {
@@ -33,6 +32,14 @@ const Mypage = () => {
         setState({ isAuth, user, userMedGroupArr: mgItemArr });
       })
       .catch(err => console.log(err));
+  };
+
+  const togglePopup = id => {
+    setShowstate(prev => ({ ...prev, [id]: !prev[id] }));
+    // console.log(JSON.stringify(showstate));
+    // showstate[id] ?
+    // console.log("popup closed")
+    // : console.log("popup open");
   };
 
   return (
