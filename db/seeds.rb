@@ -89,6 +89,14 @@ med_group3 = MedGroup.create(
   message_to: aaron.id
 )
 
+med_group4 = MedGroup.create(
+  name: 'The Drugs',
+  detail: 'take twice a day',
+  compliance_time: 12,
+  user_id: aaron.id,
+  message_to: jeff.id
+)
+
 puts "Creating meds..."
 
 Med.create(
@@ -132,6 +140,24 @@ Med.create(
   med_group_id: med_group3.id
 )
 
+Med.create(
+  name: 'Marine Stimpack',
+  dosage: 500,
+  measure: 'mg',
+  num: 1,
+  pill_type: 'tablet',
+  med_group_id: med_group4.id
+)
+
+Med.create(
+  name: 'NZT-48',
+  dosage: 500,
+  measure: 'mg',
+  num: 1,
+  pill_type: 'pill',
+  med_group_id: med_group4.id
+)
+
 puts "Creating med group histories..."
 
 for i in 1..26 do
@@ -150,6 +176,12 @@ end
 for i in 1..26 do
   MedHistory.create(
   med_group_id: med_group3.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
+end
+
+for i in 1..26 do
+  MedHistory.create(
+  med_group_id: med_group4.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
