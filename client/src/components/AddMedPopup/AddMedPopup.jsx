@@ -149,6 +149,9 @@ const AddMedPopup = ({
             onChange={handleChangeOnMedGroup}
             value={newCareTakerId}
           >
+            <option value='' default>
+              None
+            </option>
             {getFilteredBondUsers(user.id, bondUsers).map(user => (
               <option key={user.id} value={user.id}>
                 {user.firstName} {user.lastName}
