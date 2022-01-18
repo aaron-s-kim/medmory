@@ -6,11 +6,18 @@ import { getAuthUserData } from 'utils/data-fetch';
 
 import './medGroup.scss';
 
-const MedGroup = ({ id, name, isCompliedToday, history }) => {
+const MedGroup = ({
+  medGroupId,
+  name,
+  isCompliedToday,
+  setMedgroupToDisplay,
+  meds,
+  history,
+}) => {
   const setState = useContext(SetStateContext);
 
   const takeMedGroup = () => {
-    const reqBody = { med_group_id: id };
+    const reqBody = { med_group_id: medGroupId };
 
     axios
       .post('/med_histories', reqBody)
@@ -19,7 +26,11 @@ const MedGroup = ({ id, name, isCompliedToday, history }) => {
   };
 
   const goToEdit = () => {
-    console.log('to edit');
+    setMedgroupToDisplay({
+      medGroupId,
+      meds,
+      medGroupName: name,
+    });
   };
 
   const goToDetail = () => {

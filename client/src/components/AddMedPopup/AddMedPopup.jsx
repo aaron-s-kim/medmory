@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 
-import Overlay from 'components/Overlay/Overlay';
+import Med from 'components/Med/Med';
 import MedInput from 'components/MedInput/MedInput';
 
+import './addMedPopup.scss';
 // @@@@ CHANGE HARDCODED MED_GROUP_ID TO DYNAIC MED_GROUP_ID
-const AddMedPopup = ({ history }) => {
+const AddMedPopup = ({ history, match, meds, medGroupName }) => {
   const INITIAL_MED_INPUT = {
     name: '',
     dosage: '',
@@ -26,10 +27,7 @@ const AddMedPopup = ({ history }) => {
       if (medInput.name === '') return;
 
       const reqBody = {
-        name: medInput.name,
-        dosage: medInput.dosage,
-        num: medInput.num,
-        measure: medInput.measure,
+        ...medInput,
         pill_type: medInput.pillType,
         med_group_id: 15,
       };
@@ -50,25 +48,40 @@ const AddMedPopup = ({ history }) => {
   };
 
   return (
-    <>
-      <Overlay />
-      <div className='med-group-popup'>
-        <div>
-          <h2>Vitamins: </h2>
-          <span>
-            <button onClick={addMedInput}>add medication</button>
-          </span>
-        </div>
-        <form onSubmit={handleSubmit}>
-          {medInputArr.map((medInputObj, i) => (
-            <MedInput key={i} id={i} setMedInputArr={setMedInputArr} />
-          ))}
-          <div>
-            <button>Save medication</button>
-          </div>
-        </form>
+    <div className='med-group-popup'>
+      <div>
+        <h2>{medGroupName}</h2>
       </div>
-    </>
+      <strong>Registered medications</strong>
+      <div className='med-table'>
+        <div className='med-table-head'>
+          <strong>Name</strong>
+          <strong>Dosage</strong>
+          <strong>Quantity</strong>
+          <strong></strong>
+        </div>
+
+        {meds.map(med => (
+          <Med key={med.id} {...med} />
+        ))}
+      </div>
+      <form onSubmit={handleSubmit}>
+        {medInputArr.map((medInputObj, i) => (
+          <div>
+            <MedInput
+              key={i}
+              id={i}
+              setMedInputArr={setMedInputArr}
+              addMedInput={addMedInput}
+            />
+            <button onClick={addMedInput}>add medication</button>
+          </div>
+        ))}
+        <div>
+          <button>Save medication</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

@@ -1,2 +1,26 @@
 @import '../../assets/styles/variable';
 
+.med-group-popup {
+  z-index: 999;
+  position: fixed;
+  background-color: $bright;
+  padding: 1em;
+
+  width: 60vw;
+  height: 60vh;
+
+  left: 20vw;
+  top: 15vh;
+  .med-table {
+    margin: 0.6em 0;
+    .med-table-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      background-color: $main;
+      text-align: center;
+      > strong {
+        margin: 0.3em;
+      }
+    }
+  }
+}

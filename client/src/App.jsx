@@ -44,8 +44,6 @@ const App = () => {
             path='/med-group-add'
             component={AddUpdateMedGroupPopup}
           />
-
-          <Route exact path='/med-add' component={AddMedPopup} />
           <Route exact path='/graphpage' component={Graphpage} />
         </Switch>
       </div>

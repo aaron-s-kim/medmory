@@ -16,4 +16,18 @@ class ApplicationController < ActionController::API
     user_array.map {|user| filtered_user(user) }
   end
 
+  def med_group_medications (med_group)
+    med_group.meds.map do |med|
+      {
+        id: med.id,
+        name: med.name,
+        dosage: med.dosage,
+        measure: med.measure,
+        numOfPill: med.num,
+        pillType: med.pill_type
+      }
+    end
+    
+  end
+
 end

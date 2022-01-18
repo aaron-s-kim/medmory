@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import AddMedPopup from 'components/AddMedPopup/AddMedPopup';
+import Overlay from 'components/Overlay/Overlay';
 import MedGroup from 'components/MedGroup/MedGroup';
 
 import { StateContext } from '../../../context/StateProvider';
@@ -9,10 +11,20 @@ import './mypagecopy.scss';
 
 const Mypage = ({ history }) => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
+  const INITIAL_POPUP_STATE = {
+    medGroupName: '',
+    meds: [],
+  };
+  const [medGroupToDisplay, setMedgroupToDisplay] =
+    useState(INITIAL_POPUP_STATE);
 
   if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='mypage'>
+      {medGroupToDisplay.medGroupName && <AddMedPopup {...medGroupToDisplay} />}
+      {medGroupToDisplay.medGroupName && (
+        <Overlay setMedgroupToDisplay={setMedgroupToDisplay} />
+      )}
       <div className='user-profile-container'>
         {user.imageUrl ? (
           <div
@@ -49,8 +61,10 @@ const Mypage = ({ history }) => {
           userMedGroupArr.map(medGroupItem => (
             <MedGroup
               key={medGroupItem.id}
+              medGroupId={medGroupItem.id}
               {...medGroupItem}
               history={history}
+              setMedgroupToDisplay={setMedgroupToDisplay}
             />
           ))
         )}
