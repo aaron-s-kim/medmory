@@ -39,34 +39,27 @@ const Graphpage = () => {
   const { userMedGroupArr } = useContext(StateContext);
   const chartRef = useRef();
   const [datastate, setDatastate] = useState(data);
-  // const colorsArr = ['#21ba45', '#7cd6fd', 'purple'];
-  // console.log(userMedGroupArr); // => [{id, name, detail, complianceTime, ...}, {}]
   
-  // send 1 get, update data set 1 time;
   useEffect(() => {
+    const promises = userMedGroupArr.map(medGroupItem => {
+      const medGroupUrl = `/med_groups/${medGroupItem.id}`
+      return axios.get(medGroupUrl);
+    })
+    Promise.all(promises)
+      .then(resultsArr => {
+        const chartDataArr = resultsArr.map(obj => ({
+          name: obj.data.medGroup.name,
+          chartType: "line",
+          values: obj.data.historyTenDays.map(obj => Number(obj.created_at.substring(11, 13)))
+        }));
+        // console.log(chartDataArr); // => correct output check
+        setDatastate(prev => (
+          {...prev, datasets: [...chartDataArr]}
+        ));
+      })
+      .catch(err => console.log(err.response.data.error));
+  }, [userMedGroupArr]);
 
-    const promises = userMedGroupArr.forEach(medGroupItem => (
-      axios
-        .get('/med_groups/' + medGroupItem.id)
-        .then(resultsArr => {
-          const historyArr = resultsArr.data.historyTenDays;
-          const timeNumArr = historyArr.map(obj => Number(obj.created_at.substring(11, 13)));
-          const datasetObj = {
-            name: medGroupItem.name,
-            chartType: "line",
-            values: timeNumArr
-          }
-          // console.log(datasetObj); // => correct output
-          
-          setDatastate(prev => (
-            {...prev, datasets: [...prev.datasets, datasetObj]} // {}
-          ));
-        })
-        .catch(err => console.log(err.response.data.error))
-    ));
-
-  }, [userMedGroupArr, setDatastate]);
-  // console.log(JSON.stringify(historystate)); 
 
   // return (
   //   <pre>
@@ -79,9 +72,11 @@ const Graphpage = () => {
       chartRef.current.export();
     }
   };
-
   return (
     <div className='graphpage'>Graph Page
+
+      {!datastate.datasets.length ? null :
+      <>
         <ReactFrappeChart
           ref={chartRef}
           title={"Compliance Data Chart"}
@@ -93,7 +88,7 @@ const Graphpage = () => {
             xIsSeries: 1
           }}
           height={350}
-          data={data}
+          data={datastate}
           tooltipOptions={{
             formatTooltipX: (d) => ("day " + d).toUpperCase(),
             formatTooltipY: (d) => d + "00 hours"
@@ -102,8 +97,12 @@ const Graphpage = () => {
         <button onClick={exportChart} type="button">
           Export
         </button>
+      </>
+      }
   </div>
   );
+
+
 };
 
 export default Graphpage;
