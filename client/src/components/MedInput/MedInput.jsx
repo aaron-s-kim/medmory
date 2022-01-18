@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './medInput.scss';
 
-const MedInput = ({ id, setMedInputArr }) => {
+const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
   const INITIAL_INPUT = {
     name: '',
     dosage: '',
@@ -26,6 +26,10 @@ const MedInput = ({ id, setMedInputArr }) => {
     });
   };
 
+  const addMoreInput = () => {
+    addMedInput();
+  };
+
   const handleChange = e => {
     const { value, name } = e.target;
     setInputState({ ...inputState, [name]: value });
@@ -34,50 +38,57 @@ const MedInput = ({ id, setMedInputArr }) => {
   };
 
   return (
-    <div>
-      <div>
-        <input
-          type='text'
-          name='name'
-          value={name}
-          onChange={handleChange}
-          placeholder='Medication name'
-        />
-      </div>
-      <div>
-        <input
-          type='number'
-          name='dosage'
-          value={dosage}
-          onChange={handleChange}
-          placeholder='Dosage'
-        />
-        <select name='measure' onChange={handleChange} value={measure}>
-          <option value='mg' default>
-            mg
-          </option>
-          <option value='g'>g</option>
-          <option value='mcg'>mcg</option>
-          <option value='mg'>mg</option>
-        </select>
-      </div>
-      <div>
-        <input
-          type='number'
-          name='num'
-          value={num}
-          onChange={handleChange}
-          placeholder='Quantity'
-        />
-        <select name='pillType' onChange={handleChange} value={pillType}>
-          <option value='tablet' default>
-            Tablet(s)
-          </option>
-          <option value='capsule'>Capsule(s)</option>
-          <option value='softgel'>Softgel(s)</option>
-          <option value='gum'>gum(s)</option>
-        </select>
-      </div>
+    <div className='med-input-group'>
+      <input
+        type='text'
+        name='name'
+        value={name}
+        onChange={handleChange}
+        placeholder='Medication name'
+      />
+
+      <input
+        type='number'
+        name='dosage'
+        value={dosage}
+        onChange={handleChange}
+        placeholder='Dosage'
+      />
+      <select name='measure' onChange={handleChange} value={measure}>
+        <option value='mg' default>
+          mg
+        </option>
+        <option value='g'>g</option>
+        <option value='mcg'>mcg</option>
+        <option value='mg'>mg</option>
+      </select>
+
+      <input
+        type='number'
+        name='num'
+        value={num}
+        onChange={handleChange}
+        placeholder='Quantity'
+      />
+      <select name='pillType' onChange={handleChange} value={pillType}>
+        <option value='tablet' default>
+          Tablet(s)
+        </option>
+        <option value='capsule'>Capsule(s)</option>
+        <option value='softgel'>Softgel(s)</option>
+        <option value='gum'>gum(s)</option>
+      </select>
+      <span
+        onClick={addMoreInput}
+        className={
+          id === numOfMedInput - 1
+            ? 'add-med-input-btn-show'
+            : 'add-med-input-btn'
+        }
+      >
+        {' '}
+        +{' '}
+      </span>
     </div>
   );
 };

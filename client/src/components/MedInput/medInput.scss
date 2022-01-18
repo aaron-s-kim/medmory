@@ -1,0 +1,30 @@
+@import 'assets/styles/variable';
+
+.med-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  justify-content: center;
+  margin-bottom: 0.4em;
+
+  > input {
+    font-size: 0.9em;
+  }
+  > input[type='number'] {
+    width: 72px;
+  }
+  .add-med-input-btn-show {
+    display: inline;
+    width: 22px;
+    text-align: center;
+    font-weight: bold;
+    border: solid $dark 1px;
+    border-radius: 50%;
+    margin-left: 0.5em;
+    display: inline;
+    cursor: pointer;
+  }
+  .add-med-input-btn {
+    display: none;
+  }
+}

@@ -2,8 +2,13 @@ import React from 'react';
 
 import './overlay.scss';
 
-const Overlay = () => {
-  return <div className='overlay' />;
+const Overlay = ({ closePopup }) => {
+  return (
+    <div
+      className='overlay'
+      onClick={() => closePopup()}
+    />
+  );
 };
 
 export default Overlay;
