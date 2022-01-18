@@ -1,34 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 
-import { StateContext, SetStateContext } from '../../../context/StateProvider';
+import MedGroup from 'components/MedGroup/MedGroup';
+
+import { StateContext } from '../../../context/StateProvider';
 import defaultAvatar from 'assets/images/avatar.png';
 import './mypagecopy.scss';
 
-const Mypage = () => {
+const Mypage = ({ history }) => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
-  const setState = useContext(SetStateContext);
-
-
-
-  const complianceClick = e => {
-    const value = e.currentTarget.getAttribute('medgroupid');
-    const reqBody = { med_group_id: value };
-
-    axios
-      .post('/med_histories', reqBody)
-      .then(res => {
-        const mgItemArr = userMedGroupArr.map(medGroupItem => {
-          if (medGroupItem.id === Number(value)) {
-            medGroupItem.isCompliedToday = true;
-          }
-          return medGroupItem;
-        });
-        setState({ isAuth, user, userMedGroupArr: mgItemArr });
-      })
-      .catch(err => console.log(err));
-  };
 
   if (!isAuth) return <Redirect to='/' />;
   return (
@@ -67,28 +47,11 @@ const Mypage = () => {
           <p>No medication groups have been created</p>
         ) : (
           userMedGroupArr.map(medGroupItem => (
-            <div key={medGroupItem.id} class='med-group-containter'>
-              <h3
-                className='med-group-name'
-              >
-                {medGroupItem.name}
-              </h3>
-
-              {medGroupItem.isCompliedToday ? (
-                <p className='message-taken'>Medication taken ✅ </p>
-              ) : (
-                <div className='message-not-taken-container'>
-                  <p className='message-not-taken'>NOT taken yet❌</p>
-                  <p className='take-btn' onClick={complianceClick}>
-                    Take it
-                  </p>
-                </div>
-              )}
-              <div className='med-group-btn-container'>
-                <p className='med-group-btn'>Edit</p>
-                <p className='med-group-btn'>Detail</p>
-              </div>
-            </div>
+            <MedGroup
+              key={medGroupItem.id}
+              {...medGroupItem}
+              history={history}
+            />
           ))
         )}
       </div>
