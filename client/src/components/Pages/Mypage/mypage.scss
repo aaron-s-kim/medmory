@@ -1,4 +1,25 @@
 @import 'assets/styles/variable';
 .mypage {
   background-color: $bright;
+  .user-profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    padding-top: 2em;
+
+    .add-med-group-btn {
+      border: solid black 1px;
+      border-radius: 5px;
+      text-align: center;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      cursor: pointer;
+    }
+  }
+
+  .user-med-group {
+    width: 60%;
+    margin: 0 20%;
+  }
 }

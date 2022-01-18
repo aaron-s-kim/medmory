@@ -29,18 +29,24 @@ const App = () => {
   return (
     <div className='app'>
       <Navigation />
-      {pendingInvite && <Notification />}
-      <Switch>
-        <Route exact path='/' component={isAuth ? Mypage : Homepage} />
-        <Route exact path='/user-search' component={UserSearchpage} />
-        <Route exact path='/mypage' component={Mypage} />
-        <Route exact path='/bond' component={Bondpage} />
-        <Route path='/view-user/:userId' component={ViewUserpage} />
-        <Route exact path='/med-group-add' component={AddUpdateMedGroupPopup} />
+      <div className='page-container'>
+        {pendingInvite && <Notification />}
+        <Switch>
+          <Route exact path='/' component={isAuth ? Mypage : Homepage} />
+          <Route exact path='/user-search' component={UserSearchpage} />
+          <Route exact path='/mypage' component={Mypage} />
+          <Route exact path='/bond' component={Bondpage} />
+          <Route path='/view-user/:userId' component={ViewUserpage} />
+          <Route
+            exact
+            path='/med-group-add'
+            component={AddUpdateMedGroupPopup}
+          />
 
-        <Route exact path='/med-add' component={AddMedPopup} />
-        <Route exact path='/graphpage' component={Graphpage} />
-      </Switch>
+          <Route exact path='/med-add' component={AddMedPopup} />
+          <Route exact path='/graphpage' component={Graphpage} />
+        </Switch>
+      </div>
     </div>
   );
 };
