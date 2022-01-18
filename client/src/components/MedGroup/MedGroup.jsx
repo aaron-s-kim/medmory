@@ -32,10 +32,10 @@ const MedGroup = ({
     setMedgroupToDisplay({
       medGroupId,
       meds,
-      careTakerId,
-      complianceTime,
+      careTakerId: careTakerId === null ? '' : careTakerId,
+      complianceTime: complianceTime === null ? '' : complianceTime,
       medGroupName: name,
-      medGroupDetail: detail,
+      medGroupDetail: detail === null ? '' : detail,
     });
   };
 

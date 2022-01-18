@@ -51,10 +51,6 @@ const AddMedPopup = ({
     setMedInputArr(prevMedInputArr => [...prevMedInputArr, INITIAL_MED_INPUT]);
   };
 
-  // const setMedsIdToHide = (medId) => {
-  //   setMedsIdToHide([...medsIdToHide, medId])
-  // }
-
   const updateMedGroup = () => {
     if (newName === '') return;
 
@@ -71,7 +67,8 @@ const AddMedPopup = ({
   const saveMedications = medArr => {
     return medArr
       .map(medInput => {
-        if (medInput.name === '') return null;
+        if (medInput.name === '' || medInput.num < 0 || medInput.dosage < 0)
+          return null;
 
         const reqBody = {
           ...medInput,
@@ -93,6 +90,16 @@ const AddMedPopup = ({
     e.preventDefault();
 
     Promise.all([...saveMedications(medInputArr), updateMedGroup()])
+      .then(() => {
+        closePopup();
+        getAuthUserData(setState);
+      })
+      .catch(err => console.log(err.response.data.error));
+  };
+
+  const deleteMedGroup = () => {
+    axios
+      .delete(`/med_groups/${medGroupId}`)
       .then(() => {
         closePopup();
         getAuthUserData(setState);
@@ -161,7 +168,12 @@ const AddMedPopup = ({
           <strong></strong>
         </div>
         {meds.map(med => (
-          <Med key={med.id} {...med} setMedsIdToHide={setMedsIdToHide} medsIdToHide={medsIdToHide}/>
+          <Med
+            key={med.id}
+            {...med}
+            setMedsIdToHide={setMedsIdToHide}
+            medsIdToHide={medsIdToHide}
+          />
         ))}
       </div>
       {medInputArr.map((medInputObj, i, medInputArr) => (
@@ -173,8 +185,11 @@ const AddMedPopup = ({
           numOfMedInput={medInputArr.length}
         />
       ))}
-      <p className='add-med-btn' onClick={startSavingMedGroup}>
+      <p className='save-med-group-btn' onClick={startSavingMedGroup}>
         Save
+      </p>
+      <p className='delete-med-group-btn'>
+        <small onClick={deleteMedGroup}>Delete medication group</small>
       </p>
     </div>
   );
