@@ -52,18 +52,6 @@ class MedGroupsController < ApplicationController
     params.require(:med_group).permit(:name, :detail, :message_to, :user_id, :compliance_time)
   end
 
-  def med_group_medications (med_group)
-    med_group.meds.map do |med|
-      {
-        id: med.id, # <== blame aaron: added this line
-        name: med.name,
-        dosage: med.dosage,
-        measure: med.measure,
-        numOfPill: med.num,
-        pillType: med.pill_type
-      }
-    end
-    
-  end
+  
   
 end

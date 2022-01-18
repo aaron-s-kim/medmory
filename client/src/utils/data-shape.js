@@ -6,3 +6,6 @@ export const getFilteredUsers = (authUserId, searchWord, allUsers) =>
     if (authUserId === user.id) return false;
     return user.email.includes(searchWord);
   });
+
+export const getCurrentMedGroup = (medGroupId, medGroupArr) =>
+  medGroupArr.filter(medGroup => medGroup.id === medGroupId)[0];

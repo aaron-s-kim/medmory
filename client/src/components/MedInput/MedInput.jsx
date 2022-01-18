@@ -34,7 +34,7 @@ const MedInput = ({ id, setMedInputArr }) => {
   };
 
   return (
-    <div>
+    <div className='med-input-group'>
       <div>
         <input
           type='text'

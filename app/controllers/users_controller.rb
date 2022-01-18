@@ -66,7 +66,8 @@ class UsersController < ApplicationController
           name: med_group.name,
           detail: med_group.detail,
           complianceTime: med_group.compliance_time,
-          isCompliedToday: med_group.med_histories.where("created_at > '#{Date.today.to_s(:long)}'")[0] ? true: false
+          isCompliedToday: med_group.med_histories.where("created_at > '#{Date.today.to_s(:long)}'")[0] ? true: false,
+          meds: med_group_medications(med_group)
         }
       end
     end

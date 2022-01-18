@@ -1,27 +1,28 @@
 @import 'assets/styles/variable';
-.mypage {
-  .user-profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2em;
-    padding-top: 2em;
 
-    .add-med-group-btn {
-      border: none;
-      border-radius: 5px;
-      text-align: center;
-      padding-top: 0.5em;
-      padding-bottom: 0.5em;
-      cursor: pointer;
-      background-color: #9ec4f7;
-      font-weight: bold;
-      color: #01437c;
-    }
-  }
+// .mypage {
+//   .user-profile-container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 2em;
+//     padding-top: 2em;
 
-  .user-med-group {
-    width: 60%;
-    margin: 0 20%;
-  }
-}
+//     .add-med-group-btn {
+//       border: none;
+//       border-radius: 5px;
+//       text-align: center;
+//       padding-top: 0.5em;
+//       padding-bottom: 0.5em;
+//       cursor: pointer;
+//       background-color: #9ec4f7;
+//       font-weight: bold;
+//       color: #01437c;
+//     }
+//   }
+
+//   .user-med-group {
+//     width: 60%;
+//     margin: 0 20%;
+//   }
+// }
