@@ -12,6 +12,7 @@ import './mypagecopy.scss';
 const Mypage = ({ history }) => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const INITIAL_POPUP_STATE = {
+    medGroupId: null,
     medGroupName: '',
     meds: [],
   };
@@ -21,8 +22,13 @@ const Mypage = ({ history }) => {
   if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='mypage'>
-      {medGroupToDisplay.medGroupName && <AddMedPopup {...medGroupToDisplay} />}
-      {medGroupToDisplay.medGroupName && (
+      {medGroupToDisplay.medGroupId && (
+        <AddMedPopup
+          {...medGroupToDisplay}
+          setMedgroupToDisplay={setMedgroupToDisplay}
+        />
+      )}
+      {medGroupToDisplay.medGroupId && (
         <Overlay setMedgroupToDisplay={setMedgroupToDisplay} />
       )}
       <div className='user-profile-container'>
