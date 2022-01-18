@@ -44,11 +44,15 @@ const Notification = () => {
   return (
     <div className='notification'>
       <div className='notification-message-container'>
-        <p>You have a pending invite from '{bondName}'</p>
+        <p>Pending invite from <strong>{bondName}</strong></p>
       </div>
       <div className='notification-option-container'>
-        <p onClick={declineInvite}>Decline</p>
-        <p onClick={acceptInvite}>Accept</p>
+        <p onClick={declineInvite} className='decline-btn'>
+          Decline
+        </p>
+        <p onClick={acceptInvite} className='accept-btn'>
+          Accept
+        </p>
       </div>
     </div>
   );

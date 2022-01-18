@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import { StateContext, SetStateContext } from '../../../context/StateProvider';
@@ -40,6 +41,7 @@ const Mypage = () => {
     // : console.log("popup open");
   };
 
+  if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='mypage'>
       {isAuth && user ? (
@@ -106,7 +108,7 @@ const Mypage = () => {
           </div>
         </div>
       ) : (
-        <p>--user not signed in yet--</p>
+        <p></p>
       )}
     </div>
   );

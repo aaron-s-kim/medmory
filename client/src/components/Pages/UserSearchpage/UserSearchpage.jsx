@@ -15,6 +15,8 @@ const UserSearchpage = () => {
   const [searchWord, setSearchWord] = useState('');
   const [userResult, setUserResult] = useState([]);
 
+  useEffect(() => {});
+
   useEffect(() => {
     if (searchWord.length > 0) {
       axios
@@ -51,7 +53,7 @@ const UserSearchpage = () => {
         />
       </div>
       <div className='search-result-container'>
-        {userResult.length > 0 ? (
+        {userResult.length > 0 &&
           userResult.map(user => (
             <div className='user-on-search' key={user.id}>
               <div className='user-image-container'>
@@ -83,12 +85,7 @@ const UserSearchpage = () => {
                   </p>
                 ))}
             </div>
-          ))
-        ) : (
-          <div className='user-on-search'>
-            <p>No matching user found</p>
-          </div>
-        )}
+          ))}
       </div>
     </div>
   );
