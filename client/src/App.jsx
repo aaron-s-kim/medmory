@@ -6,7 +6,7 @@ import Homepage from './components/Pages/Homepage/Homepage';
 import Bondpage from 'components/Pages/Bondpage/Bondpage';
 import UserSearchpage from 'components/Pages/UserSearchpage/UserSearchpage';
 import ViewUserpage from 'components/Pages/ViewUserpage/ViewUserpage';
-import AddUpdateMedGroupPopup from './components/AddUpdateMedGroupPopup/AddUpdateMedGroupPopup';
+import AddMedGroupPopup from './components/AddMedGroupPopup/AddMedGroupPopup';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
 import Notification from 'components/Notification/Notification';
 import Mypage from 'components/Pages/Mypage/Mypage';
@@ -39,7 +39,7 @@ const App = () => {
           <Route
             exact
             path='/med-group-add'
-            component={AddUpdateMedGroupPopup}
+            component={AddMedGroupPopup}
           />
           <Route exact path='/graphpage' component={Graphpage} />
         </Switch>

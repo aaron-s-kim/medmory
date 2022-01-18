@@ -4,6 +4,7 @@ $light-blue: #56ace0;
 $main: rgb(253, 223, 174);
 $sub-main: rgb(247, 181, 114);
 $highlight: #0970f7;
+$light-hightlight: #9ec4f7;
 $danger: rgb(214, 49, 27);
 $bright: rgb(241, 240, 240);
 
@@ -14,4 +15,24 @@ $bright: rgb(241, 240, 240);
   &:active {
     opacity: 1;
   }
+}
+
+@mixin med-group-property {
+  width: 90%;
+  padding: 0 1em;
+  border: solid $dark 1px;
+  background-color: $bright;
+  border-radius: 3px;
+  margin-bottom: 1em;
+}
+
+@mixin med-group-button-propery {
+  width: 40%;
+  text-align: center;
+  border: solid $dark 1px;
+  border-radius: 3px;
+  padding: 0.3em;
+  background-color: $sub-main;
+  cursor: pointer;
+  @include button-effect;
 }

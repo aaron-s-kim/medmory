@@ -5,9 +5,9 @@ import { StateContext } from 'context/StateProvider';
 
 import Overlay from 'components/Overlay/Overlay';
 
-import './addUpdateMedGroupPopup.scss';
+import './addMedGroupPopup.scss';
 
-const AddUpdateMedGroupPopup = ({ history }) => {
+const AddMedGroupPopup = ({ history }) => {
   const { user } = useContext(StateContext);
   const INITIAL_INPUT = {
     name: '',
@@ -92,4 +92,4 @@ const AddUpdateMedGroupPopup = ({ history }) => {
   );
 };
 
-export default withRouter(AddUpdateMedGroupPopup);
+export default withRouter(AddMedGroupPopup);

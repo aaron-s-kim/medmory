@@ -1,12 +1,7 @@
 @import 'assets/styles/variable';
 
 .med-group-containter {
-  width: 90%;
-  padding: 0 1em;
-  border: solid $dark 1px;
-  background-color: $bright;
-  border-radius: 3px;
-  margin-bottom: 1em;
+  @include med-group-property;
 
   .med-group-name {
     width: 100%;
@@ -56,14 +51,7 @@
     justify-content: center;
 
     .med-group-btn {
-      width: 40%;
-      text-align: center;
-      border: solid $dark 1px;
-      border-radius: 3px;
-      padding: 0.3em;
-      background-color: $sub-main;
-      cursor: pointer;
-      @include button-effect;
+      @include med-group-button-propery;
     }
   }
 }
