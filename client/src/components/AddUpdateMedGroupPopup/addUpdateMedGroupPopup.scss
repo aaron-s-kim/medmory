@@ -1,11 +1,9 @@
 @import '../../assets/styles/variable';
 
-
-
 .med-group-popup {
   z-index: 999;
   position: fixed;
-  background-color: $bright;
+  background-color: $main;
 
   width: 60vw;
   height: 60vh;

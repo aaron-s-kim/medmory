@@ -11,6 +11,7 @@ import AddUpdateMedGroupPopup from './components/AddUpdateMedGroupPopup/AddUpdat
 import AddMedPopup from './components/AddMedPopup/AddMedPopup';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
 import Notification from 'components/Notification/Notification';
+import MypageCopy from 'components/Pages/Mypage/Mypage-copy';
 
 import { StateContext, SetStateContext } from './context/StateProvider';
 
@@ -34,6 +35,7 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route exact path='/user-search' component={UserSearchpage} />
+          <Route exact path='/mypage-copy' component={MypageCopy} />
           <Route exact path='/mypage' component={Mypage} />
           <Route exact path='/bond' component={Bondpage} />
           <Route path='/view-user/:userId' component={ViewUserpage} />

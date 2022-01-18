@@ -65,11 +65,9 @@ const UserSearchpage = () => {
                     }}
                   />
                 ) : (
-                  <img
-                    className='user-image'
-                    src={defaultUserImage}
-                    alt='user-pic'
-                  />
+                  <div className='user-image'>
+                    <img src={defaultUserImage} alt='user-pic' />
+                  </div>
                 )}
               </div>
               <p>

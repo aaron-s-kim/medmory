@@ -1,4 +1,17 @@
 $dark: #222831;
 $light-dark: #393e46;
 $light-blue: #56ace0;
-$bright: papayawhip;
+$main: papayawhip;
+$sub-main: rgb(248, 164, 80);
+$highlight: #0970f7;
+$warning: rgb(214, 49, 27);
+$bright: rgb(241, 240, 240);
+
+@mixin button-effect {
+  &:hover {
+    opacity: 0.9;
+  }
+  &:active {
+    opacity: 1;
+  }
+}
