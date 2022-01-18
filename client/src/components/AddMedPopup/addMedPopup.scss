@@ -11,6 +11,25 @@
 
   left: 20vw;
   top: 15vh;
+
+  .med-group-info-container {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 0.5em;
+
+    .med-group-name-input {
+      font-size: 2em;
+    }
+    
+    .med-group-detail-input {
+      width: 300px;
+    }
+
+    .med-group-compliance-time-input {
+      width: 80px;
+    }
+  }
+
   .med-table {
     margin: 0.6em 0;
     .med-table-head {

@@ -9,4 +9,14 @@
   > span {
     padding: 0.3em 0;
   }
+  .med-remove-btn {
+    cursor: pointer;
+    &:hover {
+      border-bottom: solid $dark 1px;
+    }
+  }
+}
+
+.hidden-med-container {
+  display: none;
 }

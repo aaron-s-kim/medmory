@@ -5,32 +5,40 @@ import AddMedPopup from 'components/AddMedPopup/AddMedPopup';
 import Overlay from 'components/Overlay/Overlay';
 import MedGroup from 'components/MedGroup/MedGroup';
 
-import { StateContext } from '../../../context/StateProvider';
+import { StateContext, SetStateContext } from '../../../context/StateProvider';
+import { getAuthUserData } from 'utils/data-fetch';
+
 import defaultAvatar from 'assets/images/avatar.png';
 import './mypagecopy.scss';
 
 const Mypage = ({ history }) => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
+  const setState = useContext(SetStateContext);
+
   const INITIAL_POPUP_STATE = {
     medGroupId: null,
     medGroupName: '',
+    medGroupDetail: '',
+    complianceTime: '',
+    careTakerId: '',
     meds: [],
   };
+
   const [medGroupToDisplay, setMedgroupToDisplay] =
     useState(INITIAL_POPUP_STATE);
+
+  const closePopup = () => {
+    setMedgroupToDisplay(INITIAL_POPUP_STATE);
+    getAuthUserData(setState);
+  };
 
   if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='mypage'>
       {medGroupToDisplay.medGroupId && (
-        <AddMedPopup
-          {...medGroupToDisplay}
-          setMedgroupToDisplay={setMedgroupToDisplay}
-        />
+        <AddMedPopup {...medGroupToDisplay} closePopup={closePopup} />
       )}
-      {medGroupToDisplay.medGroupId && (
-        <Overlay setMedgroupToDisplay={setMedgroupToDisplay} />
-      )}
+      {medGroupToDisplay.medGroupId && <Overlay closePopup={closePopup} />}
       <div className='user-profile-container'>
         {user.imageUrl ? (
           <div

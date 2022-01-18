@@ -9,8 +9,11 @@ import './medGroup.scss';
 const MedGroup = ({
   medGroupId,
   name,
+  detail,
+  complianceTime,
   isCompliedToday,
   setMedgroupToDisplay,
+  careTakerId,
   meds,
   history,
 }) => {
@@ -29,7 +32,10 @@ const MedGroup = ({
     setMedgroupToDisplay({
       medGroupId,
       meds,
+      careTakerId,
+      complianceTime,
       medGroupName: name,
+      medGroupDetail: detail,
     });
   };
 

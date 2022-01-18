@@ -2,11 +2,11 @@ import React from 'react';
 
 import './overlay.scss';
 
-const Overlay = ({ setMedgroupToDisplay }) => {
+const Overlay = ({ closePopup }) => {
   return (
     <div
       className='overlay'
-      onClick={() => setMedgroupToDisplay({ medGroupName: '', meds: [] })}
+      onClick={() => closePopup()}
     />
   );
 };

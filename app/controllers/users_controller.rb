@@ -65,6 +65,7 @@ class UsersController < ApplicationController
           id: med_group.id, # <== blame aaron: added this line
           name: med_group.name,
           detail: med_group.detail,
+          careTakerId: med_group.message_to,
           complianceTime: med_group.compliance_time,
           isCompliedToday: med_group.med_histories.where("created_at > '#{Date.today.to_s(:long)}'")[0] ? true: false,
           meds: med_group_medications(med_group)
