@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
 import Med from 'components/Med/Med';
 import MedInput from 'components/MedInput/MedInput';
 
+import { SetStateContext } from 'context/StateProvider';
+
+import { getAuthUserData } from 'utils/data-fetch';
+
 import './addMedPopup.scss';
-// @@@@ CHANGE HARDCODED MED_GROUP_ID TO DYNAIC MED_GROUP_ID
-const AddMedPopup = ({ history, match, meds, medGroupName }) => {
+
+const AddMedPopup = ({
+  meds,
+  medGroupId,
+  medGroupName,
+  setMedgroupToDisplay,
+}) => {
+  const setState = useContext(SetStateContext);
+
   const INITIAL_MED_INPUT = {
     name: '',
     dosage: '',
@@ -22,29 +32,28 @@ const AddMedPopup = ({ history, match, meds, medGroupName }) => {
     setMedInputArr(prevMedInputArr => [...prevMedInputArr, INITIAL_MED_INPUT]);
   };
 
-  const saveMedicationsInDB = medArr => {
+  const saveMedications = medArr => {
     medArr.forEach(medInput => {
       if (medInput.name === '') return;
 
       const reqBody = {
         ...medInput,
         pill_type: medInput.pillType,
-        med_group_id: 15,
+        med_group_id: medGroupId,
       };
 
       axios
         .post('/meds', reqBody)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        .then(res => getAuthUserData(setState))
+        .catch(err => console.log(err.response.data.error));
     });
 
-    history.push('/mypage');
+    setMedgroupToDisplay({ medGroupName: '', meds: [] });
   };
 
-  const handleSubmit = e => {
+  const startSavingMeds = e => {
     e.preventDefault();
-
-    saveMedicationsInDB(medInputArr);
+    saveMedications(medInputArr);
   };
 
   return (
@@ -65,24 +74,20 @@ const AddMedPopup = ({ history, match, meds, medGroupName }) => {
           <Med key={med.id} {...med} />
         ))}
       </div>
-      <form onSubmit={handleSubmit}>
-        {medInputArr.map((medInputObj, i) => (
-          <div>
-            <MedInput
-              key={i}
-              id={i}
-              setMedInputArr={setMedInputArr}
-              addMedInput={addMedInput}
-            />
-            <button onClick={addMedInput}>add medication</button>
-          </div>
-        ))}
-        <div>
-          <button>Save medication</button>
-        </div>
-      </form>
+      {medInputArr.map((medInputObj, i, medInputArr) => (
+        <MedInput
+          key={i}
+          id={i}
+          setMedInputArr={setMedInputArr}
+          addMedInput={addMedInput}
+          numOfMedInput={medInputArr.length}
+        />
+      ))}
+      <p className='add-med-btn' onClick={startSavingMeds}>
+        Save medication
+      </p>
     </div>
   );
 };
 
-export default withRouter(AddMedPopup);
+export default AddMedPopup;
