@@ -1,20 +1,43 @@
 .notification {
   width: 70%;
-  margin-top: 1em;
   margin-left: 15%;
-
+  background-color: rgb(255, 211, 130);
+  border: none;
+  box-shadow: 5px;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2em;
-
-  border: solid black 1px;
+  border-radius: 10px;
 
   .notification-option-container {
     display: flex;
     gap: 1.2em;
+    margin: 0;
 
     > p {
+      margin: 0;
+    }
+
+    .accept-btn {
+      border: none;
+      font-weight: bold;
+      color: #0970f7;
+      // padding: 0.3em;
       cursor: pointer;
+      &:hover {
+        border-bottom: solid black 1px;
+      }
+    }
+    .decline-btn {
+      border: none;
+      font-weight: bold;
+      color: #474c4e;
+      // padding: 0.3em;
+      cursor: pointer;
+      &:hover {
+        border-bottom: solid black 1px;
+      }
     }
   }
 }

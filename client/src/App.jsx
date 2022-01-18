@@ -19,7 +19,7 @@ import { getAuthUserData } from 'utils/data-fetch';
 import 'App.scss';
 
 const App = () => {
-  const { isAuth, pendingInvite } = useContext(StateContext);
+  const { pendingInvite } = useContext(StateContext);
   const setState = useContext(SetStateContext);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const App = () => {
       <div className='page-container'>
         {pendingInvite && <Notification />}
         <Switch>
-          <Route exact path='/' component={isAuth ? Mypage : Homepage} />
+          <Route exact path='/' component={Homepage} />
           <Route exact path='/user-search' component={UserSearchpage} />
           <Route exact path='/mypage' component={Mypage} />
           <Route exact path='/bond' component={Bondpage} />
@@ -47,6 +47,7 @@ const App = () => {
           <Route exact path='/graphpage' component={Graphpage} />
         </Switch>
       </div>
+      <footer className='footer'>MedMory</footer>
     </div>
   );
 };

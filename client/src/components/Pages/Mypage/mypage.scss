@@ -1,6 +1,5 @@
 @import 'assets/styles/variable';
 .mypage {
-  background-color: $bright;
   .user-profile-container {
     display: flex;
     align-items: center;
@@ -9,12 +8,15 @@
     padding-top: 2em;
 
     .add-med-group-btn {
-      border: solid black 1px;
+      border: none;
       border-radius: 5px;
       text-align: center;
       padding-top: 0.5em;
       padding-bottom: 0.5em;
       cursor: pointer;
+      background-color: #9ec4f7;
+      font-weight: bold;
+      color: #01437c;
     }
   }
 

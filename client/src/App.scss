@@ -9,4 +9,11 @@
     padding-bottom: 2em;
     min-height: 80vh;
   }
+
+  .footer {
+    background-color: $light-dark;
+    border-top: solid #eee 1px;
+    height: 10vh;
+    color: #eee;
+  }
 }
