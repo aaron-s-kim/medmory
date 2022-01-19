@@ -19,11 +19,6 @@ const data = {
   //     name: "Med group 2",
   //     chartType: "line",
   //     values: [14, 7, 11, 11, 12, 14, 12, 13, 14, 6] // [0,0,0,0,0,0,0,0,0,0] 
-  //   },
-  //   {
-  //     name: "Med group 3",
-  //     chartType: "line",
-  //     values: [16, 7, 14, 13, 8, 12, 15, 9] // [0,0,0,0,0,0,0,0,0,0]
   //   }
   // ],
   
@@ -60,12 +55,6 @@ const Graphpage = () => {
       .catch(err => console.log(err.response.data.error));
   }, [userMedGroupArr]);
 
-
-  // return (
-  //   <pre>
-  //     {JSON.stringify(datastate, null, 2)}
-  //   </pre>
-  // )
 
   const exportChart = () => {
     if (chartRef && chartRef.current) {
