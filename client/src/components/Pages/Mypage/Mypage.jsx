@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import AddMedPopup from 'components/AddMedPopup/AddMedPopup';
+import MedGroupPopup from 'components/MedGroupPopup/MedGroupPopup';
 import Overlay from 'components/Overlay/Overlay';
 import MedGroup from 'components/MedGroup/MedGroup';
 import UserProfile from 'components/UserProfile/UserProfile';
-import AddMedGroupForm from 'components/AddMedGroupButton/AddMedGroupButton';
+import AddMedGroupButton from 'components/AddMedGroupButton/AddMedGroupButton';
 
 import { StateContext, SetStateContext } from '../../../context/StateProvider';
 import { getAuthUserData } from 'utils/data-fetch';
@@ -36,10 +36,10 @@ const Mypage = ({ history }) => {
   if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='mypage'>
-      {medGroupToDisplay.medGroupId && (
-        <AddMedPopup {...medGroupToDisplay} closePopup={closePopup} />
+      {medGroupToDisplay.medGroupName && (
+        <MedGroupPopup {...medGroupToDisplay} closePopup={closePopup} />
       )}
-      {medGroupToDisplay.medGroupId && <Overlay closePopup={closePopup} />}
+      {medGroupToDisplay.medGroupName && <Overlay closePopup={closePopup} />}
       <UserProfile user={user} />
       <div className='user-med-group-container'>
         <h2 className='title'>Medication Group</h2>
@@ -53,7 +53,7 @@ const Mypage = ({ history }) => {
               setMedgroupToDisplay={setMedgroupToDisplay}
             />
           ))}
-        <AddMedGroupForm />
+        <AddMedGroupButton setMedgroupToDisplay={setMedgroupToDisplay} />
       </div>
     </div>
   );

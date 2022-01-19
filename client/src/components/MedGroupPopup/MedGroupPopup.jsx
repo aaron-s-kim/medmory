@@ -9,7 +9,7 @@ import { SetStateContext, StateContext } from 'context/StateProvider';
 import { getAuthUserData } from 'utils/data-fetch';
 import { getFilteredBondUsers } from 'utils/data-shape';
 
-import './addMedPopup.scss';
+import './medGroupPopup.scss';
 
 const INITIAL_MED_INPUT = {
   name: '',

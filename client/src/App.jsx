@@ -6,7 +6,6 @@ import Homepage from './components/Pages/Homepage/Homepage';
 import Bondpage from 'components/Pages/Bondpage/Bondpage';
 import UserSearchpage from 'components/Pages/UserSearchpage/UserSearchpage';
 import ViewUserpage from 'components/Pages/ViewUserpage/ViewUserpage';
-import AddMedGroupPopup from './components/AddMedGroupPopup/AddMedGroupPopup';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
 import Notification from 'components/Notification/Notification';
 import Mypage from 'components/Pages/Mypage/Mypage';
@@ -36,11 +35,7 @@ const App = () => {
           <Route exact path='/mypage' component={Mypage} />
           <Route exact path='/bond' component={Bondpage} />
           <Route path='/view-user/:userId' component={ViewUserpage} />
-          <Route
-            exact
-            path='/med-group-add'
-            component={AddMedGroupPopup}
-          />
+
           <Route exact path='/graphpage' component={Graphpage} />
         </Switch>
       </div>
