@@ -17,6 +17,7 @@ const MedGroup = ({
   setMedgroupToDisplay,
   careTakerId,
   meds,
+  viewMode,
   history,
 }) => {
   const setState = useContext(SetStateContext);
@@ -64,9 +65,11 @@ const MedGroup = ({
         </div>
       )}
       <div className='med-group-btn-container'>
-        <p className='med-group-edit-btn' onClick={goToEdit}>
-          Edit
-        </p>
+        {!viewMode && (
+          <p className='med-group-edit-btn' onClick={goToEdit}>
+            Edit
+          </p>
+        )}
         <Link
           to={medGroupDetails}
           className='med-group-detail-btn'

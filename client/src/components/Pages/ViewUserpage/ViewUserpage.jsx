@@ -7,21 +7,44 @@ import { StateContext } from 'context/StateProvider';
 import default_avatar from '../../../assets/images/avatar.png';
 
 const ViewUserpage = ({ match }) => {
-  const { isAuth } = useContext(StateContext);
+  const { isAuth, user, bond } = useContext(StateContext);
   const [viewUserState, setViewUserState] = useState({});
   const { viewUser, userMedGroupArr } = viewUserState;
 
-  useEffect(() => {
-    axios
-      .get(`/users/${match.params.userId}`)
-      .then(res =>
-        setViewUserState({
-          ...res.data,
-          viewUser: res.data.user,
-        })
-      )
-      .catch(err => console.log(err.response.data.error));
-  }, []);
+  // let isMypage;
+  // useEffect(() => {
+  //   const userIdToView = +match.params.userId;
+  //   if (user) {
+  //     isMypage = userIdToView !== user.id;
+  //     const isBondedUserId = bond.bondUsers
+  //       .map(user => user.id)
+  //       .includes(userIdToView);
+
+  //     console.log('is bonded user? ', isBondedUserId);
+  //     if (isMypage && isBondedUserId) {
+  //       axios
+  //         .get(`/users/${userIdToView}`)
+  //         .then(res =>
+  //           setViewUserState({
+  //             ...res.data,
+  //             viewUser: res.data.user,
+  //           })
+  //         )
+  //         .catch(err => console.log(err.response.data.error));
+  //     }
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`/users/${match.params.userId}`)
+  //     .then(res =>
+  //       setViewUserState({
+  //         ...res.data,
+  //         viewUser: res.data.user,
+  //       })
+  //     )
+  //     .catch(err => console.log(err.response.data.error));
+  // }, []);
 
   if (!isAuth) return <Redirect to='/' />;
   return (

@@ -35,9 +35,9 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route exact path='/user-search' component={UserSearchpage} />
-          <Route exact path='/mypage' component={Mypage} />
+          <Route path='/mypage/:userId' component={Mypage} />
           <Route exact path='/bond' component={Bondpage} />
-          <Route path='/view-user/:userId' component={ViewUserpage} />
+          <Route path='/user/:userId' component={ViewUserpage} />
 
           <Route exact path='/med-group-details' component={Meddetailspage} />
           <Route exact path='/graphpage' component={Graphpage} />
