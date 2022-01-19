@@ -57,10 +57,10 @@ const MedGroup = ({
         </div>
       )}
       <div className='med-group-btn-container'>
-        <p className='med-group-btn' onClick={goToEdit}>
+        <p className='med-group-edit-btn' onClick={goToEdit}>
           Edit
         </p>
-        <p className='med-group-btn' onClick={goToDetail}>
+        <p className='med-group-detail-btn' onClick={goToDetail}>
           Detail
         </p>
       </div>

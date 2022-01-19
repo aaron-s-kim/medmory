@@ -9,3 +9,11 @@
   background-color: #00000050;
   opacity: 0.8;
 }
+
+.background {
+  z-index: -999;
+  position: absolute;
+  height: 100%;
+  background-color: #eee;
+  opacity: 0.9;
+}

@@ -9,6 +9,7 @@ import ViewUserpage from 'components/Pages/ViewUserpage/ViewUserpage';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
 import Notification from 'components/Notification/Notification';
 import Mypage from 'components/Pages/Mypage/Mypage';
+import Overlay from 'components/Overlay/Overlay';
 
 import { StateContext, SetStateContext } from './context/StateProvider';
 
@@ -28,6 +29,7 @@ const App = () => {
     <div className='app'>
       <Navigation />
       <div className='page-container'>
+        <Overlay background={true} />
         {pendingInvite && <Notification />}
         <Switch>
           <Route exact path='/' component={Homepage} />
@@ -39,7 +41,7 @@ const App = () => {
           <Route exact path='/graphpage' component={Graphpage} />
         </Switch>
       </div>
-      <footer className='footer'>MedMory</footer>
+      {/* <footer className='footer'>MedMory</footer> */}
     </div>
   );
 };

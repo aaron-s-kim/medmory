@@ -51,9 +51,7 @@ const AddMedPopup = ({
     setMedInputArr(prevMedInputArr => [...prevMedInputArr, INITIAL_MED_INPUT]);
   };
 
-  const updateMedGroup = () => {
-    if (newName === '') return;
-
+  const getUpdateMedGroupPromise = () => {
     const reqBody = {
       name: newName,
       compliance_time: newComplianceTime,
@@ -64,7 +62,19 @@ const AddMedPopup = ({
     return axios.put(`/med_groups/${medGroupId}`, reqBody);
   };
 
-  const saveMedications = medArr => {
+  const getCreateMedGroupPromise = () => {
+    const reqBody = {
+      name: newName,
+      compliance_time: newComplianceTime,
+      detail: newMedGroupDetail,
+      message_to: newCareTakerId,
+      user_id: user.id,
+    };
+
+    return axios.post('/med_groups', reqBody);
+  };
+
+  const getCreateMedPromiseArr = (medArr, medGroupIdToSave = medGroupId) => {
     return medArr
       .map(medInput => {
         if (medInput.name === '' || medInput.num < 0 || medInput.dosage < 0)
@@ -73,7 +83,7 @@ const AddMedPopup = ({
         const reqBody = {
           ...medInput,
           pill_type: medInput.pillType,
-          med_group_id: medGroupId,
+          med_group_id: medGroupIdToSave,
         };
 
         return axios.post('/meds', reqBody);
@@ -89,12 +99,26 @@ const AddMedPopup = ({
   const startSavingMedGroup = e => {
     e.preventDefault();
 
-    Promise.all([...saveMedications(medInputArr), updateMedGroup()])
-      .then(() => {
-        closePopup();
-        getAuthUserData(setState);
-      })
-      .catch(err => console.log(err.response.data.error));
+    if (medGroupId === '') {
+      getCreateMedGroupPromise().then(res => {
+        Promise.all(getCreateMedPromiseArr(medInputArr, res.data.id))
+          .then(() => {
+            closePopup();
+            getAuthUserData(setState);
+          })
+          .catch(err => console.log(err.response.data.error));
+      });
+    } else {
+      Promise.all([
+        ...getCreateMedPromiseArr(medInputArr),
+        getUpdateMedGroupPromise(),
+      ])
+        .then(() => {
+          closePopup();
+          getAuthUserData(setState);
+        })
+        .catch(err => console.log(err.response.data.error));
+    }
   };
 
   const deleteMedGroup = () => {
@@ -109,91 +133,104 @@ const AddMedPopup = ({
 
   return (
     <div className='med-group-popup'>
-      <div className='med-group-info-container'>
-        <input
-          className='med-group-name-input'
-          name='newName'
-          type='text'
-          value={newName}
-          placeholder='Med group name'
-          onChange={handleChangeOnMedGroup}
-        />
-      </div>
-      <div className='med-group-info-container'>
-        <strong>Detail</strong>
-        <input
-          className='med-group-detail-input'
-          name='newMedGroupDetail'
-          type='text'
-          value={newMedGroupDetail}
-          placeholder='Detail'
-          onChange={handleChangeOnMedGroup}
-        />
-      </div>
-      <div className='med-group-info-container'>
-        <strong>Compliance time(hr)</strong>
-        <input
-          className='med-grouop-compliance-time-input'
-          name='newComplianceTime'
-          type='number'
-          value={newComplianceTime}
-          placeholder='Hour'
-          onChange={handleChangeOnMedGroup}
-        />
-      </div>
-      <div className='med-group-info-container'>
-        <strong>Notify</strong>
-        {getFilteredBondUsers(user.id, bondUsers).length > 0 ? (
-          <select
-            name='newCareTakerId'
+      <form onSubmit={startSavingMedGroup}>
+        <div className='med-group-info-container'>
+          <input
+            className='med-group-name-input'
+            name='newName'
+            type='text'
+            value={newName}
+            placeholder='Med group name'
             onChange={handleChangeOnMedGroup}
-            value={newCareTakerId}
-          >
-            <option value='' default>
-              None
-            </option>
-            {getFilteredBondUsers(user.id, bondUsers).map(user => (
-              <option key={user.id} value={user.id}>
-                {user.firstName} {user.lastName}
-              </option>
-            ))}
-          </select>
-        ) : (
-          <small>No other users in your bond</small>
-        )}
-      </div>
-      <strong>Registered medications</strong>
-      <div className='med-table'>
-        <div className='med-table-head'>
-          <strong>Name</strong>
-          <strong>Dosage</strong>
-          <strong>Quantity</strong>
-          <strong></strong>
+            required={true}
+          />
         </div>
-        {meds.map(med => (
-          <Med
-            key={med.id}
-            {...med}
-            setMedsIdToHide={setMedsIdToHide}
-            medsIdToHide={medsIdToHide}
+        <div className='med-group-info-container'>
+          <strong>Detail</strong>
+          <input
+            className='med-group-detail-input'
+            name='newMedGroupDetail'
+            type='text'
+            value={newMedGroupDetail}
+            placeholder='Detail'
+            onChange={handleChangeOnMedGroup}
+          />
+        </div>
+        <div className='med-group-info-container'>
+          <strong>Compliance time(hr)</strong>
+          <input
+            className='med-grouop-compliance-time-input'
+            name='newComplianceTime'
+            type='number'
+            value={newComplianceTime}
+            placeholder='Hour'
+            onChange={handleChangeOnMedGroup}
+          />
+        </div>
+        <div className='med-group-info-container'>
+          <strong>Notify</strong>
+          {getFilteredBondUsers(user.id, bondUsers).length > 0 ? (
+            <select
+              name='newCareTakerId'
+              onChange={handleChangeOnMedGroup}
+              value={newCareTakerId}
+            >
+              <option value='' default>
+                None
+              </option>
+              {getFilteredBondUsers(user.id, bondUsers).map(user => (
+                <option key={user.id} value={user.id}>
+                  {user.firstName} {user.lastName}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <small>No other users in your bond</small>
+          )}
+        </div>
+        <strong>Registered medications</strong>
+        <div className='med-table'>
+          <div className='med-table-head'>
+            <strong>Name</strong>
+            <strong>Dosage</strong>
+            <strong>Quantity</strong>
+            <strong></strong>
+          </div>
+          {meds.map(med => (
+            <Med
+              key={med.id}
+              {...med}
+              setMedsIdToHide={setMedsIdToHide}
+              medsIdToHide={medsIdToHide}
+            />
+          ))}
+        </div>
+        {medInputArr.map((medInputObj, i, medInputArr) => (
+          <MedInput
+            key={i}
+            id={i}
+            setMedInputArr={setMedInputArr}
+            addMedInput={addMedInput}
+            numOfMedInput={medInputArr.length}
           />
         ))}
-      </div>
-      {medInputArr.map((medInputObj, i, medInputArr) => (
-        <MedInput
-          key={i}
-          id={i}
-          setMedInputArr={setMedInputArr}
-          addMedInput={addMedInput}
-          numOfMedInput={medInputArr.length}
-        />
-      ))}
-      <p className='save-med-group-btn' onClick={startSavingMedGroup}>
-        Save
-      </p>
-      <p className='delete-med-group-btn'>
-        <small onClick={deleteMedGroup}>Delete medication group</small>
-      </p>
+        <div className='save-med-group-btn-container'>
+          <button type='submit' className='save-med-group-btn'>
+            Save
+          </button>
+        </div>
+      </form>
+      {medGroupId && (
+        <div className='delete-med-group-btn-container'>
+          <button
+            type='button'
+            className='delete-med-group-btn'
+            onClick={deleteMedGroup}
+          >
+            Delete medication group
+          </button>
+        </div>
+      )}
     </div>
   );
 };

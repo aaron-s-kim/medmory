@@ -40,9 +40,9 @@ const Mypage = ({ history }) => {
         <MedGroupPopup {...medGroupToDisplay} closePopup={closePopup} />
       )}
       {medGroupToDisplay.medGroupName && <Overlay closePopup={closePopup} />}
+
       <UserProfile user={user} />
       <div className='user-med-group-container'>
-        <h2 className='title'>Medication Group</h2>
         {userMedGroupArr.length &&
           userMedGroupArr.map(medGroupItem => (
             <MedGroup

@@ -1,11 +1,24 @@
 @import '../../assets/styles/variable';
 
+@mixin med-group-popup-button-container {
+  margin: 1em auto;
+  text-align: center;
+}
+
+@mixin med-group-popup-button {
+  width: 200px;
+  text-align: center;
+  padding: 0.3em;
+  border-radius: 3px;
+  border: none;
+}
+
 .med-group-popup {
   z-index: 999;
   position: fixed;
   background-color: $bright;
-  padding: 1em;
-
+  padding: 2em 1em;
+  border-radius: 5px;
   width: 60vw;
   height: 60vh;
 
@@ -18,7 +31,7 @@
     margin-bottom: 0.5em;
 
     .med-group-name-input {
-      font-size: 2em;
+      font-size: 1.5em;
     }
 
     .med-group-detail-input {
@@ -42,28 +55,27 @@
       }
     }
   }
-  .save-med-group-btn {
-    background-color: $sub-main;
-    width: 200px;
-    text-align: center;
-    padding: 0.3em;
-    border-radius: 3px;
-    margin: 1em auto;
-    cursor: pointer;
-    @include button-effect;
-  }
 
-  .delete-med-group-btn {
-    background-color: $danger;
-    width: 200px;
-    text-align: center;
-    padding: 0.3em;
-    border-radius: 3px;
-    margin: 1em auto;
-    margin-top: 3em;
-    color: #eee;
-    font-weight: bold;
-    cursor: pointer;
-    @include button-effect;
+  .save-med-group-btn-container {
+    @include med-group-popup-button-container;
+
+    .save-med-group-btn {
+      background-color: $sub-main;
+      margin-top: 1em;
+      color: #eee;
+      font-weight: bold;
+      @include med-group-popup-button;
+      @include button-effect;
+    }
+  }
+  .delete-med-group-btn-container {
+    @include med-group-popup-button-container;
+
+    .delete-med-group-btn {
+      background-color: $danger;
+      margin: 2em auto 1em auto;
+      @include med-group-popup-button;
+      @include button-effect;
+    }
   }
 }

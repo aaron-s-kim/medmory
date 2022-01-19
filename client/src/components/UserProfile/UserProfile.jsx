@@ -20,10 +20,10 @@ const UserProfile = ({ user }) => {
       <div className='user-info-container'>
         <div className='user-info'>
           <p>
-            <strong>User:</strong> {user.firstName} {user.lastName}
+            {user.firstName} {user.lastName}
           </p>
           <p>
-            <strong>Email:</strong> {user.email}
+            {user.email}
           </p>
         </div>
         <div>
