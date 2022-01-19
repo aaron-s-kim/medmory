@@ -1,0 +1,48 @@
+@import 'assets/styles/variable';
+
+.sign-in-box {
+  margin-left: 55vw;
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .sign-in-overlay {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    opacity: 0.8;
+    background-color: $light-highlight;
+  }
+
+  .sign-in-form {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .sign-in-input-box {
+      > input {
+        font-size: 1em;
+        width: 230px;
+        padding: 0.5em;
+        margin-bottom: 1.2em;
+      }
+    }
+
+    .sign-in-btn {
+      @include button-effect;
+      width: 200px;
+      padding: 0.6em;
+      border: none;
+      background-color: $sub-main;
+      border-radius: 5px;
+      margin-top: 1em;
+    }
+  }
+}

@@ -12,7 +12,9 @@ const Homepage = () => {
   if (isAuth) return <Redirect to='/mypage' />;
   return (
     <div className='homepage'>
-      <SignInForm />
+      <div className='sign-in-container'>
+        <SignInForm />
+      </div>
     </div>
   );
 };

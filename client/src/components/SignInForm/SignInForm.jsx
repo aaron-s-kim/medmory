@@ -39,34 +39,33 @@ const SignInForm = () => {
     setInputState({ ...inputState, [name]: value });
   };
   return (
-    <>
-      <div>
-        <h2>Please Sign in</h2>
-      </div>
-      <form className='' onSubmit={handleSubmit}>
-        <div className=''>
-          <div>
-            <input
-              type='email'
-              value={email}
-              name='email'
-              onChange={handleChange}
-              placeholder='Email'
-            />
-          </div>
-          <div>
-            <input
-              type='password'
-              value={password}
-              name='password'
-              onChange={handleChange}
-              placeholder='Password'
-            />
-          </div>
+    <div className='sign-in-box'>
+      <div className='sign-in-overlay' />
+      <form className='sign-in-form' onSubmit={handleSubmit}>
+        <div className='sign-in-title'>
+          <h2>Please Sign in</h2>
         </div>
-        <button type='submit'>Sign In</button>
+        <div className='sign-in-input-box'>
+          <input
+            type='email'
+            value={email}
+            name='email'
+            onChange={handleChange}
+            placeholder='Email'
+          />
+        </div>
+        <div className='sign-in-input-box'>
+          <input
+            type='password'
+            value={password}
+            name='password'
+            onChange={handleChange}
+            placeholder='Password'
+          />
+        </div>
+        <button type='submit' className='sign-in-btn'>Sign In</button>
       </form>
-    </>
+    </div>
   );
 };
 
