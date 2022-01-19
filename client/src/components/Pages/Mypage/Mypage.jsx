@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 import MedGroupPopup from 'components/MedGroupPopup/MedGroupPopup';
 import Overlay from 'components/Overlay/Overlay';
@@ -12,9 +13,35 @@ import { getAuthUserData } from 'utils/data-fetch';
 
 import './mypage.scss';
 
-const Mypage = ({ history }) => {
-  const { isAuth, user, userMedGroupArr } = useContext(StateContext);
+const Mypage = ({ history, match }) => {
+  const state = useContext(StateContext);
+  const { isAuth, user, userMedGroupArr, bond } = state;
   const setState = useContext(SetStateContext);
+
+  const userIdToView = +match.params.userId;
+  let viewMode;
+  if (user) {
+    viewMode = userIdToView !== user.id;
+  }
+
+  useEffect(() => {
+    if (user) {
+      const isBondedUserId = bond.bondUsers
+        .map(user => user.id)
+        .includes(userIdToView);
+      if (viewMode && isBondedUserId) {
+        axios
+          .get(`/users/${userIdToView}`)
+          .then(res =>
+            setState(prevState => ({
+              ...prevState,
+              userToView: res.data,
+            }))
+          )
+          .catch(err => console.log(err.response.data.error));
+      }
+    }
+  }, []);
 
   const INITIAL_POPUP_STATE = {
     medGroupId: '',
@@ -36,24 +63,43 @@ const Mypage = ({ history }) => {
   if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='mypage'>
-      {medGroupToDisplay.medGroupName && (
+      {!viewMode && medGroupToDisplay.medGroupName && (
         <MedGroupPopup {...medGroupToDisplay} closePopup={closePopup} />
       )}
-      {medGroupToDisplay.medGroupName && <Overlay closePopup={closePopup} />}
-
-      <UserProfile user={user} />
+      {!viewMode && medGroupToDisplay.medGroupName && (
+        <Overlay closePopup={closePopup} />
+      )}
+      <UserProfile
+        user={viewMode && state.userToView ? state.userToView.user : user}
+        viewMode={viewMode && state.userToView}
+      />
       <div className='user-med-group-container'>
-        {userMedGroupArr.length &&
-          userMedGroupArr.map(medGroupItem => (
-            <MedGroup
-              key={medGroupItem.id}
-              medGroupId={medGroupItem.id}
-              {...medGroupItem}
-              history={history}
-              setMedgroupToDisplay={setMedgroupToDisplay}
-            />
-          ))}
-        <AddMedGroupButton setMedgroupToDisplay={setMedgroupToDisplay} />
+        {viewMode && state.userToView
+          ? state.userToView.userMedGroupArr.length &&
+            state.userToView.userMedGroupArr.map(medGroupItem => (
+              <MedGroup
+                key={medGroupItem.id}
+                medGroupId={medGroupItem.id}
+                {...medGroupItem}
+                history={history}
+                setMedgroupToDisplay={setMedgroupToDisplay}
+                viewMode={viewMode && state.userToView}
+              />
+            ))
+          : userMedGroupArr.length &&
+            userMedGroupArr.map(medGroupItem => (
+              <MedGroup
+                key={medGroupItem.id}
+                medGroupId={medGroupItem.id}
+                {...medGroupItem}
+                history={history}
+                setMedgroupToDisplay={setMedgroupToDisplay}
+                // viewMode={viewMode}
+              />
+            ))}
+        {!(viewMode && state.userToView) && (
+          <AddMedGroupButton setMedgroupToDisplay={setMedgroupToDisplay} />
+        )}
       </div>
     </div>
   );

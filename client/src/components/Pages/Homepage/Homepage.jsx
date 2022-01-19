@@ -7,9 +7,9 @@ import SignInForm from 'components/SignInForm/SignInForm';
 import './homepage.scss';
 
 const Homepage = () => {
-  const { isAuth } = useContext(StateContext);
+  const { user } = useContext(StateContext);
 
-  if (isAuth) return <Redirect to='/mypage' />;
+  if (user) return <Redirect to={`/mypage/${user.id}`} />;
   return (
     <div className='homepage'>
       <div className='sign-in-container'>

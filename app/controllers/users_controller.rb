@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
 
   def show
-    user = User.find_by(id: params[:id])
-    user_data(user)
+    if session[:user_id]
+      user = User.find_by(id: params[:id])
+      user_data(user)
+    else
+      render json: { error: 'Authorizaion required.' }, status: 400
+    end
   end
 
   def index

@@ -4,7 +4,7 @@ import defaultAvatar from 'assets/images/avatar.png';
 
 import './userProfile.scss';
 
-const UserProfile = ({ user }) => {
+const UserProfile = ({ user, viewMode }) => {
   return (
     <div className='user-profile-container'>
       {user.imageUrl ? (
@@ -22,16 +22,15 @@ const UserProfile = ({ user }) => {
           <p>
             {user.firstName} {user.lastName}
           </p>
-          <p>
-            {user.email}
-          </p>
+          <p>{user.email}</p>
         </div>
-        <div>
-          {/* <p className='add-med-group-btn'>Edit User info</p> */}
-          <p className=''>
-            <strong>Easy mode: </strong> off
-          </p>
-        </div>
+        {!viewMode && (
+          <div>
+            <p>
+              <strong>Easy mode: </strong> off
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

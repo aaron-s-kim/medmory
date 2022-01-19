@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { StateContext } from 'context/StateProvider';
 
@@ -9,14 +9,14 @@ import SignOutButton from 'components/SignOutButton/SignOutButton';
 import './navigation.scss';
 
 const Navigation = ({ location }) => {
-  const { isAuth } = useContext(StateContext);
+  const { user } = useContext(StateContext);
   const { pathname } = location;
   return (
     <div className='nav'>
       <Logo />
 
       <div className='link-group'>
-        {isAuth && (
+        {user && (
           <>
             <CustomLink
               urlTo='/user-search'
@@ -24,7 +24,7 @@ const Navigation = ({ location }) => {
               matchingUrl={pathname === '/user-search'}
             />
             <CustomLink
-              urlTo='/mypage'
+              urlTo={`/mypage/${user.id}`}
               linkName='My page'
               matchingUrl={pathname === '/mypage'}
             />

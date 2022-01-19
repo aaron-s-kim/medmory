@@ -29,7 +29,7 @@ const Bondpage = ({ history }) => {
               <div
                 key={user.id}
                 className='bond-user-container'
-                onClick={() => history.push(`/view-user/${user.id}`)}
+                onClick={() => history.push(`/mypage/${user.id}`)}
               >
                 <img
                   src={user.imageUrl ? user.imageUrl : default_avatar}
