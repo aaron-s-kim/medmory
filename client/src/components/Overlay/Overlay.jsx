@@ -2,10 +2,10 @@ import React from 'react';
 
 import './overlay.scss';
 
-const Overlay = ({ closePopup }) => {
+const Overlay = ({ closePopup, background }) => {
   return (
     <div
-      className='overlay'
+      className={`overlay ${background && 'background'}`}
       onClick={() => closePopup()}
     />
   );

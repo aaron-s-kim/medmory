@@ -37,6 +37,8 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
     handleChangeOnMedInputArr(value, name);
   };
 
+  const isHidden = id === numOfMedInput - 1;
+
   return (
     <div className='med-input-group'>
       <input
@@ -80,11 +82,7 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
       </select>
       <span
         onClick={addMoreInput}
-        className={
-          id === numOfMedInput - 1
-            ? 'add-med-input-btn-show'
-            : 'add-med-input-btn'
-        }
+        className={isHidden ? 'add-med-input-btn-show' : 'add-med-input-btn'}
       >
         {' '}
         +{' '}
