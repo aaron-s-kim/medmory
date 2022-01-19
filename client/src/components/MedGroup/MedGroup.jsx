@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
 
+import { Link } from "react-router-dom";
+
 import { SetStateContext } from 'context/StateProvider';
 import { getAuthUserData } from 'utils/data-fetch';
 
@@ -39,8 +41,13 @@ const MedGroup = ({
     });
   };
 
-  const goToDetail = () => {
-    console.log('to detail');
+  // const goToDetail = () => {
+  //   console.log('to detail');
+  // };
+
+  const medGroupDetails = {
+    pathname: "/med-group-details",
+    medGroupId
   };
 
   return (
@@ -60,9 +67,15 @@ const MedGroup = ({
         <p className='med-group-edit-btn' onClick={goToEdit}>
           Edit
         </p>
-        <p className='med-group-detail-btn' onClick={goToDetail}>
+        <Link
+          to={medGroupDetails}
+          className='med-group-detail-btn'
+        >
           Detail
-        </p>
+        </Link>
+        {/* <p className='med-group-detail-btn' onClick={goToDetail}>
+          Detail
+        </p> */}
       </div>
     </div>
   );

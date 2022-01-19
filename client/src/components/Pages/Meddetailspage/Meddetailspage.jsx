@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Medtab from './Medtab';
 import { StateContext } from '../../../context/StateProvider';
 
@@ -8,6 +8,9 @@ const Meddetailspage = (props) => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const [currentTab, setCurrentTab] = useState(-1);
   const [active, setActive] = useState(-1);
+  const medGroupId = props.location.medGroupId;
+
+
 
   const handleClick = e => {
     setCurrentTab(e);
