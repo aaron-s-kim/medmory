@@ -18,7 +18,7 @@ import { getAuthUserData } from 'utils/data-fetch';
 import 'App.scss';
 
 const App = () => {
-  const { pendingInvite } = useContext(StateContext);
+  const { pendingInvite, isAuth } = useContext(StateContext);
   const setState = useContext(SetStateContext);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const App = () => {
     <div className='app'>
       <Navigation />
       <div className='page-container'>
-        <Overlay background={true} />
+        {isAuth && <Overlay background={true} />}
         {pendingInvite && <Notification />}
         <Switch>
           <Route exact path='/' component={Homepage} />
