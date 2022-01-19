@@ -20,7 +20,7 @@
     .med-group-name-input {
       font-size: 2em;
     }
-    
+
     .med-group-detail-input {
       width: 300px;
     }
@@ -42,13 +42,27 @@
       }
     }
   }
-  .add-med-btn {
+  .save-med-group-btn {
     background-color: $sub-main;
     width: 200px;
     text-align: center;
     padding: 0.3em;
     border-radius: 3px;
     margin: 1em auto;
+    cursor: pointer;
+    @include button-effect;
+  }
+
+  .delete-med-group-btn {
+    background-color: $danger;
+    width: 200px;
+    text-align: center;
+    padding: 0.3em;
+    border-radius: 3px;
+    margin: 1em auto;
+    margin-top: 3em;
+    color: #eee;
+    font-weight: bold;
     cursor: pointer;
     @include button-effect;
   }

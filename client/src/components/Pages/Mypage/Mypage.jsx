@@ -1,115 +1,60 @@
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+
+import MedGroupPopup from 'components/MedGroupPopup/MedGroupPopup';
+import Overlay from 'components/Overlay/Overlay';
+import MedGroup from 'components/MedGroup/MedGroup';
+import UserProfile from 'components/UserProfile/UserProfile';
+import AddMedGroupButton from 'components/AddMedGroupButton/AddMedGroupButton';
 
 import { StateContext, SetStateContext } from '../../../context/StateProvider';
-import './mypage.scss';
-import default_avatar from 'assets/images/avatar.png';
-import Popup from './Popup';
+import { getAuthUserData } from 'utils/data-fetch';
 
-const Mypage = () => {
+import './mypage.scss';
+
+const Mypage = ({ history }) => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const setState = useContext(SetStateContext);
-  const [showstate, setShowstate] = useState({});
 
-  // console.log("userMedGroupArr", userMedGroupArr)
-
-  // adds med_groups id to med_histories table > updates state isCompliedToday
-  const complianceClick = e => {
-    const value = e.currentTarget.getAttribute('medgroupid');
-    const reqBody = { med_group_id: value };
-
-    axios
-      .post('/med_histories', reqBody)
-      .then(res => {
-        const mgItemArr = userMedGroupArr.map(medGroupItem => {
-          if (medGroupItem.id === Number(value)) {
-            medGroupItem.isCompliedToday = true;
-          }
-          return medGroupItem;
-        });
-        setState({ isAuth, user, userMedGroupArr: mgItemArr });
-      })
-      .catch(err => console.log(err));
+  const INITIAL_POPUP_STATE = {
+    medGroupId: '',
+    medGroupName: '',
+    medGroupDetail: '',
+    complianceTime: '',
+    careTakerId: '',
+    meds: [],
   };
 
-  const togglePopup = id => {
-    setShowstate(prev => ({ ...prev, [id]: !prev[id] }));
-    // console.log(JSON.stringify(showstate));
-    // showstate[id] ?
-    // console.log("popup closed")
-    // : console.log("popup open");
+  const [medGroupToDisplay, setMedgroupToDisplay] =
+    useState(INITIAL_POPUP_STATE);
+
+  const closePopup = () => {
+    setMedgroupToDisplay(INITIAL_POPUP_STATE);
+    getAuthUserData(setState);
   };
 
   if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='mypage'>
-      {isAuth && user ? (
-        <div>
-          <div className='user-profile-container'>
-            <div className='user-image'>
-              <img
-                src={user.imageUrl ? user.imageUrl : default_avatar}
-                alt='user_avatar'
-                width='140'
-              />
-            </div>
-            <div className='user-info-container'>
-              <div className='user-info'>
-                <p>
-                  <strong>User:</strong> {user.firstName} {user.lastName}
-                </p>
-                <p>
-                  <strong>Email:</strong> {user.email}
-                </p>
-              </div>
-              <div>
-                <p className='add-med-group-btn'>Add medication group</p>
-              </div>
-            </div>
-          </div>
-          <br />
-
-          <div className='user-med-group'>
-            <h2>Medication Group</h2>
-            {!userMedGroupArr.length ? (
-              <p>No medication groups have been created</p>
-            ) : (
-              userMedGroupArr.map(medGroupItem => (
-                <div key={medGroupItem.id}>
-                  <h3 onClick={() => togglePopup(medGroupItem.id)}>
-                    <u>{medGroupItem.name}</u>
-                  </h3>
-                  {showstate[medGroupItem.id] ? (
-                    <Popup
-                      medGroupObj={medGroupItem}
-                      handleClose={togglePopup}
-                      show={showstate}
-                      setShow={setShowstate}
-                      togglePopup={togglePopup}
-                      // meds={medstate}
-                    />
-                  ) : null}
-
-                  {medGroupItem.isCompliedToday ? (
-                    <p>*Medication has been taken*</p>
-                  ) : (
-                    <button
-                      onClick={complianceClick}
-                      medgroupid={medGroupItem.id}
-                    >
-                      Confirm Medication Taken
-                    </button>
-                  )}
-                  <br />
-                </div>
-              ))
-            )}
-          </div>
-        </div>
-      ) : (
-        <p></p>
+      {medGroupToDisplay.medGroupName && (
+        <MedGroupPopup {...medGroupToDisplay} closePopup={closePopup} />
       )}
+      {medGroupToDisplay.medGroupName && <Overlay closePopup={closePopup} />}
+      <UserProfile user={user} />
+      <div className='user-med-group-container'>
+        <h2 className='title'>Medication Group</h2>
+        {userMedGroupArr.length &&
+          userMedGroupArr.map(medGroupItem => (
+            <MedGroup
+              key={medGroupItem.id}
+              medGroupId={medGroupItem.id}
+              {...medGroupItem}
+              history={history}
+              setMedgroupToDisplay={setMedgroupToDisplay}
+            />
+          ))}
+        <AddMedGroupButton setMedgroupToDisplay={setMedgroupToDisplay} />
+      </div>
     </div>
   );
 };

@@ -9,7 +9,7 @@ import './homepage.scss';
 const Homepage = () => {
   const { isAuth } = useContext(StateContext);
 
-  if (isAuth) return <Redirect to='/mypage-copy' />;
+  if (isAuth) return <Redirect to='/mypage' />;
   return (
     <div className='homepage'>
       <SignInForm />
