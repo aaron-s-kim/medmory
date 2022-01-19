@@ -16,6 +16,7 @@ import { StateContext, SetStateContext } from './context/StateProvider';
 import { getAuthUserData } from 'utils/data-fetch';
 
 import 'App.scss';
+import Meddetailspage from 'components/Pages/Meddetailspage/Meddetailspage';
 
 const App = () => {
   const { pendingInvite } = useContext(StateContext);
@@ -38,6 +39,7 @@ const App = () => {
           <Route exact path='/bond' component={Bondpage} />
           <Route path='/view-user/:userId' component={ViewUserpage} />
 
+          <Route exact path='/med-group-details' component={Meddetailspage} />
           <Route exact path='/graphpage' component={Graphpage} />
         </Switch>
       </div>
