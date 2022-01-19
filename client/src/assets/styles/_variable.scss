@@ -34,8 +34,8 @@ $bright: rgb(241, 240, 240);
   border: none;
   border-radius: 3px;
   padding: 0.3em;
-  background-color: $sub-main;
   font-weight: bold;
   color: #eee;
+  background-color: $sub-main;
   @include button-effect;
 }

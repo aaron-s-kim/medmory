@@ -220,15 +220,17 @@ const AddMedPopup = ({
           </button>
         </div>
       </form>
-      <div className='delete-med-group-btn-container'>
-        <button
-          type='button'
-          className='delete-med-group-btn'
-          onClick={deleteMedGroup}
-        >
-          Delete medication group
-        </button>
-      </div>
+      {medGroupId && (
+        <div className='delete-med-group-btn-container'>
+          <button
+            type='button'
+            className='delete-med-group-btn'
+            onClick={deleteMedGroup}
+          >
+            Delete medication group
+          </button>
+        </div>
+      )}
     </div>
   );
 };
