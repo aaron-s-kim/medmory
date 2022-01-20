@@ -9,51 +9,19 @@
   .search-bar-container {
     width: 60%;
     max-width: 760px;
-    margin: 2em auto;
+    margin: 3em auto 0 auto;
+
     .search-bar {
       width: 100%;
-      padding: 0.5em 1em;
+      padding: 1em 2em;
       font-size: 1em;
-    }
-  }
-
-  .search-result-container {
-    width: 60%;
-    margin-top: 2em;
-    margin-left: 20%;
-    font-size: 0.8em;
-
-    .user-on-search {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.4em;
-      border: solid black 1px;
-      padding: 0.2em 1em;
-
-      .user-image-container {
-        .user-image {
-          width: 60px;
-          height: 60px;
-          background-position: center;
-          background-size: cover;
-          border-radius: 50%;
-          background-image: url('../../../assets/images/avatar.png');
-        }
-      }
-
-      .invite-btn {
-        cursor: pointer;
-        border: solid black 1px;
-        padding: 0.5em;
-        border-radius: 5px;
-      }
-      .bonded {
-        cursor: unset;
-        background-color: $main;
-        border: none;
+      border: none;
+      border-radius: 2px;
+      &:focus {
+        outline: none;
       }
     }
   }
+
+  
 }

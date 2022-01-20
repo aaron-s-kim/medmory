@@ -1,0 +1,30 @@
+@import 'assets/styles/variable';
+
+.user-suggestion-container {
+  margin-top: 7em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .user-suggestion-title {
+    margin-bottom: 2em;
+  }
+
+  .suggested-user-container {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    .suggested-user {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5em;
+      padding: 3em 1em;
+      width: 12em;
+      height: 16em;
+      border: solid $outline 1px;
+      border-radius: 5px;
+      background-color: #eee;
+    }
+  }
+}

@@ -1,12 +1,12 @@
 $dark: #222831;
 $light-dark: #393e46;
-$light-blue: #56ace0;
 $main: rgb(253, 223, 174);
 $sub-main: #fd7014;
 $highlight: #0970f7;
 $light-highlight: #9ec4f7;
 $danger: rgb(214, 49, 27);
 $bright: rgb(241, 240, 240);
+$outline: rgb(177, 172, 172);
 
 @mixin button-effect {
   font-size: 1em;
