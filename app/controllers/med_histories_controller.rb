@@ -4,6 +4,8 @@ require "twilio-ruby"
 class MedHistoriesController < ApplicationController
 
   def create
+    puts "JEFF NUMNNN"
+    puts ENV['JEFF_NUMBER']
     med_history = MedHistory.new(med_history_params)
     to_user_id = MedGroup.find_by(id: med_history_params[:med_group_id]).message_to
     to_number = User.find_by(id: to_user_id).phone_number

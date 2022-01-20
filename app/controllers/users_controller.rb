@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find_by(id: params[:id])
-    if user && user.update(bond_id: user_params[:bond_id])
+    if user && user.update(user_params)
       user_data(user)
     else
       render json: { error: 'No user found' }, status: 400
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :password_digest, :bond_id)
+      params.require(:user).permit(:email, :password_digest, :bond_id, :phone_number, :first_name, :last_name)
     end
 
     def user_data (user)
