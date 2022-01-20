@@ -1,16 +1,21 @@
 @import '../../assets/styles/variable';
 
-.nav {
-  display: flex;
-  justify-content: space-between;
+.nav-container {
+  width: 100%;
   padding: 1em 3em;
   background-color: #fff;
-  width: 100%;
-  // padding-left: 5%;
-  // box-shadow: 0px -1px 2px -1px $dark inset;
+  height: 70px;
 
-  .link-group {
+  .nav {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1024px;
+
+    .link-group {
+      display: flex;
+      align-items: center;
+    }
   }
 }

@@ -10,6 +10,7 @@ export const INITIAL_STATE = {
   bond: null,
   pendingInvite: null,
 };
+
 const StateProvider = ({ children }) => {
   const [state, setState] = useState(INITIAL_STATE);
 

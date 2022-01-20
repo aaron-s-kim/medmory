@@ -2,11 +2,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 
+import SuggestedUserContainer from 'components/SuggestedUserContainer/SuggestedUserContainer';
+import SearchResultContainer from 'components/SearchResultContainer/SearchResultContainer';
+
 import { StateContext } from 'context/StateProvider';
 
-import { getFilteredUsers } from 'utils/data-shape';
-
-import defaultUserImage from '../../../assets/images/avatar.png';
+import {
+  getFilteredUsersByEmail,
+  getFilteredUsersByLastName,
+} from 'utils/data-shape';
 
 import './userSearchpage.scss';
 
@@ -14,27 +18,31 @@ const UserSearchpage = () => {
   const { user, isAuth, bond } = useContext(StateContext);
   const [searchWord, setSearchWord] = useState('');
   const [userResult, setUserResult] = useState([]);
+  const [userSuggestion, setUserSuggestion] = useState([]);
 
-  useEffect(() => {});
+  console.log(userSuggestion);
 
   useEffect(() => {
     if (searchWord.length > 0) {
+      setUserSuggestion([]);
       axios
         .get('/users')
         .then(res =>
-          setUserResult(getFilteredUsers(user.id, searchWord, res.data))
+          setUserResult(getFilteredUsersByEmail(user.id, searchWord, res.data))
         )
         .catch(err => console.log(err.response.data.error));
     }
 
     if (searchWord === '') {
       setUserResult([]);
+      axios
+        .get('/users')
+        .then(res =>
+          setUserSuggestion(getFilteredUsersByLastName(user, res.data))
+        )
+        .catch(err => console.log(err.response.data.error));
     }
   }, [searchWord]);
-
-  const inviteUserToBond = () => {
-    console.log('invite user button clicked');
-  };
 
   const handleChange = e => {
     const { value } = e.target;
@@ -52,37 +60,14 @@ const UserSearchpage = () => {
           placeholder='Search by email'
         />
       </div>
-      <div className='search-result-container'>
-        {userResult.length > 0 &&
-          userResult.map(user => (
-            <div className='user-on-search' key={user.id}>
-              <div className='user-image-container'>
-                {user.imageUrl ? (
-                  <div
-                    className='user-image'
-                    style={{
-                      backgroundImage: `url(${user.imageUrl})`,
-                    }}
-                  />
-                ) : (
-                  <div className='user-image'/>
-                )}
-              </div>
-              <p>
-                {user.firstName}, {user.lastName}
-              </p>
-              <p>{user.email}</p>
-              {bond &&
-                (user.bond_id ? (
-                  <p className='invite-btn bonded'>bonded</p>
-                ) : (
-                  <p className='invite-btn' onClick={inviteUserToBond}>
-                    Invite +
-                  </p>
-                ))}
-            </div>
-          ))}
-      </div>
+      <SearchResultContainer
+        userResult={userResult}
+        userBond={bond}
+        searchWord={searchWord}
+      />
+      {userSuggestion.length > 0 && searchWord === '' && (
+        <SuggestedUserContainer userSuggestion={userSuggestion} />
+      )}
     </div>
   );
 };

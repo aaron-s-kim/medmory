@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,15 +9,21 @@ import UserProfile from 'components/UserProfile/UserProfile';
 import AddMedGroupButton from 'components/AddMedGroupButton/AddMedGroupButton';
 import Notification from 'components/Notification/Notification';
 
-import { StateContext, SetStateContext } from '../../../context/StateProvider';
+import {
+  StateContext,
+  SetStateContext,
+  INITIAL_STATE,
+} from '../../../context/StateProvider';
 import { getAuthUserData } from 'utils/data-fetch';
 
 import './mypage.scss';
 
 const Mypage = ({ history, match }) => {
-  const state = useContext(StateContext);
-  const { isAuth, user, userMedGroupArr, bond, pendingInvite } = state;
+  const { isAuth, user, userMedGroupArr, bond, pendingInvite } =
+    useContext(StateContext);
   const setState = useContext(SetStateContext);
+
+  const [userToView, setUserToView] = useState(INITIAL_STATE);
 
   const userIdToView = +match.params.userId;
   let viewMode, isBondedUserId;
@@ -30,15 +36,10 @@ const Mypage = ({ history, match }) => {
     if (viewMode && isBondedUserId) {
       axios
         .get(`/users/${userIdToView}`)
-        .then(res =>
-          setState(prevState => ({
-            ...prevState,
-            userToView: res.data,
-          }))
-        )
+        .then(res => setUserToView({ ...res.data }))
         .catch(err => console.log(err.response.data.error));
     }
-  }, []);
+  }, [userIdToView]);
 
   const INITIAL_POPUP_STATE = {
     medGroupId: '',
@@ -67,27 +68,32 @@ const Mypage = ({ history, match }) => {
         <Overlay closePopup={closePopup} />
       )}
       <div className='user-section'>
+        {viewMode && userToView && (
+          <h2 className='view-mode-notification'>
+            Viewing:{' '}
+            <strong>{userToView.user && userToView.user.firstName}</strong>
+          </h2>
+        )}
         {pendingInvite && <Notification />}
-        {viewMode && state.userToView && <p>viewing someone's </p>}
         <UserProfile
-          user={viewMode && state.userToView ? state.userToView.user : user}
-          viewMode={viewMode && state.userToView}
+          user={viewMode && userToView.user ? userToView.user : user}
+          viewMode={viewMode && userToView}
         />
       </div>
       <div className='user-med-group-container'>
-        {viewMode && state.userToView
-          ? state.userToView.userMedGroupArr.length &&
-            state.userToView.userMedGroupArr.map(medGroupItem => (
+        {viewMode && userToView.user
+          ? userToView.userMedGroupArr.length > 0 &&
+            userToView.userMedGroupArr.map(medGroupItem => (
               <MedGroup
                 key={medGroupItem.id}
                 medGroupId={medGroupItem.id}
                 {...medGroupItem}
                 history={history}
                 setMedgroupToDisplay={setMedgroupToDisplay}
-                viewMode={viewMode && state.userToView}
+                viewMode={viewMode && userToView}
               />
             ))
-          : userMedGroupArr.length &&
+          : userMedGroupArr.length > 0 &&
             userMedGroupArr.map(medGroupItem => (
               <MedGroup
                 key={medGroupItem.id}
@@ -98,7 +104,7 @@ const Mypage = ({ history, match }) => {
                 // viewMode={viewMode}
               />
             ))}
-        {!(viewMode && state.userToView) && (
+        {!(viewMode && userToView.user) && (
           <AddMedGroupButton setMedgroupToDisplay={setMedgroupToDisplay} />
         )}
       </div>

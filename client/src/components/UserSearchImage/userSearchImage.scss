@@ -1,0 +1,17 @@
+@import 'assets/styles/variable';
+
+.user-image-container {
+  .user-image {
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    background-image: url('../../assets/images/avatar.png');
+  }
+
+  .large {
+    width: 80px;
+    height: 80px;
+  }
+}

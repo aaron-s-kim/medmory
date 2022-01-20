@@ -1,0 +1,52 @@
+@import 'assets/styles/variable';
+
+@mixin search-result-property {
+  width: 100%;
+  border: none;
+  border-bottom: solid $outline 0.5px;
+  background-color: #eee;
+  padding: 0.2em 1em;
+}
+
+@mixin non-invite-btn-property {
+  cursor: unset;
+}
+
+.search-result-container {
+  width: 60%;
+  margin-left: 20%;
+  font-size: 0.8em;
+
+  .user-on-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.4em;
+    @include search-result-property;
+
+    .invite-btn {
+      cursor: pointer;
+      border: none;
+      padding: 0.5em;
+      border-radius: 5px;
+      background-color: $highlight;
+      color: #eee;
+    }
+
+    .pending {
+      @include non-invite-btn-property;
+      background-color: grey;
+    }
+
+    .bonded {
+      @include non-invite-btn-property;
+      background-color: $light-highlight;
+    }
+  }
+
+  .no-result-message {
+    @include search-result-property;
+    padding: 1.2em;
+    text-align: center;
+  }
+}

@@ -1,53 +1,27 @@
 @import '../../../assets/styles/variable';
 
 .searchpage {
+  width: 70%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding-top: 2em;
+
   .search-bar-container {
-    .search-bar {
-      width: 60%;
-      margin-top: 2em;
-      margin-left: 20%;
-      padding: 0.5em 1em;
-      font-size: 1em;
-    }
-  }
-
-  .search-result-container {
     width: 60%;
-    margin-top: 2em;
-    margin-left: 20%;
-    font-size: 0.8em;
+    max-width: 760px;
+    margin: 3em auto 0 auto;
 
-    .user-on-search {
+    .search-bar {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.4em;
-      border: solid black 1px;
-      padding: 0.2em 1em;
-
-      .user-image-container {
-        .user-image {
-          width: 60px;
-          height: 60px;
-          background-position: center;
-          background-size: cover;
-          border-radius: 50%;
-          background-image: url('../../../assets/images/avatar.png'); 
-        }
-      }
-
-      .invite-btn {
-        cursor: pointer;
-        border: solid black 1px;
-        padding: 0.5em;
-        border-radius: 5px;
-      }
-      .bonded {
-        cursor: unset;
-        background-color: $main;
-        border: none;
+      padding: 1em 2em;
+      font-size: 1em;
+      border: none;
+      border-radius: 2px;
+      &:focus {
+        outline: none;
       }
     }
   }
+
+  
 }
