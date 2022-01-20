@@ -36,6 +36,7 @@ puts "Creating users..."
 jeff = User.create(
     first_name: 'Jeff',
     last_name: 'Kim',
+    phone_number: ENV['JEFF_NUMBER'],
     email: 'jeff.kim@example.com',
     password: '123'
   )
@@ -43,6 +44,7 @@ jeff = User.create(
 aaron = User.create(
   first_name: 'Aaron',
   last_name: 'Kim',
+  phone_number: ENV['AARON_NUMBER'],
   email: 'aaron.kim@example.com',
   password: '123'
 )
@@ -50,6 +52,7 @@ aaron = User.create(
 connor = User.create(
   first_name: 'Connor',
   last_name: 'Robert',
+  phone_number: ENV['CONNOR_NUMBER'],
   email: 'connor.robert@example.com',
   password: '123'
 )
