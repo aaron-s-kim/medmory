@@ -1,14 +1,14 @@
 .notification {
-  width: 70%;
-  margin-left: 15%;
-  background-color: rgb(255, 211, 130);
+  background-color: rgba(255, 211, 130, 0.8);
   border: none;
-  box-shadow: 5px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  padding: 1em 0;
+  gap: 1em;
   border-radius: 10px;
+  height: 90px;
 
   .notification-option-container {
     display: flex;
