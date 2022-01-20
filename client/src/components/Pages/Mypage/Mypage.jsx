@@ -68,6 +68,7 @@ const Mypage = ({ history, match }) => {
       )}
       <div className='user-section'>
         {pendingInvite && <Notification />}
+        {viewMode && state.userToView && <p>viewing someone's </p>}
         <UserProfile
           user={viewMode && state.userToView ? state.userToView.user : user}
           viewMode={viewMode && state.userToView}

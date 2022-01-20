@@ -29,10 +29,7 @@ const AddMedPopup = ({
   closePopup,
 }) => {
   const setState = useContext(SetStateContext);
-  const {
-    bond: { bondUsers },
-    user,
-  } = useContext(StateContext);
+  const { bond, user } = useContext(StateContext);
 
   const INITIAL_MED_GROUP_INPUT = {
     newName: medGroupName,
@@ -56,7 +53,7 @@ const AddMedPopup = ({
       name: newName,
       compliance_time: newComplianceTime,
       detail: newMedGroupDetail,
-      message_to: newCareTakerId,
+      message_to: +newCareTakerId,
     };
 
     return axios.put(`/med_groups/${medGroupId}`, reqBody);
@@ -169,24 +166,28 @@ const AddMedPopup = ({
         </div>
         <div className='med-group-info-container'>
           <strong>Notify</strong>
-          {getFilteredBondUsers(user.id, bondUsers).length > 0 ? (
-            <select
-              name='newCareTakerId'
-              onChange={handleChangeOnMedGroup}
-              value={newCareTakerId}
-            >
-              <option value='' default>
-                None
-              </option>
-              {getFilteredBondUsers(user.id, bondUsers).map(user => (
-                <option key={user.id} value={user.id}>
-                  {user.firstName} {user.lastName}
+
+          {bond &&
+            (getFilteredBondUsers(user.id, bond.bondUsers).length > 0 ? (
+              <select
+                name='newCareTakerId'
+                onChange={handleChangeOnMedGroup}
+                value={newCareTakerId}
+              >
+                <option value='' default>
+                  None
                 </option>
-              ))}
-            </select>
-          ) : (
-            <small>No other users in your bond</small>
-          )}
+                {getFilteredBondUsers(user.id, bond.bondUsers).map(user => (
+                  <option key={user.id} value={user.id}>
+                    {user.firstName} {user.lastName}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <small>No other users in your bond</small>
+            ))}
+
+          {!bond && <small>You are not bonded yet</small>}
         </div>
         <strong>Registered medications</strong>
         <div className='med-table'>

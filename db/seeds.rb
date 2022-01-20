@@ -37,21 +37,24 @@ jeff = User.create(
     first_name: 'Jeff',
     last_name: 'Kim',
     email: 'jeff.kim@example.com',
-    password: '123'
+    password: '123',
+    phone_number: ENV["JEFF_NUMBER"]
   )
 
 aaron = User.create(
   first_name: 'Aaron',
   last_name: 'Kim',
   email: 'aaron.kim@example.com',
-  password: '123'
+  password: '123',
+  phone_number: ENV["AARON_NUMBER"]
 )
 
 connor = User.create(
   first_name: 'Connor',
   last_name: 'Robert',
   email: 'connor.robert@example.com',
-  password: '123'
+  password: '123',
+  phone_number: ENV["CONNOR_NUMBER"]
 )
 
 50.times do

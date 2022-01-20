@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import { SetStateContext } from 'context/StateProvider';
 import { getAuthUserData } from 'utils/data-fetch';
@@ -47,38 +47,32 @@ const MedGroup = ({
   // };
 
   const medGroupDetails = {
-    pathname: "/med-group-details",
-    medGroupId
+    pathname: '/med-group-details',
+    medGroupId,
   };
 
   return (
     <div className='med-group-containter'>
       <h3 className='med-group-name'>{name}</h3>
       {isCompliedToday ? (
-        <p className='message-taken'>Medication taken ✅ </p>
+        <p className='message-taken'>Status: Confirmed ✅ </p>
       ) : (
         <div className='message-not-taken-container'>
-          <p className='message-not-taken'>NOT taken yet❌</p>
+          <p className='message-not-taken'>Status: Unconfirmed</p>
           <p className='take-btn' onClick={takeMedGroup}>
-            Take it
+            Confirm
           </p>
         </div>
       )}
       <div className='med-group-btn-container'>
         {!viewMode && (
           <p className='med-group-edit-btn' onClick={goToEdit}>
-            Edit
+            Detail
           </p>
         )}
-        <Link
-          to={medGroupDetails}
-          className='med-group-detail-btn'
-        >
-          Detail
+        <Link to={medGroupDetails} className='med-group-detail-btn'>
+          History
         </Link>
-        {/* <p className='med-group-detail-btn' onClick={goToDetail}>
-          Detail
-        </p> */}
       </div>
     </div>
   );
