@@ -18,17 +18,15 @@ const UserProfile = ({ user, viewMode }) => {
         <img className='user-image' src={defaultAvatar} alt='user-pic' />
       )}
       <div className='user-info-container'>
-        <div className='user-info'>
-          <p>
-            {user.firstName} {user.lastName}
-          </p>
-          <p>{user.email}</p>
-        </div>
+        <h3>
+          {user.firstName} {user.lastName}
+        </h3>
+        <h3>{user.email}</h3>
         {!viewMode && (
           <div>
-            <p>
+            <h3>
               <strong>Easy mode: </strong> off
-            </p>
+            </h3>
           </div>
         )}
       </div>

@@ -67,7 +67,7 @@ const MedGroup = ({
       <div className='med-group-btn-container'>
         {!viewMode && (
           <p className='med-group-edit-btn' onClick={goToEdit}>
-            Detail
+            More
           </p>
         )}
         <Link to={medGroupDetails} className='med-group-detail-btn'>
