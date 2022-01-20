@@ -13,7 +13,7 @@ export const getFilteredUsersByLastName = (authUser, allUsers) =>
   allUsers
     .filter(user => {
       if (authUser.id === user.id) return false;
-      if (authUser.bondId === user.bond_id) return false;
+      if (authUser.bondId === user.bondId) return false;
       return user.lastName.includes(authUser.lastName);
     })
     .slice(0, 3);

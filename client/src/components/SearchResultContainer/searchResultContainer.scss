@@ -8,6 +8,10 @@
   padding: 0.2em 1em;
 }
 
+@mixin non-invite-btn-property {
+  cursor: unset;
+}
+
 .search-result-container {
   width: 60%;
   margin-left: 20%;
@@ -29,10 +33,14 @@
       color: #eee;
     }
 
+    .pending {
+      @include non-invite-btn-property;
+      background-color: grey;
+    }
+
     .bonded {
-      cursor: unset;
-      background-color: $main;
-      color: $light-dark;
+      @include non-invite-btn-property;
+      background-color: $light-highlight;
     }
   }
 

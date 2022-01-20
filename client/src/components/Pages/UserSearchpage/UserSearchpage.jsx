@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 
-import UserSearchImage from 'components/UserSearchImage/UserSearchImage';
 import SuggestedUserContainer from 'components/SuggestedUserContainer/SuggestedUserContainer';
 import SearchResultContainer from 'components/SearchResultContainer/SearchResultContainer';
 
@@ -66,7 +65,7 @@ const UserSearchpage = () => {
         userBond={bond}
         searchWord={searchWord}
       />
-      {userSuggestion.length > 0 && (
+      {userSuggestion.length > 0 && searchWord === '' && (
         <SuggestedUserContainer userSuggestion={userSuggestion} />
       )}
     </div>
