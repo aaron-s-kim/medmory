@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import logoImage from 'assets/images/logo.svg';
+import logoImage from 'assets/images/logo.png';
 
 const Logo = () => {
   return (
     <div className='logo-container'>
       <Link to='/'>
         <img
-          style={{ width: '60px', height: '60px' }}
+          // style={{ width: '120px', height: '40px' }}
           src={logoImage}
           alt='logo'
         />

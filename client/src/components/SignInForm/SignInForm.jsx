@@ -40,7 +40,6 @@ const SignInForm = () => {
   };
   return (
     <div className='sign-in-box'>
-      <div className='sign-in-overlay' />
       <form className='sign-in-form' onSubmit={handleSubmit}>
         <div className='sign-in-title'>
           <h2>Please Sign in</h2>

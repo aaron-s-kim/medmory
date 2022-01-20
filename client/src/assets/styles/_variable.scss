@@ -21,7 +21,7 @@ $bright: rgb(241, 240, 240);
 
 @mixin med-group-property {
   width: 90%;
-  padding: 0 1em;
+  padding: 1em 1em;
   border: solid $dark 1px;
   background-color: $bright;
   border-radius: 3px;
@@ -37,5 +37,6 @@ $bright: rgb(241, 240, 240);
   font-weight: bold;
   color: #eee;
   background-color: $sub-main;
+  text-decoration: none;
   @include button-effect;
 }

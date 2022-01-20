@@ -15,5 +15,6 @@
 
   .add-med-group-btn {
     @include med-group-button-propery;
+    margin-top: 1em;
   }
 }

@@ -29,9 +29,9 @@ const App = () => {
   return (
     <div className='app'>
       <Navigation />
+      {/* {pendingInvite && <Notification />} */}
       <div className='page-container'>
-        {isAuth && <Overlay background={true} />}
-        {pendingInvite && <Notification />}
+        {/* {isAuth && <Overlay background={true} />} */}
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route exact path='/user-search' component={UserSearchpage} />
