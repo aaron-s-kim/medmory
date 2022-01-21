@@ -14,6 +14,7 @@ const Medtab = (props) => {
           <p>Name: {med.name}</p>
         </div>
       ))}
+      hello from the otherside...
       <Graphpage />
     </div>
   );
