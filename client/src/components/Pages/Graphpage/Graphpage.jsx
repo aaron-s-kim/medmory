@@ -25,7 +25,6 @@ for (let i = 1; i <= 10; i++) {
   chartDataArr.push({ name: `Day ${i}` });
 }
 
-
 const Graphpage = (props) => {
   const { medGroupId, complianceTime, tab } = props;
   const { userMedGroupArr } = useContext(StateContext);
@@ -68,12 +67,24 @@ const Graphpage = (props) => {
   }, [userMedGroupArr]);
 
 
-
   return (
-    <ResponsiveContainer width="100%" aspect={3} /* height="100%" {300} */>
-      <LineChart width={730} height={250} data={datastate}
+    <ResponsiveContainer
+      width="100%"
+      aspect={3}
+      // height="100%"
+      /* height={300} */
+    >
+      <LineChart 
+        width={730}
+        height={250}
+
+        // layout="vertical"
+        // width={500}
+        // height={300}
+
+        data={datastate}
         margin={{ top: 10, right: 30, left: 10, bottom: 0 }}>
-        <defs>
+        {/* <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
             <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
@@ -82,11 +93,24 @@ const Graphpage = (props) => {
             <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
           </linearGradient>
-        </defs>
+        </defs> */}
 
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" padding={{ left: 20, right: 20 }} />
         <YAxis domain={['auto', 'auto']} reversed label={{ value: 'Time in Hours', angle: -90, position: 'insideLeft' }} />
+
+        {/* <XAxis
+          // type="number"
+        />
+        <YAxis
+          dataKey="name"
+          type="category"
+          reversed
+          // domain={['auto', 'auto']}
+          // label={{ value: 'Time in Hours', position: 'insideBottom' }}
+          // padding={{ left: 20, right: 20 }}
+        /> */}
+
         <Tooltip />
         <Legend /* verticalAlign="top" */ />
         <ReferenceLine y={complianceTime} label="Compliance Time" stroke="red" strokeWidth={1.5} strokeDasharray="3 3" />
@@ -101,7 +125,7 @@ const Graphpage = (props) => {
             strokeWidth={2}
             activeDot={medGroupId === medGroupItem.id ? { r: 8 } : false}
             fillOpacity={10}
-            fill="url(#colorUv)"
+            // fill="url(#colorUv)"
           />
         ))}
 
