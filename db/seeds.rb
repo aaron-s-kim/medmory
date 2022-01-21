@@ -38,7 +38,8 @@ jeff = User.create(
     last_name: 'Kim',
     phone_number: ENV['JEFF_NUMBER'],
     email: 'jeff.kim@example.com',
-    password: '123'
+    password: '123',
+    bond_id: 1
   )
 
 aaron = User.create(
@@ -71,7 +72,7 @@ end
 puts "Creating med groups..."
 
 med_group1 = MedGroup.create(
-  name: 'Protein',
+  name: 'Vitamin ',
   detail: 'after workout',
   user_id: jeff.id
 )
@@ -190,19 +191,19 @@ end
 
 puts "Creating bond invites..."
 
-BondInvite.create(
-  user_id: 1,
-  bond_id: 1
-)
+# BondInvite.create(
+#   user_id: 1,
+#   bond_id: 1
+# )
 
-BondInvite.create(
-  user_id: 2,
-  bond_id: 1
-)
+# BondInvite.create(
+#   user_id: 2,
+#   bond_id: 1
+# )
 
-BondInvite.create(
-  user_id: 3,
-  bond_id: 1
-)
+# BondInvite.create(
+#   user_id: 3,
+#   bond_id: 1
+# )
 
 puts "finish seeding!"
