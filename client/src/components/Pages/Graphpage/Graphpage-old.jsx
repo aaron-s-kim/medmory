@@ -5,7 +5,6 @@ import axios from 'axios';
 
 import './graphpage.scss';
 
-
 const data = {
   labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
   datasets: /* [], */
@@ -40,39 +39,39 @@ const Graphpage = () => {
   const chartRef = useRef();
   const [datastate, setDatastate] = useState(data);
   
-  // useEffect(() => {
-  //   const promises = userMedGroupArr.map(medGroupItem => {
-  //     const medGroupUrl = `/med_groups/${medGroupItem.id}`;
-  //     return axios.get(medGroupUrl);
-  //   })
-  //   Promise.all(promises)
-  //     .then(resultsArr => {
-  //       // console.log(resultsArr);
-  //       const formatHistory = resultsArr.map(obj => ({
-  //         medGroupName: obj.data.medGroup.name,
-  //         historyTenDays: obj.data.historyTenDays.map(obj => Number(obj.created_at.substring(11, 13)))
-  //       }));
-  //       // console.log(formatHistory);
-  //       const filterHistory = formatHistory.map(obj => ({
-  //         historyTenDays: obj.historyTenDays
-  //       }));
-  //       console.log(filterHistory);
-  //       // const formatFilter = filterHistory
+  useEffect(() => {
+    const promises = userMedGroupArr.map(medGroupItem => {
+      const medGroupUrl = `/med_groups/${medGroupItem.id}`;
+      return axios.get(medGroupUrl);
+    })
+    Promise.all(promises)
+      .then(resultsArr => {
+        // console.log(resultsArr);
+        const formatHistory = resultsArr.map(obj => ({
+          medGroupName: obj.data.medGroup.name,
+          historyTenDays: obj.data.historyTenDays.map(obj => Number(obj.created_at.substring(11, 13)))
+        }));
+        // console.log(formatHistory);
+        const filterHistory = formatHistory.map(obj => ({
+          historyTenDays: obj.historyTenDays
+        }));
+        console.log(filterHistory);
+        // const formatFilter = filterHistory
 
 
-  //       const chartDataArr = resultsArr.map(obj => ({
-  //         name: obj.data.medGroup.name,
-  //         chartType: "line",
-  //         values: obj.data.historyTenDays.map(obj => Number(obj.created_at.substring(11, 13)))
-  //       }));
-  //       // console.log(chartDataArr); // => correct output check
+        const chartDataArr = resultsArr.map(obj => ({
+          name: obj.data.medGroup.name,
+          chartType: "line",
+          values: obj.data.historyTenDays.map(obj => Number(obj.created_at.substring(11, 13)))
+        }));
+        // console.log(chartDataArr); // => correct output check
 
-  //       setDatastate(prev => (
-  //         {...prev, datasets: [...chartDataArr]}
-  //       ));
-  //     })
-  //     .catch(err => console.log(err.response.data.error));
-  // }, [userMedGroupArr]);
+        setDatastate(prev => (
+          {...prev, datasets: [...chartDataArr]}
+        ));
+      })
+      .catch(err => console.log(err.response.data.error));
+  }, [userMedGroupArr]);
 
 
   const exportChart = () => {
