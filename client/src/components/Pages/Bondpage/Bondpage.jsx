@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import { StateContext } from 'context/StateProvider';
+import { StateContext, SetStateContext } from 'context/StateProvider';
 
 import logoImage from 'assets/images/logo.svg';
 import default_avatar from 'assets/images/avatar.png';
@@ -8,11 +8,54 @@ import default_avatar from 'assets/images/avatar.png';
 import { getFilteredBondUsers } from 'utils/data-shape';
 
 import './bondpage.scss';
+import axios from 'axios';
 
 const Bondpage = ({ history }) => {
   const { isAuth, bond, user } = useContext(StateContext);
+  const setState = useContext(SetStateContext);
+  
+  const INITIAL_NEW_BOND_INPUT = {
+    id: '',
+    newBondName: '',
+    newBondImageUrl: '',
+    bondUsers: [],
+  }
+  const [ newBondInput, setNewBondInput ] = useState(INITIAL_NEW_BOND_INPUT);
+  const { newBondName, newBondImageUrl } = newBondInput;
+
+  const handleChangeOnNewBond = e => {
+    const { value, name } = e.target;
+    setNewBondInput({ ...newBondInput, [name]: value });
+  };
+
+  const createNewBond = e => {
+    e.preventDefault();
+    
+    const reqBody = {
+      name: newBondName,
+      image_url: newBondImageUrl,
+    }
+
+      axios
+        .post('/bonds', reqBody)
+        .then(res => {
+          setState(prev => ({
+            ...prev,
+            bond: {
+              id: res.data.id,
+              name: res.data.name,
+              imageUrl: res.data.image_url,
+              bondUsers: [user],
+            }
+          }))
+        })
+        .catch(err => console.error(err));
+  }
+
+
 
   if (!isAuth) return <Redirect to='/' />;
+
   return (
     <>
       {bond ? (
@@ -48,6 +91,38 @@ const Bondpage = ({ history }) => {
         <>
           <div>You are currently not bonded</div>
           <a href='/'>Homepage</a>
+          <h3>Create a New Bond:</h3>
+          <div>
+            <form onSubmit={createNewBond}>
+              <div className='new-bond-info-container'>
+                <input
+                  className='new-bond-name-input'
+                  name='newBondName'
+                  type='text'
+                  value={newBondName}
+                  placeholder='New Bond Name...'
+                  onChange={handleChangeOnNewBond}
+                  required={true}
+                />
+              </div>
+              <div className='new-bond-info-container'>
+                <input
+                  className='new-bond-imageUrl-input'
+                  name='newBondImageUrl'
+                  type='text'
+                  value={newBondImageUrl}
+                  placeholder='Image Url...'
+                  onChange={handleChangeOnNewBond}
+                  required={false}
+                />
+              </div>
+              <div className='create-new-bond-btn-container'>
+                <button type='submit' className='create-new-bond-btn'>
+                  Create
+                </button>
+              </div>
+            </form>
+          </div>
         </>
       )}
     </>
