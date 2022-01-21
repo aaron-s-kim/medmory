@@ -211,7 +211,7 @@ const AddMedPopup = ({
         </div>
         <strong>Registered medications</strong>
         <div className='med-table'>
-          <div className={`med-table-head ${viewMode && 'view-mode-input'}`}>
+          <div className={`med-table-head ${viewMode && 'view-mode'}`}>
             <strong>Name</strong>
             <strong>Dosage</strong>
             <strong>Quantity</strong>

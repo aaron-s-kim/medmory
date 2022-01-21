@@ -45,7 +45,7 @@ const Notification = () => {
     <div className='notification'>
       <div className='notification-message-container'>
         <p>
-          Pending invite from <strong>{invitingBondName}</strong>
+          Invite from <strong>{invitingBondName}</strong>
         </p>
       </div>
       <div className='notification-option-container'>

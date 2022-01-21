@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { getEncryptedEmail } from 'utils/data-shape';
+
 import default_avatar from 'assets/images/avatar.png';
 
 import './bondUser.scss';
@@ -19,7 +21,7 @@ const BondUser = ({ user, history }) => {
       <p className='bond-user-name'>
         <strong>{`${user.firstName} ${user.lastName}`}</strong>
       </p>
-      <p className='bond-user-email'>{user.email}</p>
+      <p className='bond-user-email'>{getEncryptedEmail(user.email)}</p>
     </div>
   );
 };

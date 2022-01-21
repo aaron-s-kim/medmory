@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1em;
-  padding: 0.5em 1em;
+  padding: 0.5em 2em;
   cursor: pointer;
   font-size: 1em;
   text-align: center;
@@ -25,6 +25,31 @@
   }
 
   .bond-user-email {
-    width: 14em;
+    width: 10em;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .bond-user-container {
+    &:hover {
+      font-size: 1em;
+    }
+
+    > img {
+      width: 60px;
+      height: 60px;
+    }
+    .bond-user-name {
+      width: 5em;
+    }
+  }
+}
+@media screen and (max-width: 660px) {
+  .bond-user-container {
+    padding: 0.5em;
+    > img {
+      width: 50px;
+      height: 50px;
+    }
   }
 }

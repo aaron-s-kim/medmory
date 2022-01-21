@@ -2,8 +2,9 @@
 
 .beside-bond-user-list {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 
   > img {
@@ -11,20 +12,43 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-left: auto;
-    margin-right: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
   .bond-name-container {
-    margin-top: 2em;
-    width: 100%;
-    text-align: center;
     justify-content: center;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.187);
+    margin-bottom: 3em;
 
     .number-of-bond-users {
       margin-top: 1em;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .beside-bond-user-list {
+    flex-direction: row;
+    width: 80%;
+    margin: 1em auto;
+    gap: 1em;
+    text-align: unset;
+    > img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .bond-name-container {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .beside-bond-user-list {
+    width: 90%;
+    > img {
+      width: 80px;
+      height: 80px;
     }
   }
 }
