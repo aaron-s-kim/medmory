@@ -73,7 +73,7 @@ const renderCustomAxisTick = ({ x, y, payload }) => {
 // Create Arr of past 10 days
 var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
 const d = new Date(Date.now() - tzoffset);
-d.setDate(d.getDate() - 10); // 10 days ago
+d.setDate(d.getDate() - 9); // # days ago
 const today = new Date(Date.now() - tzoffset);
 const dayArr = [];
 for (let i = d; i <= today; i.setDate(i.getDate() + 1)) {
@@ -94,37 +94,34 @@ const Graphpagev2 = () => {
     })
     Promise.all(promises)
       .then(resultsArr => {
-        console.log(resultsArr);
-        const formatHistory = resultsArr.map(obj => ({ // => loops 3 times
-          medGroupName: obj.data.medGroup.name,
-          formatTenDays: obj.data.historyTenDays.map(hObj => hObj.created_at.substring(0, 13))
-        }));
-        console.log("formatHistory");
-        console.log(formatHistory);
-
-        // loop through dayArr
-        const newData = {};
-        for (const day of dayArr) {
-          newData[day] = null;
-          for (const e of formatHistory[0].formatTenDays) {
-            if (day === e.substring(0,10)) {
-              newData[day] = e.substring(11,13);
-              break;
+        const dayMatcher = (hArr) => {
+          const dayHistoryArr = hArr.map(obj => obj.created_at.substring(0, 13));
+          const newData = {};
+          for (const day of dayArr) {
+            newData[day] = null;
+            for (const e of dayHistoryArr) {
+              if (day === e.substring(0,10)) {
+                newData[day] = e.substring(11,13);
+                break;
+              }
             }
           }
-        }
-        console.log(newData);
+          // console.log(newData); // => correct output check
+          return newData;
+        };
+        const formatHistory = resultsArr.map(obj => ({ // loops through 3 results Objs in Arr
+          medGroupName: obj.data.medGroup.name,
+          historyTenDays: dayMatcher(obj.data.historyTenDays) // Arr of Objs
+        }));
+        console.log("formatHistory", formatHistory); // => correct output check
 
-      // [0: {
-      //    historyTenDays: ["2022-01-11T09", "2022-01-12T10", ...],
-      //    medGroupName: "Vitamins"
-      //    }
-      // 1: {...}
-      // 2: {...}
-      // ]
-
+        // setDatastate(prev => (
+        //   { data }
+        // ));
       })
-  })
+      .catch(err => console.log(err.response.data.error));
+  }, [userMedGroupArr]);
+
 
 
   return (
