@@ -8,7 +8,7 @@ import SearchResultContainer from 'components/SearchResultContainer/SearchResult
 import { StateContext } from 'context/StateProvider';
 
 import {
-  getFilteredUsersByEmail,
+  getFilteredUsersByFirstName,
   getFilteredUsersByLastName,
 } from 'utils/data-shape';
 
@@ -25,7 +25,7 @@ const UserSearchpage = () => {
       .get('/users')
       .then(res =>
         setUserResult(
-          getFilteredUsersByEmail(user.id, searchWordInput, res.data)
+          getFilteredUsersByFirstName(user.id, searchWordInput, res.data)
         )
       )
       .catch(err => console.log(err.response.data.error));
@@ -65,7 +65,7 @@ const UserSearchpage = () => {
           type='text'
           value={searchWord}
           onChange={handleChange}
-          placeholder='Search by email'
+          placeholder='Search by first name'
         />
         <SearchResultContainer
           userResult={userResult}

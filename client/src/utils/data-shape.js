@@ -1,11 +1,11 @@
 export const getFilteredBondUsers = (authUserId, bondUserArr) =>
   bondUserArr.filter(user => user.id !== authUserId);
 
-export const getFilteredUsersByEmail = (authUserId, searchWord, allUsers) =>
+export const getFilteredUsersByFirstName = (authUserId, searchWord, allUsers) =>
   allUsers
     .filter(user => {
       if (authUserId === user.id) return false;
-      return user.email.includes(searchWord);
+      return user.firstName.toLowerCase().includes(searchWord);
     })
     .slice(0, 6);
 
