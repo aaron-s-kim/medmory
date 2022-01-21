@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EasyModeButton from 'components/EasyModeButton/EasyModeButton';
+
 import defaultAvatar from 'assets/images/avatar.png';
 
 import './userProfile.scss';
@@ -24,7 +26,7 @@ const UserProfile = ({ user, viewMode }) => {
         {!viewMode && (
           <>
             <h3>{user.email}</h3>
-            <button className='easy-btn'>Activate EASY</button>
+            <EasyModeButton userId={user.id} />
           </>
         )}
       </div>

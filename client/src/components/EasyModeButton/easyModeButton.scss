@@ -1,0 +1,11 @@
+@import 'assets/styles/variable';
+
+.easy-btn {
+  padding: 0.5em;
+  border: none;
+  border-radius: 3px;
+  background-color: $checked;
+  font-weight: bold;
+  color: #eee;
+  @include button-effect;
+}

@@ -41,13 +41,12 @@
   .mypage {
     height: calc(100vh - 70px);
     width: 90%;
+    .user-section {
+      padding-right: 0;
+    }
   }
 }
-@media screen and (max-width: 760px) {
-  .mypage {
-    width: 100%;
-  }
-}
+
 @media screen and (max-width: 560px) {
   .mypage {
     display: flex;
