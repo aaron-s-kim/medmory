@@ -30,7 +30,7 @@ const UserProfile = ({ user, viewMode, easyMode }) => {
         {!viewMode && (
           <>
             <h3>{user.email}</h3>
-            <EasyModeButton userId={user.id} />
+            <EasyModeButton user={user} />
           </>
         )}
       </div>
