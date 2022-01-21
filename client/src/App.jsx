@@ -7,7 +7,6 @@ import Bondpage from 'components/Pages/Bondpage/Bondpage';
 import UserSearchpage from 'components/Pages/UserSearchpage/UserSearchpage';
 import ViewUserpage from 'components/Pages/ViewUserpage/ViewUserpage';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
-import Graphpagev2 from './components/Pages/Graphpage/Graphpagev2';
 import Notification from 'components/Notification/Notification';
 import Mypage from 'components/Pages/Mypage/Mypage';
 import Overlay from 'components/Overlay/Overlay';
@@ -42,7 +41,6 @@ const App = () => {
 
           <Route exact path='/med-group-details' component={Meddetailspage} />
           <Route exact path='/graphpage' component={Graphpage} />
-          <Route exact path='/graphpagev2' component={Graphpagev2} />
         </Switch>
       </div>
       {/* <footer className='footer'>MedMory</footer> */}
