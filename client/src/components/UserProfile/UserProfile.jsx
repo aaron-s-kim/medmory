@@ -21,13 +21,11 @@ const UserProfile = ({ user, viewMode }) => {
         <h3>
           {user.firstName} {user.lastName}
         </h3>
-        <h3>{user.email}</h3>
         {!viewMode && (
-          <div>
-            <h3>
-              <strong>Easy mode: </strong> off
-            </h3>
-          </div>
+          <>
+            <h3>{user.email}</h3>
+            <button className='easy-btn'>Activate EASY</button>
+          </>
         )}
       </div>
     </div>
