@@ -11,3 +11,17 @@
   font-weight: bold;
   font-size: 1.1em;
 }
+
+@media screen and (max-width: 560px) {
+  .link {
+    margin-right: 2em;
+    .link-name {
+      display: none;
+    }
+  }
+
+  .match {
+    font-weight: bold;
+    font-size: 1.4em;
+  }
+}

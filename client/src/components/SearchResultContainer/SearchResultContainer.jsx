@@ -7,16 +7,14 @@ import { getEncryptedEmail } from 'utils/data-shape';
 
 import './searchResultContainer.scss';
 
-const SearchResultContainer = ({
-  userResult,
-  userBond,
-
-  searchWord,
-}) => {
+const SearchResultContainer = ({ userResult, userBond, searchWord }) => {
   const [userResultLocalState, setUserResultLocalState] = useState([]);
 
   useEffect(() => {
     setUserResultLocalState([...userResult]);
+    if (searchWord === '') {
+      setUserResultLocalState([]);
+    }
   }, [userResult]);
 
   const inviteUserToBond = userIdToInvite => {

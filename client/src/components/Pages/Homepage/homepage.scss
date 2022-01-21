@@ -2,5 +2,11 @@
 
 .homepage {
   height: 75vh;
-  padding-top: 12%;
+  padding-top: 15%;
+}
+
+@media screen and (max-width: 760px) {
+  .homepage {
+    padding-top: 20%;
+  }
 }

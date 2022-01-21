@@ -8,7 +8,7 @@ import axios from 'axios';
 
 import './signOutButton.scss';
 
-const SignOutButton = () => {
+const SignOutButton = ({ children }) => {
   const { user } = useContext(StateContext);
   const setState = useContext(SetStateContext);
 
@@ -20,7 +20,8 @@ const SignOutButton = () => {
   };
   return (
     <div onClick={signOut} className='sign-out-button'>
-      <p>Sign out</p>
+      {children}
+      <span className='sign-out-name'>Sign out</span>
     </div>
   );
 };

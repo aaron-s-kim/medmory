@@ -54,3 +54,17 @@
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  .user-profile-container {
+
+    .user-image {
+      width: 80px;
+      height: 80px;
+    }
+
+    .user-info-container {
+      font-size: 0.9em;
+    }
+  }
+}

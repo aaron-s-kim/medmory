@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 
 import './customLink.scss';
 
-const CustomLink = ({ urlTo, linkName, matchingUrl }) => {
+const CustomLink = ({ urlTo, linkName, matchingUrl, children }) => {
   return (
     <div>
       <Link className={`link ${matchingUrl && 'match'}`} to={urlTo}>
-        {linkName}
+        {children}
+        <span className='link-name'>{linkName}</span>
       </Link>
     </div>
   );
