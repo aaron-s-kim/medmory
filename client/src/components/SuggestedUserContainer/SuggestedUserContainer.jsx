@@ -16,7 +16,7 @@ const SuggestedUserContainer = ({ userSuggestion }) => {
               large={true}
             />
             <h3>
-              {suggestedUser.firstName}, {suggestedUser.lastName}
+              {suggestedUser.firstName} {suggestedUser.lastName}
             </h3>
           </div>
         ))}
