@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::API
-
   def is_user_bond_invited? (user)
     bond_invite_array = BondInvite.where(user_id: user.id)
     bond_invite_array.length() > 0 ? true : false
   end
-  
 
   def filtered_user (user)
     {

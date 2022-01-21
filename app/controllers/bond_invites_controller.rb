@@ -2,11 +2,6 @@ class BondInvitesController < ApplicationController
   def create
     bond_invite = BondInvite.new(bond_invite_params)
     existing_user_pending_invite = BondInvite.where(user_id: bond_invite_params[:user_id]).destroy_all
-    # puts existing_user_pending_invite
-
-    # if existing_user_pending_invite[0]
-    #   existing_user_pending_invite[0].destroy
-    # end
 
     if bond_invite.save
       render json: bond_invite
