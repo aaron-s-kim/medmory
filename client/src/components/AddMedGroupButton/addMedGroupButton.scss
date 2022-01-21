@@ -18,3 +18,9 @@
     margin-top: 1em;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .add-med-group-button-container {
+    width: 80%;
+  }
+}

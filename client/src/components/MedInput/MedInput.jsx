@@ -84,8 +84,7 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
         onClick={addMoreInput}
         className={isHidden ? 'add-med-input-btn-show' : 'add-med-input-btn'}
       >
-        {' '}
-        +{' '}
+        <i class='fas fa-plus'></i>
       </span>
     </div>
   );

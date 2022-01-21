@@ -28,3 +28,20 @@
     }
   }
 }
+
+@media screen and (max-width: 680px) {
+  .user-suggestion-container {
+    .suggested-user-container {
+      .suggested-user {
+        width: 8em;
+        height: 10em;
+        gap: 1.5em;
+        padding: 1em 1em;
+
+        > h3 {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}

@@ -156,7 +156,7 @@ const AddMedPopup = ({
         <div className='med-group-info-container'>
           <strong>Compliance time(hr)</strong>
           <input
-            className='med-grouop-compliance-time-input'
+            className='med-group-compliance-time-input'
             name='newComplianceTime'
             type='number'
             value={newComplianceTime}

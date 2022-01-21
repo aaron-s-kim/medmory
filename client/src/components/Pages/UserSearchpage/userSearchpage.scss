@@ -24,3 +24,13 @@
     }
   }
 }
+
+@media screen and (max-width: 760px) {
+  .searchpage {
+    width: 80%;
+    .search-bar-container {
+      width: 100%;
+      min-width: unset;
+    }
+  }
+}

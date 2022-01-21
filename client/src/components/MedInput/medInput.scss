@@ -20,17 +20,42 @@
   }
   .add-med-input-btn-show {
     display: inline;
-    width: 22px;
+    width: 20px;
     text-align: center;
-    font-weight: bold;
-    border: solid $dark 1px;
-    border-radius: 50%;
-    margin-left: 0.5em;
+    // margin-left: 0.5em;
     display: inline;
     cursor: pointer;
   }
 
   .add-med-input-btn {
     display: none;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .med-input-group {
+    > input {
+      font-size: 0.9em;
+    }
+
+    > input[type='text'] {
+      width: 100px;
+    }
+
+    > input[type='number'] {
+      width: 50px;
+    }
+    .add-med-input-btn-show {
+      display: inline;
+      width: 20px;
+      text-align: center;
+      // margin-left: 0.5em;
+      display: inline;
+      cursor: pointer;
+    }
+
+    .add-med-input-btn {
+      display: none;
+    }
   }
 }

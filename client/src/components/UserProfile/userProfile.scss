@@ -24,3 +24,33 @@
     gap: 1em;
   }
 }
+
+@media screen and (max-width: 680px) {
+  .user-profile-container {
+    .user-image {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .user-profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .user-image {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 0;
+    }
+
+    .user-info-container {
+      margin-left: 1em;
+      text-align: start;
+      gap: 0.5em;
+    }
+  }
+}
