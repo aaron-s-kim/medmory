@@ -22,7 +22,15 @@
     align-items: center;
     gap: 1.4em;
     @include search-result-property;
+    text-align: center;
 
+    .user-on-search-name {
+      width: 8em;
+    }
+    .user-on-search-email {
+      width: 10em;
+    }
+    
     .invite-btn {
       cursor: pointer;
       border: none;

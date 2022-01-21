@@ -49,10 +49,12 @@ const SearchResultContainer = ({ userResult, userBond, searchWord }) => {
         ? userResultLocalState.map(searchedUser => (
             <div className='user-on-search' key={searchedUser.id}>
               <UserSearchImage userImageUrl={searchedUser.imageUrl} />
-              <p>
+              <p className='user-on-search-name'>
                 {searchedUser.firstName}, {searchedUser.lastName}
               </p>
-              <p>{getEncryptedEmail(searchedUser.email)}</p>
+              <p className='user-on-search-email'>
+                {getEncryptedEmail(searchedUser.email)}
+              </p>
               {searchedUser.bondId ? (
                 <p className='invite-btn bonded'>bonded</p>
               ) : searchedUser.pendingInvite ? (
