@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect }  from 'react';
 import { StateContext } from '../../../context/StateProvider';
 import axios from 'axios';
-import { AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer } from 'recharts';
 
 // Chart data template
 // const data = [
@@ -26,9 +26,11 @@ for (let i = 1; i <= 10; i++) {
 }
 
 
-const Graphpage = () => {
+const Graphpage = (props) => {
+  const { medGroupId, complianceTime, tab } = props;
   const { userMedGroupArr } = useContext(StateContext);
   const [datastate, setDatastate] = useState([]);
+  const color = ["#3BAFE5", "#FE7701", "#8884d8", "#82ca9d"] // blue, orange, purple, green
 
   useEffect(() => {
     const promises = userMedGroupArr.map(medGroupItem => {
@@ -69,8 +71,8 @@ const Graphpage = () => {
 
   return (
     <ResponsiveContainer width="100%" aspect={3} /* height="100%" {300} */>
-      <AreaChart width={730} height={250} data={datastate}
-        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+      <LineChart width={730} height={250} data={datastate}
+        margin={{ top: 10, right: 30, left: 10, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
@@ -81,16 +83,29 @@ const Graphpage = () => {
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
           </linearGradient>
         </defs>
-        <XAxis dataKey="name" />
-        <YAxis />
-        <CartesianGrid strokeDasharray="3 3" />
-        <Tooltip />
-        {userMedGroupArr.map(medGroupItem => (
-          <Area type="monotone" dataKey={medGroupItem.name} stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-        ))}
-        {/* stroke="#8884d8" "#82ca9d"*/}
 
-      </AreaChart>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" padding={{ left: 20, right: 20 }} />
+        <YAxis domain={['auto', 'auto']} reversed label={{ value: 'Time in Hours', angle: -90, position: 'insideLeft' }} />
+        <Tooltip />
+        <Legend /* verticalAlign="top" */ />
+        <ReferenceLine y={complianceTime} label="Compliance Time" stroke="red" strokeWidth={1.5} strokeDasharray="3 3" />
+        {userMedGroupArr.map((medGroupItem, i) => (
+          <Line
+            key={medGroupItem.id}
+            connectNulls
+            type="monotone"
+            dataKey={medGroupItem.name}
+            dot={{ stroke: color[i], strokeWidth: 2 }}
+            stroke={color[i]}
+            strokeWidth={2}
+            activeDot={medGroupId === medGroupItem.id ? { r: 8 } : false}
+            fillOpacity={10}
+            fill="url(#colorUv)"
+          />
+        ))}
+
+      </LineChart>
     </ResponsiveContainer>
   )
 
