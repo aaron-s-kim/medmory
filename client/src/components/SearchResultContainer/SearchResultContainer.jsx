@@ -3,21 +3,21 @@ import axios from 'axios';
 
 import UserSearchImage from 'components/UserSearchImage/UserSearchImage';
 
+import { getEncryptedEmail } from 'utils/data-shape';
+
 import './searchResultContainer.scss';
 
 const SearchResultContainer = ({
   userResult,
   userBond,
+
   searchWord,
-  getSearchResult,
 }) => {
   const [userResultLocalState, setUserResultLocalState] = useState([]);
 
   useEffect(() => {
     setUserResultLocalState([...userResult]);
   }, [userResult]);
-
-  console.log('local result: ', userResultLocalState);
 
   const inviteUserToBond = userIdToInvite => {
     if (!userBond) return;
@@ -54,7 +54,7 @@ const SearchResultContainer = ({
               <p>
                 {searchedUser.firstName}, {searchedUser.lastName}
               </p>
-              <p>{searchedUser.email}</p>
+              <p>{getEncryptedEmail(searchedUser.email)}</p>
               {searchedUser.bondId ? (
                 <p className='invite-btn bonded'>bonded</p>
               ) : searchedUser.pendingInvite ? (

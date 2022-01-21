@@ -20,3 +20,17 @@ export const getFilteredUsersByLastName = (authUser, allUsers) =>
 
 export const getCurrentMedGroup = (medGroupId, medGroupArr) =>
   medGroupArr.filter(medGroup => medGroup.id === medGroupId)[0];
+
+export const getEncryptedEmail = email => {
+  const emailParts = email.split('@');
+  const user = emailParts[0];
+  const emailDomain = emailParts[1].split('.')[0];
+  const emailEnding = emailParts[1].split('.')[1];
+  const encryptedUser = `${user.substring(0, 2)}***`;
+  const encryptedEmail = `${emailDomain.substring(
+    0,
+    2
+  )}***${emailDomain.substring(5, 7)}.**${emailEnding.substring(0, 2)}`;
+
+  return `${encryptedUser}@${encryptedEmail}`;
+};

@@ -10,6 +10,11 @@
   > input {
     font-size: 0.9em;
   }
+
+  > input[type='text'] {
+    width: 120px;
+  }
+
   > input[type='number'] {
     width: 72px;
   }

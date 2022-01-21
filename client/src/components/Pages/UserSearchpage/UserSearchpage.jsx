@@ -20,8 +20,6 @@ const UserSearchpage = () => {
   const [userResult, setUserResult] = useState([]);
   const [userSuggestion, setUserSuggestion] = useState([]);
 
-  console.log(userSuggestion);
-
   const getSearchResult = searchWordInput => {
     axios
       .get('/users')
@@ -29,6 +27,15 @@ const UserSearchpage = () => {
         setUserResult(
           getFilteredUsersByEmail(user.id, searchWordInput, res.data)
         )
+      )
+      .catch(err => console.log(err.response.data.error));
+  };
+
+  const getSuggestedUsers = () => {
+    axios
+      .get('/users')
+      .then(res =>
+        setUserSuggestion(getFilteredUsersByLastName(user, res.data))
       )
       .catch(err => console.log(err.response.data.error));
   };
@@ -41,12 +48,7 @@ const UserSearchpage = () => {
 
     if (searchWord === '') {
       setUserResult([]);
-      axios
-        .get('/users')
-        .then(res =>
-          setUserSuggestion(getFilteredUsersByLastName(user, res.data))
-        )
-        .catch(err => console.log(err.response.data.error));
+      getSuggestedUsers();
     }
   }, [searchWord]);
 
@@ -65,13 +67,12 @@ const UserSearchpage = () => {
           onChange={handleChange}
           placeholder='Search by email'
         />
+        <SearchResultContainer
+          userResult={userResult}
+          userBond={bond}
+          searchWord={searchWord}
+        />
       </div>
-      <SearchResultContainer
-        userResult={userResult}
-        userBond={bond}
-        searchWord={searchWord}
-        getSearchResult={getSearchResult}
-      />
       {userSuggestion.length > 0 && searchWord === '' && (
         <SuggestedUserContainer userSuggestion={userSuggestion} />
       )}
