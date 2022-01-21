@@ -1,8 +1,7 @@
 .bond-page-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
   height: calc(90vh - 70px - 4em);
 
   .create-bond-view {
@@ -81,74 +80,22 @@
     width: 80%;
     height: 100%;
     margin: 0 auto;
+  }
+}
 
-    .beside-bond-user-list {
+@media screen and (max-width: 760px) {
+  .bond-page-container {
+    height: calc(100vh - 70px);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .bond-page-container {
+    height: calc(100vh - 70px);
+    .show-bond-view {
       display: flex;
-      justify-content: center;
       flex-direction: column;
-      text-align: center;
-
-      > img {
-        object-fit: cover;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        margin-left: auto;
-        margin-right: auto;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
-
-      .bond-name-container {
-        margin-top: 2em;
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-        text-shadow: 0 0 3px rgba(0, 0, 0, 0.187);
-
-        .number-of-bond-users {
-          margin-top: 1em;
-        }
-      }
-    }
-
-    .bond-user-list {
-      width: 60%;
-      height: 100%;
-      overflow-y: scroll;
-      background-color: rgba(255, 255, 255, 0.482);
-
-      .bond-user-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1em;
-        padding: 0.5em 1em;
-        cursor: pointer;
-        font-size: 1em;
-        text-align: center;
-
-        &:hover {
-          font-size: 1.05em;
-        }
-
-        > img {
-          border-radius: 50%;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-            0 6px 20px 0 rgba(0, 0, 0, 0.19);
-          object-fit: cover;
-          width: 70px;
-          height: 70px;
-        }
-
-        .bond-user-name {
-          width: 8em;
-        }
-
-        .bond-user-email {
-          width: 14em;
-        }
-      }
+      justify-content: center;
     }
   }
 }

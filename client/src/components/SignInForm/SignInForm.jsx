@@ -51,7 +51,6 @@ const SignInForm = () => {
             name='email'
             onChange={handleChange}
             placeholder='Email'
-            autocomplete='off'
           />
         </div>
         <div className='sign-in-input-box'>
@@ -63,7 +62,9 @@ const SignInForm = () => {
             placeholder='Password'
           />
         </div>
-        <button type='submit' className='sign-in-btn'>Sign In</button>
+        <button type='submit' className='sign-in-btn'>
+          Sign In
+        </button>
       </form>
     </div>
   );

@@ -11,13 +11,14 @@
 
   .view-mode-notification {
     margin-top: -1em;
+    text-align: center;
   }
 
   .user-section {
     display: flex;
     flex-direction: column;
     gap: 2em;
-    padding-top: 3em;
+    padding: 3em 1em;
   }
 
   .user-med-group-container {

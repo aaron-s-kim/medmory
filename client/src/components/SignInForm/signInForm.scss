@@ -28,6 +28,12 @@
         width: 230px;
         padding: 0.5em;
         margin-bottom: 1.2em;
+        border: none;
+        border-radius: 3px;
+        
+        &:focus {
+          outline: none;
+        }
       }
     }
 

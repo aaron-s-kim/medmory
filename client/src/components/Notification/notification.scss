@@ -42,3 +42,10 @@
     }
   }
 }
+
+@media screen and (max-width: 560px) {
+  .notification {
+    width: 70%;
+    margin: -1em auto 1em auto;
+  }
+}
