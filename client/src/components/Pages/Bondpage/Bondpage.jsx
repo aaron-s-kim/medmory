@@ -60,16 +60,21 @@ const Bondpage = ({ history }) => {
     <div className='bond-page-container'>
       {bond ? (
         <div className='show-bond-view'>
-          <div className='above-bond-user-list'>
-            <div className='bond-name-container'>{isAuth && <h2>{bond.name}</h2>}</div>
+          <div className='beside-bond-user-list'>
             <img
               src={bond.imageUrl ? bond.imageUrl : logoImage}
               width='300px'
               alt='bond'
             />
-            <h4>{bond.bondUsers.length - 1} other people in this bond:</h4>
+            <div className='bond-name-container'>
+              {isAuth && <h2>{bond.name}</h2>}
+              <div className='number-of-bond-users'>
+                <h4>{bond.bondUsers.length - 1} other people in this bond:</h4>
+              </div>
+            </div>
           </div>
           <div className='bond-user-list'>
+            <div className='inner-bond-user-list'>
             {getFilteredBondUsers(user.id, bond.bondUsers).map(user => (
               <div
                 key={user.id}
@@ -87,7 +92,8 @@ const Bondpage = ({ history }) => {
                 <p>Email: {user.email}</p>
               </div>
             ))}
-          </div>
+              </div>
+            </div>
         </div>
       ) : (
         <>
