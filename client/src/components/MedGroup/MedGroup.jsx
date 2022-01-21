@@ -72,9 +72,11 @@ const MedGroup = ({
         <p className='med-group-edit-btn' onClick={goToEdit}>
           More
         </p>
-        <Link to={medGroupDetails} className='med-group-detail-btn'>
-          History
-        </Link>
+        {!easyMode && (
+          <Link to={medGroupDetails} className='med-group-detail-btn'>
+            History
+          </Link>
+        )}
       </div>
     </div>
   );

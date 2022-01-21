@@ -39,6 +39,7 @@
       padding: 0.4em;
       font-weight: bold;
       color: #eee;
+      text-align: center;
       @include button-effect;
     }
   }
@@ -69,13 +70,48 @@
     .take-btn {
       padding: 0.4em 2em;
       font-size: 1.2em;
+      width: 50%;
     }
   }
 
   .med-group-btn-container {
     .med-group-edit-btn,
     .med-group-detail-btn {
-      font-size: 1.2em;
+      font-size: 1.3em;
+      padding: 0.4em 2em;
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .easy-med-group-containter {
+    .message-not-taken-container {
+      .take-btn {
+        width: 70%;
+      }
+    }
+    .med-group-btn-container {
+      .med-group-edit-btn,
+      .med-group-detail-btn {
+        width: 70%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .easy-med-group-containter {
+    .message-not-taken-container {
+      .take-btn {
+        width: 80%;
+      }
+    }
+    .med-group-btn-container {
+      .med-group-edit-btn,
+      .med-group-detail-btn {
+        width: 80%;
+      }
     }
   }
 }
