@@ -38,7 +38,7 @@
 
 @media screen and (max-width: 760px) {
   .mypage {
-    width: 90%;
+    height: calc(100vh - 70px);
   }
 }
 
@@ -47,7 +47,6 @@
     display: flex;
     flex-direction: column;
     justify-content: unset;
-    margin-top: 0.5em;
     overflow-y: scroll;
 
     .user-section {

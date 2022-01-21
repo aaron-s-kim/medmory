@@ -62,7 +62,7 @@ const SearchResultContainer = ({ userResult, userBond, searchWord }) => {
                   className={`invite-btn ${!userBond && 'disabled-btn'}`}
                   onClick={() => inviteUserToBond(searchedUser.id)}
                 >
-                  Invite +
+                  Invite+
                 </p>
               )}
             </div>

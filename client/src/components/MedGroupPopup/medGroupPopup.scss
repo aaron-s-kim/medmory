@@ -112,14 +112,34 @@
 
     .save-med-group-btn-container {
       .save-med-group-btn {
-        width: 160px;
+        width: 180px;
       }
     }
 
     .delete-med-group-btn-container {
       .delete-med-group-btn {
-        width: 160px;
+        width: 180px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .med-group-popup {
+    width: 90vw;
+    height: 70vh;
+    left: 5vw;
+    top: 15vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .med-group-popup {
+    width: 100vw;
+    height: 70vh;
+    left: 0;
+    top: 15vh;
+    padding: 2em 0.3em;
+
   }
 }
