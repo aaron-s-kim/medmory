@@ -60,12 +60,13 @@ const Mypage = ({ history, match }) => {
 
   if (!isAuth) return <Redirect to='/' />;
   return (
-    <div className='mypage'>
+    <div className={`mypage ${user.easyMode && 'easy-mypage'}`}>
       {medGroupToDisplay.medGroupName && (
         <MedGroupPopup
           {...medGroupToDisplay}
           closePopup={closePopup}
           viewMode={viewMode && userToView}
+          easyMode={user.easyMode}
         />
       )}
       {medGroupToDisplay.medGroupName && <Overlay closePopup={closePopup} />}
@@ -80,6 +81,7 @@ const Mypage = ({ history, match }) => {
         <UserProfile
           user={viewMode && userToView.user ? userToView.user : user}
           viewMode={viewMode && userToView}
+          easyMode={user.easyMode}
         />
       </div>
       <div className='user-med-group-container'>

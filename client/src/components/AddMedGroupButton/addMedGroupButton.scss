@@ -21,6 +21,9 @@
 
 .easy-add-med-group-button-container {
   @include easy-med-group-property;
+  .add-med-group-btn {
+    font-size: 1.2em;
+  }
 }
 
 @media screen and (max-width: 550px) {

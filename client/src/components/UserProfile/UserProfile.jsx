@@ -6,9 +6,13 @@ import defaultAvatar from 'assets/images/avatar.png';
 
 import './userProfile.scss';
 
-const UserProfile = ({ user, viewMode }) => {
+const UserProfile = ({ user, viewMode, easyMode }) => {
   return (
-    <div className='user-profile-container'>
+    <div
+      className={`user-profile-container ${
+        easyMode && 'easy-user-profile-container'
+      }`}
+    >
       {user.imageUrl ? (
         <div
           className='user-image'
