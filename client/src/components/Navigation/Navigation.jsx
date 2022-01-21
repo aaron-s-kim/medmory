@@ -23,24 +23,24 @@ const Navigation = ({ location }) => {
                 linkName='Search'
                 matchingUrl={pathname === '/user-search'}
               >
-                <i class='fas fa-search'></i>
+                <i className='fas fa-search'></i>
               </CustomLink>
               <CustomLink
                 urlTo={`/mypage/${user.id}`}
                 linkName='My page'
                 matchingUrl={pathname === `/mypage/${user.id}`}
               >
-                <i class='fas fa-user'></i>
+                <i className='fas fa-user'></i>
               </CustomLink>
               <CustomLink
                 urlTo='/bond'
                 linkName='My bond'
                 matchingUrl={pathname === '/bond'}
               >
-                <i class='fas fa-users'></i>
+                <i className='fas fa-users'></i>
               </CustomLink>
               <SignOutButton>
-                <i class='fas fa-sign-out'></i>
+                <i className='fas fa-sign-out'></i>
               </SignOutButton>
             </>
           )}

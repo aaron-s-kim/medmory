@@ -13,14 +13,14 @@ import axios from 'axios';
 const Bondpage = ({ history }) => {
   const { isAuth, bond, user } = useContext(StateContext);
   const setState = useContext(SetStateContext);
-  
+
   const INITIAL_NEW_BOND_INPUT = {
     id: '',
     newBondName: '',
     newBondImageUrl: '',
     bondUsers: [],
-  }
-  const [ newBondInput, setNewBondInput ] = useState(INITIAL_NEW_BOND_INPUT);
+  };
+  const [newBondInput, setNewBondInput] = useState(INITIAL_NEW_BOND_INPUT);
   const { newBondName, newBondImageUrl } = newBondInput;
 
   const handleChangeOnNewBond = e => {
@@ -30,29 +30,27 @@ const Bondpage = ({ history }) => {
 
   const createNewBond = e => {
     e.preventDefault();
-    
+
     const reqBody = {
       name: newBondName,
       image_url: newBondImageUrl,
-    }
+    };
 
-      axios
-        .post('/bonds', reqBody)
-        .then(res => {
-          setState(prev => ({
-            ...prev,
-            bond: {
-              id: res.data.id,
-              name: res.data.name,
-              imageUrl: res.data.image_url,
-              bondUsers: [user],
-            }
-          }))
-        })
-        .catch(err => console.error(err));
-  }
-
-
+    axios
+      .post('/bonds', reqBody)
+      .then(res => {
+        setState(prev => ({
+          ...prev,
+          bond: {
+            id: res.data.id,
+            name: res.data.name,
+            imageUrl: res.data.image_url,
+            bondUsers: [user],
+          },
+        }));
+      })
+      .catch(err => console.error(err));
+  };
 
   if (!isAuth) return <Redirect to='/' />;
 
@@ -74,7 +72,6 @@ const Bondpage = ({ history }) => {
             </div>
           </div>
           <div className='bond-user-list'>
-            <div className='inner-bond-user-list'>
             {getFilteredBondUsers(user.id, bond.bondUsers).map(user => (
               <div
                 key={user.id}
@@ -86,14 +83,13 @@ const Bondpage = ({ history }) => {
                   width='70px'
                   alt='user'
                 />
-                <p>
+                <p className='bond-user-name'>
                   <strong>{`${user.firstName} ${user.lastName}`}</strong>
                 </p>
-                <p>Email: {user.email}</p>
+                <p className='bond-user-email'>{user.email}</p>
               </div>
             ))}
-              </div>
-            </div>
+          </div>
         </div>
       ) : (
         <>
