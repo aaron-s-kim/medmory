@@ -9,21 +9,24 @@ import './notification.scss';
 
 const Notification = () => {
   const { pendingInvite, user } = useContext(StateContext);
-  const { id, bondName, bondId } = pendingInvite;
+
+  const {
+    id: bondInviteId,
+    bondName: invitingBondName,
+    bondId: invitingBondId,
+  } = pendingInvite;
   const setState = useContext(SetStateContext);
 
-  const deleteBondInvite = () => {
-    axios
-      .delete(`/bond_invites/${id}`)
-      .then(() => console.log('invite has been cleared'))
-      .catch(err => console.log(err.response.data.error));
-  };
+  const getDeleteBondInviteAxios = () =>
+    axios.delete(`/bond_invites/${bondInviteId}`);
 
   const acceptInvite = () => {
-    deleteBondInvite();
+    getDeleteBondInviteAxios().catch(err =>
+      console.log(err.response.data.error)
+    );
 
     const reqBody = {
-      bond_id: bondId,
+      bond_id: invitingBondId,
     };
 
     axios
@@ -33,18 +36,17 @@ const Notification = () => {
   };
 
   const declineInvite = () => {
-    deleteBondInvite();
-
-    setState(prevState => ({
-      ...prevState,
-      pendingInvite: null,
-    }));
+    getDeleteBondInviteAxios()
+      .then(() => getAuthUserData(setState))
+      .catch(err => console.log(err.response.data.error));
   };
 
   return (
     <div className='notification'>
       <div className='notification-message-container'>
-        <p>Pending invite from <strong>{bondName}</strong></p>
+        <p>
+          Pending invite from <strong>{invitingBondName}</strong>
+        </p>
       </div>
       <div className='notification-option-container'>
         <p onClick={declineInvite} className='decline-btn'>
