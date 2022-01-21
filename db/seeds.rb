@@ -111,6 +111,14 @@ med_group4 = MedGroup.create(
   message_to: jeff.id
 )
 
+med_group5 = MedGroup.create(
+  name: 'Hypertension Medications',
+  detail: 'take once a day',
+  compliance_time: 12,
+  user_id: aaron.id,
+  message_to: connor.id
+)
+
 puts "Creating meds..."
 
 Med.create(
@@ -208,5 +216,28 @@ for i in 1..23 do
   med_group_id: med_group4.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
+
+for i in 1..15 do
+  MedHistory.create(
+  med_group_id: med_group5.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
+end
+
+puts "Creating bond invites..."
+
+BondInvite.create(
+  user_id: 1,
+  bond_id: 1
+)
+
+BondInvite.create(
+  user_id: 2,
+  bond_id: 1
+)
+
+BondInvite.create(
+  user_id: 3,
+  bond_id: 1
+)
 
 puts "finish seeding!"
