@@ -42,12 +42,13 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 560px) {
   .mypage {
     display: flex;
     flex-direction: column;
     justify-content: unset;
     overflow-y: scroll;
+    padding-top: 2em;
 
     .user-section {
       display: flex;

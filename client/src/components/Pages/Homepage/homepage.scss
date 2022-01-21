@@ -1,12 +1,10 @@
 @import 'assets/styles/variable';
-
 .homepage {
-  height: 75vh;
-  padding-top: 15%;
+  padding-top: 150px;
 }
 
 @media screen and (max-width: 760px) {
   .homepage {
-    padding-top: 20%;
+    padding-top: 180px;
   }
 }
