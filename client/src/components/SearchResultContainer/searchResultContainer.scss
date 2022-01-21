@@ -33,6 +33,10 @@
       color: #eee;
     }
 
+    .disabled-btn {
+      @include non-invite-btn-property;
+      background-color: grey;
+    }
     .pending {
       @include non-invite-btn-property;
       background-color: grey;

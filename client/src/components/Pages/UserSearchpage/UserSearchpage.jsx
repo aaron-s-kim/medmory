@@ -22,15 +22,21 @@ const UserSearchpage = () => {
 
   console.log(userSuggestion);
 
+  const getSearchResult = searchWordInput => {
+    axios
+      .get('/users')
+      .then(res =>
+        setUserResult(
+          getFilteredUsersByEmail(user.id, searchWordInput, res.data)
+        )
+      )
+      .catch(err => console.log(err.response.data.error));
+  };
+
   useEffect(() => {
     if (searchWord.length > 0) {
       setUserSuggestion([]);
-      axios
-        .get('/users')
-        .then(res =>
-          setUserResult(getFilteredUsersByEmail(user.id, searchWord, res.data))
-        )
-        .catch(err => console.log(err.response.data.error));
+      getSearchResult(searchWord);
     }
 
     if (searchWord === '') {
@@ -64,6 +70,7 @@ const UserSearchpage = () => {
         userResult={userResult}
         userBond={bond}
         searchWord={searchWord}
+        getSearchResult={getSearchResult}
       />
       {userSuggestion.length > 0 && searchWord === '' && (
         <SuggestedUserContainer userSuggestion={userSuggestion} />
