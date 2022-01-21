@@ -1,0 +1,21 @@
+@import 'assets/styles/variable';
+
+@mixin easy-uneasy-btn-property {
+  padding: 0.5em;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  color: #eee;
+  @include button-effect;
+}
+
+.easy-btn {
+  background-color: $checked;
+  @include easy-uneasy-btn-property;
+  @include button-effect;
+}
+.uneasy-btn {
+  background-color: grey;
+  @include easy-uneasy-btn-property;
+  @include button-effect;
+}

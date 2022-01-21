@@ -35,7 +35,7 @@
     .take-btn {
       border: none;
       border-radius: 4px;
-      background-color: #12b104;
+      background-color: $checked;
       padding: 0.4em;
       font-weight: bold;
       color: #eee;
@@ -55,6 +55,27 @@
     .med-group-detail-btn {
       @include med-group-button-propery;
       background-color: $sub-main;
+    }
+  }
+}
+
+.easy-med-group-containter {
+  @include easy-med-group-property;
+
+  .message-not-taken-container {
+    flex-direction: column;
+    gap: unset;
+
+    .take-btn {
+      padding: 0.4em 2em;
+      font-size: 1.2em;
+    }
+  }
+
+  .med-group-btn-container {
+    .med-group-edit-btn,
+    .med-group-detail-btn {
+      font-size: 1.2em;
     }
   }
 }

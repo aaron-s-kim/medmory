@@ -8,7 +8,7 @@ import axios from 'axios';
 
 import './signOutButton.scss';
 
-const SignOutButton = ({ children }) => {
+const SignOutButton = ({ children, easyMode }) => {
   const { user } = useContext(StateContext);
   const setState = useContext(SetStateContext);
 
@@ -19,7 +19,10 @@ const SignOutButton = ({ children }) => {
       .catch(err => console.log(err.response.data.error));
   };
   return (
-    <div onClick={signOut} className='sign-out-button'>
+    <div
+      onClick={signOut}
+      className={`sign-out-button ${easyMode && 'easy-sign-out-btn'}`}
+    >
       {children}
       <span className='sign-out-name'>Sign out</span>
     </div>

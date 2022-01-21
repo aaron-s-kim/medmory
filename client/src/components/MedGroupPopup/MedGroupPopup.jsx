@@ -28,6 +28,7 @@ const AddMedPopup = ({
   complianceTime,
   closePopup,
   viewMode,
+  easyMode,
 }) => {
   const setState = useContext(SetStateContext);
   const { bond, user } = useContext(StateContext);
@@ -131,13 +132,15 @@ const AddMedPopup = ({
   };
 
   return (
-    <div className={`med-group-popup ${viewMode && 'view-mode-popup'}`}>
+    <div
+      className={`med-group-popup ${viewMode && 'view-mode-popup'} ${
+        easyMode && 'easy-mode-popup'
+      }`}
+    >
       <form onSubmit={startSavingMedGroup}>
-        <div
-          className={`med-group-info-container ${viewMode && 'view-mode-info'}`}
-        >
+        <div className={'med-group-info-container'}>
           <input
-            className={`med-group-name-input ${viewMode && 'view-mode-input'}`}
+            className='med-group-name-input'
             name='newName'
             type='text'
             value={newName}
@@ -147,14 +150,10 @@ const AddMedPopup = ({
             autocomplete='off'
           />
         </div>
-        <div
-          className={`med-group-info-container ${viewMode && 'view-mode-info'}`}
-        >
+        <div className={'med-group-info-container'}>
           <strong>Detail</strong>
           <input
-            className={`med-group-detail-input ${
-              viewMode && 'view-mode-input'
-            }`}
+            className='med-group-detail-input'
             name='newMedGroupDetail'
             type='text'
             value={newMedGroupDetail}
@@ -163,14 +162,10 @@ const AddMedPopup = ({
             autocomplete='off'
           />
         </div>
-        <div
-          className={`med-group-info-container ${viewMode && 'view-mode-info'}`}
-        >
+        <div className={'med-group-info-container'}>
           <strong>Compliance time(hr)</strong>
           <input
-            className={`med-group-compliance-time-input ${
-              viewMode && 'view-mode-input'
-            }`}
+            className='med-group-compliance-time-input'
             name='newComplianceTime'
             type='number'
             value={newComplianceTime}
@@ -179,20 +174,16 @@ const AddMedPopup = ({
             autocomplete='off'
           />
         </div>
-        <div
-          className={`med-group-info-container ${viewMode && 'view-mode-info'}`}
-        >
+        <div className={'med-group-info-container'}>
           <strong>Notify</strong>
 
           {bond &&
             (getFilteredBondUsers(user.id, bond.bondUsers).length > 0 ? (
               <select
+                className='med-group-care-taker-input'
                 name='newCareTakerId'
                 onChange={handleChangeOnMedGroup}
                 value={newCareTakerId}
-                className={`med-group-care-taker-input ${
-                  viewMode && 'view-mode-input'
-                }`}
               >
                 <option value='' default>
                   None
@@ -211,7 +202,7 @@ const AddMedPopup = ({
         </div>
         <strong>Registered medications</strong>
         <div className='med-table'>
-          <div className={`med-table-head ${viewMode && 'view-mode'}`}>
+          <div className='med-table-head'>
             <strong>Name</strong>
             <strong>Dosage</strong>
             <strong>Quantity</strong>

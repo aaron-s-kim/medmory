@@ -47,6 +47,7 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
         value={name}
         onChange={handleChange}
         placeholder='Medication name'
+        autoComplete='off'
       />
 
       <input

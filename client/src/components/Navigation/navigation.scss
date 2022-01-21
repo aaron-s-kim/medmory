@@ -17,6 +17,10 @@
     .link-group {
       display: flex;
       align-items: center;
+
+      .easy-mode-indicator {
+        margin-right: 1em;
+      }
     }
   }
 }

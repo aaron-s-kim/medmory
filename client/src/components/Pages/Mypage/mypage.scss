@@ -30,10 +30,18 @@
     align-items: center;
   }
 }
+@media screen and (max-width: 1024px) {
+  .easy-mypage {
+    width: 80%;
+  }
+}
 
 @media screen and (max-width: 860px) {
   .mypage {
     width: 80%;
+  }
+  .easy-mypage {
+    width: 90%;
   }
 }
 
@@ -41,13 +49,12 @@
   .mypage {
     height: calc(100vh - 70px);
     width: 90%;
+    .user-section {
+      padding-right: 0;
+    }
   }
 }
-@media screen and (max-width: 760px) {
-  .mypage {
-    width: 100%;
-  }
-}
+
 @media screen and (max-width: 560px) {
   .mypage {
     display: flex;
@@ -59,6 +66,7 @@
     .user-section {
       display: flex;
       flex-direction: column;
+      padding-right: 1em;
       gap: 1em;
       padding-top: 1em;
     }

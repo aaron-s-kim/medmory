@@ -15,7 +15,7 @@
     height: 150px;
     border: none;
     border-radius: 50%;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
@@ -26,12 +26,19 @@
   }
 }
 
+.easy-user-profile-container {
+  font-size: 1.3em;
+}
+
 @media screen and (max-width: 680px) {
   .user-profile-container {
     .user-image {
       width: 120px;
       height: 120px;
     }
+  }
+  .easy-user-profile-container {
+    font-size: 1.2em;
   }
 }
 

@@ -7,6 +7,7 @@ $light-highlight: #9ec4f7;
 $danger: rgb(214, 49, 27);
 $bright: rgb(241, 240, 240);
 $outline: rgb(177, 172, 172);
+$checked: #12b104;
 
 @mixin button-effect {
   font-size: 1em;
@@ -26,6 +27,11 @@ $outline: rgb(177, 172, 172);
   background-color: $bright;
   border-radius: 3px;
   margin-bottom: 1em;
+}
+
+@mixin easy-med-group-property {
+  width: 100%;
+  font-size: 1.3em;
 }
 
 @mixin med-group-button-propery {
