@@ -29,3 +29,36 @@
     align-items: center;
   }
 }
+
+@media screen and (max-width: 860px) {
+  .mypage {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .mypage {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .mypage {
+    display: flex;
+    flex-direction: column;
+    justify-content: unset;
+    margin-top: 0.5em;
+    overflow-y: scroll;
+
+    .user-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      padding-top: 1em;
+    }
+
+    .user-med-group-container {
+      overflow-y: unset;
+    }
+  }
+}

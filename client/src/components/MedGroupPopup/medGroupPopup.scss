@@ -39,7 +39,7 @@
     }
 
     .med-group-compliance-time-input {
-      width: 80px;
+      width: 140px;
     }
   }
 
@@ -76,6 +76,50 @@
       margin: 2em auto 1em auto;
       @include med-group-popup-button;
       @include button-effect;
+    }
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .med-group-popup {
+    width: 70vw;
+    height: 70vh;
+    left: 15vw;
+    top: 15vh;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .med-group-popup {
+    width: 80vw;
+    height: 70vh;
+    left: 10vw;
+    top: 15vh;
+
+    .med-group-info-container {
+      display: flex;
+      gap: 1em;
+      margin-bottom: 0.5em;
+
+      .med-group-detail-input {
+        width: 240px;
+      }
+
+      .med-group-compliance-time-input {
+        width: 100px;
+      }
+    }
+
+    .save-med-group-btn-container {
+      .save-med-group-btn {
+        width: 160px;
+      }
+    }
+
+    .delete-med-group-btn-container {
+      .delete-med-group-btn {
+        width: 160px;
+      }
     }
   }
 }
