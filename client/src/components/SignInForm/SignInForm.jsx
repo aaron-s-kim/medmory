@@ -51,6 +51,7 @@ const SignInForm = () => {
             name='email'
             onChange={handleChange}
             placeholder='Email'
+            autocomplete='off'
           />
         </div>
         <div className='sign-in-input-box'>

@@ -27,6 +27,7 @@ const AddMedPopup = ({
   careTakerId,
   complianceTime,
   closePopup,
+  viewMode,
 }) => {
   const setState = useContext(SetStateContext);
   const { bond, user } = useContext(StateContext);
@@ -89,6 +90,7 @@ const AddMedPopup = ({
   };
 
   const handleChangeOnMedGroup = e => {
+    if (viewMode) return;
     const { value, name } = e.target;
     setMedGroupInput({ ...medGroupInput, [name]: value });
   };
@@ -129,42 +131,57 @@ const AddMedPopup = ({
   };
 
   return (
-    <div className='med-group-popup'>
+    <div className={`med-group-popup ${viewMode && 'view-mode-popup'}`}>
       <form onSubmit={startSavingMedGroup}>
-        <div className='med-group-info-container'>
+        <div
+          className={`med-group-info-container ${viewMode && 'view-mode-info'}`}
+        >
           <input
-            className='med-group-name-input'
+            className={`med-group-name-input ${viewMode && 'view-mode-input'}`}
             name='newName'
             type='text'
             value={newName}
             placeholder='Med group name'
             onChange={handleChangeOnMedGroup}
             required={true}
+            autocomplete='off'
           />
         </div>
-        <div className='med-group-info-container'>
+        <div
+          className={`med-group-info-container ${viewMode && 'view-mode-info'}`}
+        >
           <strong>Detail</strong>
           <input
-            className='med-group-detail-input'
+            className={`med-group-detail-input ${
+              viewMode && 'view-mode-input'
+            }`}
             name='newMedGroupDetail'
             type='text'
             value={newMedGroupDetail}
             placeholder='Detail'
             onChange={handleChangeOnMedGroup}
+            autocomplete='off'
           />
         </div>
-        <div className='med-group-info-container'>
+        <div
+          className={`med-group-info-container ${viewMode && 'view-mode-info'}`}
+        >
           <strong>Compliance time(hr)</strong>
           <input
-            className='med-group-compliance-time-input'
+            className={`med-group-compliance-time-input ${
+              viewMode && 'view-mode-input'
+            }`}
             name='newComplianceTime'
             type='number'
             value={newComplianceTime}
             placeholder='Hour'
             onChange={handleChangeOnMedGroup}
+            autocomplete='off'
           />
         </div>
-        <div className='med-group-info-container'>
+        <div
+          className={`med-group-info-container ${viewMode && 'view-mode-info'}`}
+        >
           <strong>Notify</strong>
 
           {bond &&
@@ -173,6 +190,9 @@ const AddMedPopup = ({
                 name='newCareTakerId'
                 onChange={handleChangeOnMedGroup}
                 value={newCareTakerId}
+                className={`med-group-care-taker-input ${
+                  viewMode && 'view-mode-input'
+                }`}
               >
                 <option value='' default>
                   None
@@ -191,11 +211,11 @@ const AddMedPopup = ({
         </div>
         <strong>Registered medications</strong>
         <div className='med-table'>
-          <div className='med-table-head'>
+          <div className={`med-table-head ${viewMode && 'view-mode-input'}`}>
             <strong>Name</strong>
             <strong>Dosage</strong>
             <strong>Quantity</strong>
-            <strong></strong>
+            {!viewMode && <strong></strong>}
           </div>
           {meds.map(med => (
             <Med
@@ -203,25 +223,29 @@ const AddMedPopup = ({
               {...med}
               setMedsIdToHide={setMedsIdToHide}
               medsIdToHide={medsIdToHide}
+              viewMode={viewMode}
             />
           ))}
         </div>
-        {medInputArr.map((medInputObj, i, medInputArr) => (
-          <MedInput
-            key={i}
-            id={i}
-            setMedInputArr={setMedInputArr}
-            addMedInput={addMedInput}
-            numOfMedInput={medInputArr.length}
-          />
-        ))}
-        <div className='save-med-group-btn-container'>
-          <button type='submit' className='save-med-group-btn'>
-            Save
-          </button>
-        </div>
+        {!viewMode &&
+          medInputArr.map((medInputObj, i, medInputArr) => (
+            <MedInput
+              key={i}
+              id={i}
+              setMedInputArr={setMedInputArr}
+              addMedInput={addMedInput}
+              numOfMedInput={medInputArr.length}
+            />
+          ))}
+        {!viewMode && (
+          <div className='save-med-group-btn-container'>
+            <button type='submit' className='save-med-group-btn'>
+              Save
+            </button>
+          </div>
+        )}
       </form>
-      {medGroupId && (
+      {!viewMode && medGroupId && (
         <div className='delete-med-group-btn-container'>
           <button
             type='button'

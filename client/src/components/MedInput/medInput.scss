@@ -1,5 +1,14 @@
 @import 'assets/styles/variable';
 
+@mixin med-input-property {
+  font-size: 0.9em;
+  padding: 0.2em 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .med-input-group {
   display: flex;
   align-items: center;
@@ -8,11 +17,10 @@
   margin-bottom: 0.4em;
 
   > input {
-    font-size: 0.9em;
-    padding: 0.2em 0;
+    @include med-input-property;
   }
   > select {
-    padding: 0.2em 0;
+    @include med-input-property;
   }
   > input[type='text'] {
     width: 120px;
