@@ -39,9 +39,14 @@
 @media screen and (max-width: 760px) {
   .mypage {
     height: calc(100vh - 70px);
+    width: 90%;
   }
 }
-
+@media screen and (max-width: 760px) {
+  .mypage {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 560px) {
   .mypage {
     display: flex;
