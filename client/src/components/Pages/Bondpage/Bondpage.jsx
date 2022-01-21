@@ -57,17 +57,24 @@ const Bondpage = ({ history }) => {
   if (!isAuth) return <Redirect to='/' />;
 
   return (
-    <>
+    <div className='bond-page-container'>
       {bond ? (
-        <>
-          <div>{isAuth && <h2>{bond.name}</h2>}</div>
-          <img
-            src={bond.imageUrl ? bond.imageUrl : logoImage}
-            width='300px'
-            alt='bond'
-          />
-          <h4>{bond.bondUsers.length - 1} other people in this bond:</h4>
+        <div className='show-bond-view'>
+          <div className='beside-bond-user-list'>
+            <img
+              src={bond.imageUrl ? bond.imageUrl : logoImage}
+              width='300px'
+              alt='bond'
+            />
+            <div className='bond-name-container'>
+              {isAuth && <h2>{bond.name}</h2>}
+              <div className='number-of-bond-users'>
+                <h4>{bond.bondUsers.length - 1} other people in this bond:</h4>
+              </div>
+            </div>
+          </div>
           <div className='bond-user-list'>
+            <div className='inner-bond-user-list'>
             {getFilteredBondUsers(user.id, bond.bondUsers).map(user => (
               <div
                 key={user.id}
@@ -85,47 +92,49 @@ const Bondpage = ({ history }) => {
                 <p>Email: {user.email}</p>
               </div>
             ))}
-          </div>
-        </>
+              </div>
+            </div>
+        </div>
       ) : (
         <>
-          <div>You are currently not bonded</div>
-          <a href='/'>Homepage</a>
-          <h3>Create a New Bond:</h3>
-          <div>
-            <form onSubmit={createNewBond}>
-              <div className='new-bond-info-container'>
-                <input
-                  className='new-bond-name-input'
-                  name='newBondName'
-                  type='text'
-                  value={newBondName}
-                  placeholder='New Bond Name...'
-                  onChange={handleChangeOnNewBond}
-                  required={true}
-                />
-              </div>
-              <div className='new-bond-info-container'>
-                <input
-                  className='new-bond-imageUrl-input'
-                  name='newBondImageUrl'
-                  type='text'
-                  value={newBondImageUrl}
-                  placeholder='Image Url...'
-                  onChange={handleChangeOnNewBond}
-                  required={false}
-                />
-              </div>
-              <div className='create-new-bond-btn-container'>
-                <button type='submit' className='create-new-bond-btn'>
-                  Create
-                </button>
-              </div>
-            </form>
+          <div className='create-bond-view'>
+            <p>You are currently un-bonded</p>
+            <h3>Create a New Bond:</h3>
+            <div>
+              <form onSubmit={createNewBond}>
+                <div className='new-bond-info-container'>
+                  <input
+                    className='new-bond-name-input'
+                    name='newBondName'
+                    type='text'
+                    value={newBondName}
+                    placeholder='New Bond Name...'
+                    onChange={handleChangeOnNewBond}
+                    required={true}
+                  />
+                </div>
+                <div className='new-bond-info-container'>
+                  <input
+                    className='new-bond-imageUrl-input'
+                    name='newBondImageUrl'
+                    type='text'
+                    value={newBondImageUrl}
+                    placeholder='Image Url...'
+                    onChange={handleChangeOnNewBond}
+                    required={false}
+                  />
+                </div>
+                <div className='create-new-bond-btn-container'>
+                  <button type='submit' className='create-new-bond-btn'>
+                    Create
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

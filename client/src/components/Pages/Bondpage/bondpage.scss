@@ -1,7 +1,181 @@
-.bond-user-container {
+.bond-page-container {
   display: flex;
-  align-items: center;
-  gap: 1em;
-  margin-bottom: 1em;
-  cursor: pointer;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+
+  .create-bond-view {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-conent;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    // background-color: rgb(229, 242, 249);
+    // border: 2px solid rgb(71, 197, 206); 
+    border-radius: 1em;
+    padding-top: 1em;
+    padding-left: 10em;
+    padding-right: 10em;
+    padding-bottom: 2em;
+
+    > p {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+      border-radius: 0.4em;
+      border: 1px solid rgb(255, 153, 0);
+      background-color: rgb(247, 216, 169);
+      color: rgb(84, 83, 83);
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+
+    }
+    > h3 {
+      width: fit-content;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      font-weight: 100;
+      font-size: 1.3em;
+      border-bottom: 2px solid #2f3335;
+    }
+    
+    .new-bond-info-container {
+      > input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #6d7072;
+        margin-bottom: 2em;
+        font-weight: 100;
+        font-size: 0.9em;
+        font-family: 'Montserrat', sans-serif;
+        outline: none;
+      }
+    }
+
+    .create-new-bond-btn-container {
+      display: flex;
+      justify-content: center;
+
+      .create-new-bond-btn {
+        background-color: transparent;
+        border: none;
+        font-family: 'Monterrat', sans-serif;
+        font-weight: 100;
+        font-size: 1.2em;
+        :hover {
+          font-weight: 200;
+          font-size: 1.3em
+
+        }
+      }
+    }
+    
+  }
+  
+  .show-bond-view {
+    display:flex;
+    flex-direction: row;
+    justify-self: center;
+    // justify-content: center;
+    width: 80vw;
+    margin: auto;
+    border-radius: 1em;
+    padding-top: 0.5em;
+    // padding-left: 10em;
+    // padding-right: 10em;
+    padding-bottom: 2em;
+      
+    .beside-bond-user-list {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: fit-content;
+      height: 55vh;
+      margin-top: 3em;
+      margin-left: auto;
+      // margin-right: auto;
+      text-align: center;
+      align-self: top;
+      // height: fit-content;
+
+      > img {
+        object-fit: cover;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .bond-name-container {
+        margin-top: 2em;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        font-family: 'Montserrat', sans-serif;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.187);
+
+
+        .number-of-bond-users {
+          margin-top: 1em;
+        }
+      }
+    }
+
+    .bond-user-list {
+      width: 80vw;
+      height: calc(50vh + 2em);
+      margin: 3em;
+      margin-left: 7em;
+      background-color: rgba(255, 255, 255, 0.482);
+      border-radius: 2em;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+
+      &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+      }
+      .inner-bond-user-list {
+        margin-top: 1em;
+        padding: 0.5em;
+        overflow: scroll;
+        height: 50vh;
+
+        .bond-user-container {
+          display: flex;
+          position: relative;
+          align-items: center;
+          gap: 1em;
+          margin-bottom: 1em;
+          cursor: pointer;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1em;
+          &:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 1em;
+            font-size: 1.1em;
+          }
+  
+          > img {
+            border-radius: 50%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            object-fit: cover;
+            width: 70px;
+            height: 70px;
+            margin-left: 1em;
+          }
+
+      }
+      }
+    }
+  }
+
+
+
 }
+  
+
+
