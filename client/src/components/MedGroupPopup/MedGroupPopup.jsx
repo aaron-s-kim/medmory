@@ -147,7 +147,7 @@ const AddMedPopup = ({
             placeholder='Med group name'
             onChange={handleChangeOnMedGroup}
             required={true}
-            autocomplete='off'
+            autoComplete='off'
           />
         </div>
         <div className={'med-group-info-container'}>
@@ -159,7 +159,7 @@ const AddMedPopup = ({
             value={newMedGroupDetail}
             placeholder='Detail'
             onChange={handleChangeOnMedGroup}
-            autocomplete='off'
+            autoComplete='off'
           />
         </div>
         <div className={'med-group-info-container'}>
@@ -171,7 +171,7 @@ const AddMedPopup = ({
             value={newComplianceTime}
             placeholder='Hour'
             onChange={handleChangeOnMedGroup}
-            autocomplete='off'
+            autoComplete='off'
           />
         </div>
         <div className={'med-group-info-container'}>

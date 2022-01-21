@@ -23,6 +23,24 @@
   @include easy-med-group-property;
   .add-med-group-btn {
     font-size: 1.2em;
+    padding: 0.4em 2em;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .easy-add-med-group-button-container {
+    .add-med-group-btn {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .easy-add-med-group-button-container {
+    .add-med-group-btn {
+      width: 80%;
+    }
   }
 }
 
