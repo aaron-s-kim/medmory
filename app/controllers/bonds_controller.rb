@@ -43,7 +43,7 @@ class BondsController < ApplicationController
   private
 
   def bond_params
-    params.require(:bond).permit(:user_id, :name)
+    params.require(:bond).permit(:user_id, :name, :image_url)
   end
 
 
