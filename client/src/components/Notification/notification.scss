@@ -49,3 +49,15 @@
     margin: -1em auto 1em auto;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .notification {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .notification {
+    width: 90%;
+  }
+}
