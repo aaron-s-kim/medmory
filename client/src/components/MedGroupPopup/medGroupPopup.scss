@@ -13,6 +13,16 @@
   border: none;
 }
 
+@mixin med-group-input-property {
+  border: none;
+  border-bottom: solid grey 1px;
+  background-color: #eee;
+  &:focus {
+    outline: none;
+    border-bottom: solid $sub-main 2px;
+  }
+}
+
 .med-group-popup {
   z-index: 999;
   position: fixed;
@@ -32,15 +42,32 @@
 
     .med-group-name-input {
       font-size: 1.5em;
+      @include med-group-input-property;
     }
 
     .med-group-detail-input {
       width: 300px;
+      @include med-group-input-property;
     }
 
     .med-group-compliance-time-input {
       width: 140px;
+      @include med-group-input-property;
     }
+
+    .med-group-care-taker-input {
+      @include med-group-input-property;
+    }
+
+    .view-mode-input {
+      &:focus {
+        border-bottom: solid grey 1px;
+      }
+    }
+  }
+
+  .view-mode-info {
+    margin-bottom: 1em;
   }
 
   .med-table {
@@ -53,6 +80,11 @@
       > strong {
         margin: 0.3em;
       }
+    }
+
+    .view-mode {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 
@@ -78,6 +110,10 @@
       @include button-effect;
     }
   }
+}
+
+.view-mode-popup {
+  padding: 4em 1em;
 }
 
 @media screen and (max-width: 860px) {
@@ -140,6 +176,5 @@
     left: 0;
     top: 15vh;
     padding: 2em 0.3em;
-
   }
 }

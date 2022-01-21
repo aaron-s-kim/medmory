@@ -12,6 +12,7 @@ const Med = ({
   pillType,
   medsIdToHide,
   setMedsIdToHide,
+  viewMode,
 }) => {
   const addMedIdToHide = () => {
     setMedsIdToHide(prevState => [...prevState, id]);
@@ -24,15 +25,21 @@ const Med = ({
   const isHidden = medsIdToHide.includes(id);
 
   return (
-    <div className={`med-container ${isHidden && 'hidden-med-container'}`}>
+    <div
+      className={`med-container ${isHidden && 'hidden-med-container'} ${
+        viewMode && 'view-mode'
+      }`}
+    >
       <span>{name}</span>
       <span>{dosage ? `${dosage}${measure}` : '-'}</span>
       <span>{numOfPill ? `${numOfPill}${pillType}` : '-'}</span>
-      <span>
-        <small className='med-remove-btn' onClick={addMedIdToHide}>
-          Delete
-        </small>
-      </span>
+      {!viewMode && (
+        <span>
+          <small className='med-remove-btn' onClick={addMedIdToHide}>
+            Delete
+          </small>
+        </span>
+      )}
     </div>
   );
 };

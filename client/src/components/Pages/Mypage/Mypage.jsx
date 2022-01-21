@@ -61,10 +61,14 @@ const Mypage = ({ history, match }) => {
   if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='mypage'>
-      {!viewMode && medGroupToDisplay.medGroupName && (
-        <MedGroupPopup {...medGroupToDisplay} closePopup={closePopup} />
+      {medGroupToDisplay.medGroupName && (
+        <MedGroupPopup
+          {...medGroupToDisplay}
+          closePopup={closePopup}
+          viewMode={viewMode && userToView}
+        />
       )}
-      {!viewMode && medGroupToDisplay.medGroupName && (
+      {medGroupToDisplay.medGroupName && (
         <Overlay closePopup={closePopup} />
       )}
       <div className='user-section'>
@@ -90,7 +94,7 @@ const Mypage = ({ history, match }) => {
                 {...medGroupItem}
                 history={history}
                 setMedgroupToDisplay={setMedgroupToDisplay}
-                viewMode={viewMode && userToView}
+                // viewMode={viewMode && userToView}
               />
             ))
           : userMedGroupArr.length > 0 &&
