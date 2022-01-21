@@ -38,17 +38,17 @@
 
 @media screen and (max-width: 760px) {
   .mypage {
-    width: 90%;
+    height: calc(100vh - 70px);
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 560px) {
   .mypage {
     display: flex;
     flex-direction: column;
     justify-content: unset;
-    margin-top: 0.5em;
     overflow-y: scroll;
+    padding-top: 2em;
 
     .user-section {
       display: flex;
@@ -59,6 +59,14 @@
 
     .user-med-group-container {
       overflow-y: unset;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .mypage {
+    .user-med-group-container {
+      padding: 1em 0;
     }
   }
 }

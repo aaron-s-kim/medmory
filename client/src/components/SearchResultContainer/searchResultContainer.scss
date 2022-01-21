@@ -53,3 +53,11 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .search-result-container {
+    .user-on-search {
+      padding: 0.5em 0.3em;
+    }
+  }
+}

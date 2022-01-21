@@ -45,3 +45,19 @@
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  .user-suggestion-container {
+    .suggested-user-container {
+      .suggested-user {
+        width: 7em;
+        height: 10em;
+        padding: 1.5em 0.5em;
+
+        > h3 {
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+}

@@ -56,7 +56,7 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
         onChange={handleChange}
         placeholder='Dosage'
       />
-      <select name='measure' onChange={handleChange} value={measure}>
+      <select name='measure' onChange={handleChange} value={measure} className='measure'>
         <option value='mg' default>
           mg
         </option>
@@ -72,7 +72,7 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
         onChange={handleChange}
         placeholder='Quantity'
       />
-      <select name='pillType' onChange={handleChange} value={pillType}>
+      <select name='pillType' onChange={handleChange} value={pillType} className='type'>
         <option value='tablet' default>
           Tablet(s)
         </option>

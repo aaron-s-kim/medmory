@@ -1,3 +1,11 @@
 .sign-out-button {
   cursor: pointer;
 }
+
+@media screen and (max-width: 560px) {
+  .sign-out-button {
+    .sign-out-name {
+      display: none;
+    }
+  }
+}

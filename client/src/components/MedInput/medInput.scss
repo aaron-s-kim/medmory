@@ -9,8 +9,11 @@
 
   > input {
     font-size: 0.9em;
+    padding: 0.2em 0;
   }
-
+  > select {
+    padding: 0.2em 0;
+  }
   > input[type='text'] {
     width: 120px;
   }
@@ -34,6 +37,14 @@
 
 @media screen and (max-width: 680px) {
   .med-input-group {
+    .measure {
+      width: 50px;
+    }
+
+    .type {
+      width: 75px;
+    }
+
     > input {
       font-size: 0.9em;
     }
@@ -56,6 +67,17 @@
 
     .add-med-input-btn {
       display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .med-input-group {
+    .measure {
+      width: 40px;
+    }
+    .type {
+      width: 60px;
     }
   }
 }
