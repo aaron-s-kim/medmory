@@ -27,9 +27,7 @@ const Meddetailspage = (props) => {
   return (
     <div className='meddetailspage'>
 
-      <h2>Vertical Tabs</h2>
-      <p>Click on the buttons inside the tabbed menu:</p>
-
+      <h2>Medication Compliance History</h2>
       <div className="tab">
         {userMedGroupArr.map((medGroupItem, i) => (
           <button
@@ -45,6 +43,7 @@ const Meddetailspage = (props) => {
         {currentTab !== -1 &&
           <Medtab
             medGroupObj={userMedGroupArr[currentTab]}
+            tab={active}
           />
         }
       </div>

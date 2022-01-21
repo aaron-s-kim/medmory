@@ -223,6 +223,12 @@ for i in 1..15 do
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
+for i in 18..19 do
+  MedHistory.create(
+  med_group_id: med_group5.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
+end
+
 puts "Creating bond invites..."
 
 BondInvite.create(
