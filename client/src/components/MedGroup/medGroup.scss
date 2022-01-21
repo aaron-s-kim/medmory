@@ -59,6 +59,27 @@
   }
 }
 
+.easy-med-group-containter {
+  @include easy-med-group-property;
+
+  .message-not-taken-container {
+    flex-direction: column;
+    gap: unset;
+
+    .take-btn {
+      padding: 0.4em 2em;
+      font-size: 1.2em;
+    }
+  }
+
+  .med-group-btn-container {
+    .med-group-edit-btn,
+    .med-group-detail-btn {
+      font-size: 1.2em;
+    }
+  }
+}
+
 @media screen and (max-width: 550px) {
   .med-group-containter {
     width: 80%;

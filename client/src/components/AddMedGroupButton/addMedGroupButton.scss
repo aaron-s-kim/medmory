@@ -19,6 +19,10 @@
   }
 }
 
+.easy-add-med-group-button-container {
+  @include easy-med-group-property;
+}
+
 @media screen and (max-width: 550px) {
   .add-med-group-button-container {
     width: 80%;

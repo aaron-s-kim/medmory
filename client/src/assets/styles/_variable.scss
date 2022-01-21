@@ -29,6 +29,11 @@ $checked: #12b104;
   margin-bottom: 1em;
 }
 
+@mixin easy-med-group-property {
+  width: 100%;
+  font-size: 1.3em;
+}
+
 @mixin med-group-button-propery {
   width: 40%;
   text-align: center;

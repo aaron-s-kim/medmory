@@ -17,7 +17,7 @@ const MedGroup = ({
   setMedgroupToDisplay,
   careTakerId,
   meds,
-  viewMode,
+  easyMode,
   history,
 }) => {
   const setState = useContext(SetStateContext);
@@ -52,7 +52,11 @@ const MedGroup = ({
   };
 
   return (
-    <div className='med-group-containter'>
+    <div
+      className={`med-group-containter ${
+        easyMode && 'easy-med-group-containter'
+      }`}
+    >
       <h3 className='med-group-name'>{name}</h3>
       {isCompliedToday ? (
         <p className='message-taken'>Status: Confirmed ✅ </p>
@@ -65,11 +69,9 @@ const MedGroup = ({
         </div>
       )}
       <div className='med-group-btn-container'>
-        {!viewMode && (
-          <p className='med-group-edit-btn' onClick={goToEdit}>
-            More
-          </p>
-        )}
+        <p className='med-group-edit-btn' onClick={goToEdit}>
+          More
+        </p>
         <Link to={medGroupDetails} className='med-group-detail-btn'>
           History
         </Link>

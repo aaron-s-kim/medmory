@@ -68,9 +68,7 @@ const Mypage = ({ history, match }) => {
           viewMode={viewMode && userToView}
         />
       )}
-      {medGroupToDisplay.medGroupName && (
-        <Overlay closePopup={closePopup} />
-      )}
+      {medGroupToDisplay.medGroupName && <Overlay closePopup={closePopup} />}
       <div className='user-section'>
         {viewMode && userToView && (
           <h2 className='view-mode-notification'>
@@ -105,11 +103,14 @@ const Mypage = ({ history, match }) => {
                 {...medGroupItem}
                 history={history}
                 setMedgroupToDisplay={setMedgroupToDisplay}
-                // viewMode={viewMode}
+                easyMode={user.easyMode}
               />
             ))}
         {!(viewMode && userToView.user) && (
-          <AddMedGroupButton setMedgroupToDisplay={setMedgroupToDisplay} />
+          <AddMedGroupButton
+            setMedgroupToDisplay={setMedgroupToDisplay}
+            easyMode={user.easyMode}
+          />
         )}
       </div>
     </div>
