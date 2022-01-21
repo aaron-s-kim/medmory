@@ -38,7 +38,8 @@ jeff = User.create(
     last_name: 'Kim',
     phone_number: ENV['JEFF_NUMBER'],
     email: 'jeff.kim@example.com',
-    password: '123'
+    password: '123',
+    bond_id: 1
   )
 
 aaron = User.create(
@@ -57,7 +58,7 @@ connor = User.create(
   password: '123'
 )
 
-50.times do
+18.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -68,11 +69,21 @@ connor = User.create(
   )
 end
 
+36.times do
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.user[:email],
+    password: '123',
+    image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}",
+  )
+end
+
 puts "Creating med groups..."
 
 med_group1 = MedGroup.create(
-  name: 'Protein',
-  detail: 'after workout',
+  name: 'Life saver',
+  detail: 'take daily',
   user_id: jeff.id
 )
 
@@ -103,9 +114,20 @@ med_group4 = MedGroup.create(
 puts "Creating meds..."
 
 Med.create(
-  name: 'WHEY protein',
-  dosage: 22,
-  measure: 'g',
+  name: 'life saver pill 1',
+  dosage: 120,
+  measure: 'mcg',
+  num: 1,
+  pill_type: 'capsule',
+  med_group_id: med_group1.id
+)
+
+Med.create(
+  name: 'life saver pill 2',
+  dosage: 10,
+  measure: 'mcg',
+  num: 1,
+  pill_type: 'capsule',
   med_group_id: med_group1.id
 )
 
@@ -163,46 +185,28 @@ Med.create(
 
 puts "Creating med group histories..."
 
-for i in 1..26 do
+for i in 1..23 do
   MedHistory.create(
   med_group_id: med_group1.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..22)}:00")
 end
 
-
-for i in 1..26 do
+for i in 1..23 do
   MedHistory.create(
   med_group_id: med_group2.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..26 do
+for i in 1..23 do
   MedHistory.create(
   med_group_id: med_group3.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..26 do
+for i in 1..23 do
   MedHistory.create(
   med_group_id: med_group4.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
-
-puts "Creating bond invites..."
-
-BondInvite.create(
-  user_id: 1,
-  bond_id: 1
-)
-
-BondInvite.create(
-  user_id: 2,
-  bond_id: 1
-)
-
-BondInvite.create(
-  user_id: 3,
-  bond_id: 1
-)
 
 puts "finish seeding!"
