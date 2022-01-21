@@ -41,7 +41,6 @@ const Graphpage = () => {
         const dayMatcher = (hArr) => {
           const dayHistoryArr = hArr.map(obj => obj.created_at.substring(0, 13));
           const newData = [];
-
           dayArr.forEach((day, i) => {
             newData[i] = null;
             for (const e of dayHistoryArr) {
@@ -51,23 +50,16 @@ const Graphpage = () => {
               }
             }
           })
-
-          // console.log(newData); // => correct output check
           return newData;
         };
-        const formatHistoryArr = resultsArr.map(obj => ({
-          medGroupName: obj.data.medGroup.name,
-          historyTenDays: dayMatcher(obj.data.historyTenDays)
-        }));
-        // console.log("formatHistoryArr", formatHistoryArr); // => correct output check
-
-        for (const fhObj of formatHistoryArr) { // loop through main Arr of Objs
+        
+        for (const obj of resultsArr) { // create chartDataArr
+          const historyArr = dayMatcher(obj.data.historyTenDays);
           for (let i = 0; i < 10; i++) {
-            chartDataArr[i][fhObj.medGroupName] = fhObj.historyTenDays[i];
+            chartDataArr[i][obj.data.medGroup.name] = historyArr[i];
           }
         }
-        console.log(chartDataArr); // => correct output check
-
+        // console.log(chartDataArr); // => correct output check
         setDatastate(prev => ([...chartDataArr]));
       })
       .catch(err => console.log(err.response.data.error));
@@ -93,12 +85,11 @@ const Graphpage = () => {
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
-        <Area type="monotone" dataKey="Vitamins" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-        <Area type="monotone" dataKey="The Drugs" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
-        <Area type="monotone" dataKey="Hypertension Medications" stroke="#83ca9d" fillOpacity={1} fill="url(#colorPv)" />
-        {/* <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-        <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
-        <Area type="monotone" dataKey="amt" stroke="#83ca9d" fillOpacity={1} fill="url(#colorPv)" /> */}
+        {userMedGroupArr.map(medGroupItem => (
+          <Area type="monotone" dataKey={medGroupItem.name} stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        ))}
+        {/* stroke="#8884d8" "#82ca9d"*/}
+
       </AreaChart>
     </ResponsiveContainer>
   )
