@@ -9,12 +9,10 @@ import './meddetailspage.scss';
 const Meddetailspage = (props) => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const [currentTab, setCurrentTab] = useState(-1);
-  const [active, setActive] = useState(-1);
   const medGroupId = props.location.medGroupId;
 
   const handleClick = e => {
     setCurrentTab(e);
-    setActive(e);
   };
 
   // clicking History from Mypage selects correct tab
@@ -32,7 +30,7 @@ const Meddetailspage = (props) => {
         {userMedGroupArr.map((medGroupItem, i) => (
           <button
             key={medGroupItem.name}
-            className={active === i ? 'active' : ''}
+            className={currentTab === i ? 'active' : ''}
             onClick={() => handleClick(i)}
           >{medGroupItem.name}</button>
           ))
@@ -43,7 +41,6 @@ const Meddetailspage = (props) => {
         {currentTab !== -1 &&
           <Medtab
             medGroupObj={userMedGroupArr[currentTab]}
-            tab={active}
           />
         }
       </div>
