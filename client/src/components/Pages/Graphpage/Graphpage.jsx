@@ -34,6 +34,8 @@ const Graphpage = (props) => {
   const [datastate, setDatastate] = useState([]);
   const color = ["#3BAFE5", "#FE7701", "#8884d8", "#82ca9d"] // blue, orange, purple, green
 
+  console.log(medGroupObj);
+
   useEffect(() => {
     const promises = userMedGroupArr.map(medGroupItem => {
       const medGroupUrl = `/med_groups/${medGroupItem.id}`;
@@ -70,7 +72,7 @@ const Graphpage = (props) => {
       .catch(err => console.log(err.response.data.error));
   }, [userMedGroupArr]);
 
-  // medGroupId (index) determine which tab is active; so 
+  // medGroupId (index) determines which tab is active; so 
 
   // const currMedGroupName = userMedGroupArr[medGroupId].name;
   // console.log(currMedGroupName); // working => Hypertension Medications
@@ -139,8 +141,9 @@ const Graphpage = (props) => {
             stroke={color[i]}
             connectNulls
             dot={{ stroke: color[i], strokeWidth: 2 }}
-            strokeWidth={medGroupObj.id === medGroupItem.id ? 3 : 0.5}
-            activeDot={medGroupObj.id === medGroupItem.id ? { r: 8 } : false}
+            
+            strokeWidth={medGroupObj && medGroupObj.id === medGroupItem.id ? 3 : 0.5}
+            activeDot={medGroupObj && medGroupObj.id === medGroupItem.id ? { r: 8 } : false}
             fillOpacity={10}
             fill="url(#colorUv)"
           />
@@ -152,4 +155,4 @@ const Graphpage = (props) => {
 
 };
 
-export default Graphpage;
+export default Graphpage; // test

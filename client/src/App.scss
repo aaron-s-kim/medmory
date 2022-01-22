@@ -15,6 +15,15 @@
     background-color: rgba(238, 238, 238, 0.8);
     height: calc(90vh - 70px - 4em);
   }
+  .sign-in-page-container {
+    position: relative;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background-color: none;
+    height: calc(90vh - 70px - 4em);
+    color: white;
+
+  }
 }
 
 @media screen and (max-width: 760px) {

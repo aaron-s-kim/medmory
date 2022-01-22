@@ -7,7 +7,7 @@ const Medtab = (props) => {
 
   return (
     <div className="Medtab">
-      <h3>{medGroupObj.name}</h3>
+      {/* <h3>{medGroupObj.name}</h3> */}
       <br />
       <br />
       <Graphpage
@@ -17,4 +17,4 @@ const Medtab = (props) => {
     </div>
   );
 };
-export default Medtab;
+export default Medtab; // test
