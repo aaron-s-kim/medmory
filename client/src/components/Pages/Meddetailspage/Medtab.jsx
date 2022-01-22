@@ -2,21 +2,17 @@ import React from "react";
 import Graphpage from '../Graphpage/Graphpage';
 
 const Medtab = (props) => {
-  const { medGroupObj, tab } = props;
+  const { medGroupObj } = props;
   // console.log(medGroupObj);
 
   return (
     <div className="Medtab">
       <h3>{medGroupObj.name}</h3>
       <br />
-      hello from the otherside...
-      <br />
-      <br />
       <br />
       <Graphpage
-        medGroupId={medGroupObj.id}
+        medGroupObj={medGroupObj}
         complianceTime={medGroupObj.complianceTime}
-        tab={tab}
       />
     </div>
   );

@@ -21,12 +21,15 @@ for (let i = d; i <= today; i.setDate(i.getDate() + 1)) {
 }
 
 const chartDataArr = [];
-for (let i = 1; i <= 10; i++) {
-  chartDataArr.push({ name: `Day ${i}` });
+for (let i = 0; i < 10; i++) {
+  let dayNum = dayArr[i].substring(8, 10)
+  chartDataArr.push({ name: dayNum });
 }
 
+
+
 const Graphpage = (props) => {
-  const { medGroupId, complianceTime, tab } = props;
+  const { medGroupObj, complianceTime } = props;
   const { userMedGroupArr } = useContext(StateContext);
   const [datastate, setDatastate] = useState([]);
   const color = ["#3BAFE5", "#FE7701", "#8884d8", "#82ca9d"] // blue, orange, purple, green
@@ -38,7 +41,7 @@ const Graphpage = (props) => {
     })
     Promise.all(promises)
       .then(resultsArr => {
-
+        
         const dayMatcher = (hArr) => {
           const dayHistoryArr = hArr.map(obj => obj.created_at.substring(0, 13));
           const newData = [];
@@ -61,71 +64,85 @@ const Graphpage = (props) => {
           }
         }
         // console.log(chartDataArr); // => correct output check
+
         setDatastate(prev => ([...chartDataArr]));
       })
       .catch(err => console.log(err.response.data.error));
   }, [userMedGroupArr]);
 
+  // medGroupId (index) determine which tab is active; so 
+
+  // const currMedGroupName = userMedGroupArr[medGroupId].name;
+  // console.log(currMedGroupName); // working => Hypertension Medications
+
+  // const gradientOffset = (currMedGroupName) => {
+  //   const dataMax = Math.max(...datastate.map((i) => i[currMedGroupName]));
+  //   const dataMin = Math.min(...datastate.map((i) => i[currMedGroupName]));
+  
+  //   if (dataMax <= 0) {
+  //     return 0;
+  //   }
+  //   if (dataMin >= 0) {
+  //     return 1;
+  //   }
+  
+  //   return dataMax / (dataMax - dataMin);
+  // };
+  // const off = gradientOffset();
+
 
   return (
     <ResponsiveContainer
       width="100%"
+      // height="100%" // height={300}
       aspect={3}
-      // height="100%"
-      /* height={300} */
     >
-      <LineChart 
-        width={730}
-        height={250}
-
-        // layout="vertical"
-        // width={500}
-        // height={300}
-
+      <LineChart
         data={datastate}
-        margin={{ top: 10, right: 30, left: 10, bottom: 0 }}>
+        margin={{ top: 10, right: 30, left: 20, bottom: 30 }}
+      >
+
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis
+          dataKey="name"
+          type="category"
+          padding={{ left: 10, right: 10 }}
+          label={{ value: "Day of Month", position: 'insideBottom', dy: 25}}
+        />
+        <YAxis
+          domain={['auto', 'auto']}// {[6, 20]}
+          type="number"
+          label={{ value: 'Time (24-hr)', angle: -90, position: 'insideLeft', dy: 35, dx: -10}}
+          unit={":00"}
+          tickLine={false}
+          reversed
+          dx={5}
+        />
+
+        <ReferenceLine y={complianceTime} label="Compliance Time" stroke="red" strokeWidth={1} strokeDasharray="10 10" />
+        <Legend verticalAlign="top" />
+        <Tooltip />
+
         {/* <defs>
-          <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-            <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-          </linearGradient>
-          <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-            <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+          <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset={off} stopColor="green" stopOpacity={1} />
+            <stop offset={off} stopColor="red" stopOpacity={1} />
           </linearGradient>
         </defs> */}
 
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" padding={{ left: 20, right: 20 }} />
-        <YAxis domain={['auto', 'auto']} reversed label={{ value: 'Time in Hours', angle: -90, position: 'insideLeft' }} />
-
-        {/* <XAxis
-          // type="number"
-        />
-        <YAxis
-          dataKey="name"
-          type="category"
-          reversed
-          // domain={['auto', 'auto']}
-          // label={{ value: 'Time in Hours', position: 'insideBottom' }}
-          // padding={{ left: 20, right: 20 }}
-        /> */}
-
-        <Tooltip />
-        <Legend /* verticalAlign="top" */ />
-        <ReferenceLine y={complianceTime} label="Compliance Time" stroke="red" strokeWidth={1.5} strokeDasharray="3 3" />
         {userMedGroupArr.map((medGroupItem, i) => (
           <Line
             key={medGroupItem.id}
-            connectNulls
             type="monotone"
             dataKey={medGroupItem.name}
-            dot={{ stroke: color[i], strokeWidth: 2 }}
+
             stroke={color[i]}
-            strokeWidth={2}
-            activeDot={medGroupId === medGroupItem.id ? { r: 8 } : false}
+            connectNulls
+            dot={{ stroke: color[i], strokeWidth: 2 }}
+            strokeWidth={medGroupObj.id === medGroupItem.id ? 3 : 0.5}
+            activeDot={medGroupObj.id === medGroupItem.id ? { r: 8 } : false}
             fillOpacity={10}
-            // fill="url(#colorUv)"
+            fill="url(#colorUv)"
           />
         ))}
 
