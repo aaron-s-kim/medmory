@@ -11,9 +11,7 @@ const Meddetailspage = (props) => {
   const [currentTab, setCurrentTab] = useState(-1);
   const medGroupId = props.location.medGroupId;
 
-  const handleClick = e => {
-    setCurrentTab(e);
-  };
+  const handleClick = e => { setCurrentTab(e) };
 
   // clicking History from Mypage selects correct tab
   useEffect(() => 
@@ -32,7 +30,9 @@ const Meddetailspage = (props) => {
             key={medGroupItem.name}
             className={currentTab === i ? 'active' : ''}
             onClick={() => handleClick(i)}
-          >{medGroupItem.name}</button>
+          >
+            {medGroupItem.name}
+          </button>
           ))
         }
       </div>
