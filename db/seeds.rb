@@ -37,7 +37,8 @@ aaron = User.create(
   last_name: 'Kim',
   phone_number: ENV['AARON_NUMBER'],
   email: 'aaron.kim@example.com',
-  password: '123'
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/Screen%20Shot%202022-01-21%20at%203.44.30%20AM.png",
 )
 
 connor = User.create(
