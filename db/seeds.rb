@@ -21,16 +21,6 @@ Bond.create(
   image_url: 'https://www.cheatsheet.com/wp-content/uploads/2021/10/Rainn-Wilson.jpg',
 )
 
-Bond.create(
-  name: 'Third bond',
-  image_url: 'https://www.cheatsheet.com/wp-content/uploads/2021/10/Rainn-Wilson.jpg',
-)
-
-Bond.create(
-  name: 'Last bond',
-  image_url: 'https://www.cheatsheet.com/wp-content/uploads/2021/10/Rainn-Wilson.jpg',
-)
-
 puts "Creating users..."
 
 jeff = User.create(
@@ -47,7 +37,8 @@ aaron = User.create(
   last_name: 'Kim',
   phone_number: ENV['AARON_NUMBER'],
   email: 'aaron.kim@example.com',
-  password: '123'
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/avatar-aaron.png",
 )
 
 connor = User.create(
@@ -58,18 +49,18 @@ connor = User.create(
   password: '123'
 )
 
-18.times do
+15.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.user[:email],
     password: '123',
     image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}",
-    bond_id: rand(2..4)
+    bond_id: rand(1..2)
   )
 end
 
-36.times do
+30.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -78,6 +69,27 @@ end
     image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}",
   )
 end
+
+User.create(
+  first_name: 'Jason',
+  last_name: 'Kim',
+  email: 'json.kim@dosdps.com',
+  password: '123'
+)
+
+User.create(
+  first_name: 'Yarovski',
+  last_name: 'Robert',
+  email: 'Yarovski.Robert@vdemopru.com',
+  password: '123'
+)
+
+User.create(
+  first_name: 'Jesse',
+  last_name: 'Robert',
+  email: 'Jesse.Robert@idkwtosa.com',
+  password: '123'
+)
 
 puts "Creating med groups..."
 
@@ -109,6 +121,14 @@ med_group4 = MedGroup.create(
   compliance_time: 12,
   user_id: aaron.id,
   message_to: jeff.id
+)
+
+med_group5 = MedGroup.create(
+  name: 'Hypertension Medications',
+  detail: 'take once a day',
+  compliance_time: 12,
+  user_id: aaron.id,
+  message_to: connor.id
 )
 
 puts "Creating meds..."
@@ -208,5 +228,19 @@ for i in 1..23 do
   med_group_id: med_group4.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
+
+for i in 1..15 do
+  MedHistory.create(
+  med_group_id: med_group5.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
+end
+
+for i in 18..19 do
+  MedHistory.create(
+  med_group_id: med_group5.id
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
+end
+
+puts "Creating bond invites..."
 
 puts "finish seeding!"

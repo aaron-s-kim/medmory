@@ -1,3 +1,13 @@
 .sign-out-button {
   cursor: pointer;
 }
+.easy-sign-out-btn {
+  font-size: 1.3em;
+}
+@media screen and (max-width: 560px) {
+  .sign-out-button {
+    .sign-out-name {
+      display: none;
+    }
+  }
+}

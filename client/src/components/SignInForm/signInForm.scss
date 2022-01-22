@@ -28,6 +28,12 @@
         width: 230px;
         padding: 0.5em;
         margin-bottom: 1.2em;
+        border: none;
+        border-radius: 3px;
+        
+        &:focus {
+          outline: none;
+        }
       }
     }
 
@@ -40,5 +46,17 @@
       border-radius: 5px;
       margin-top: 1em;
     }
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .sign-in-box {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .sign-in-box {
+    width: 300px;
   }
 }

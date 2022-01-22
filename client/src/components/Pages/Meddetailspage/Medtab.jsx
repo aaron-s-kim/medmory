@@ -8,13 +8,12 @@ const Medtab = (props) => {
   return (
     <div className="Medtab">
       <h3>{medGroupObj.name}</h3>
-      <h3>Medications</h3>
-      {medGroupObj.meds.map(med => (
-        <div key={med.id}>
-          <p>Name: {med.name}</p>
-        </div>
-      ))}
-      <Graphpage />
+      <br />
+      <br />
+      <Graphpage
+        medGroupObj={medGroupObj}
+        complianceTime={medGroupObj.complianceTime}
+      />
     </div>
   );
 };

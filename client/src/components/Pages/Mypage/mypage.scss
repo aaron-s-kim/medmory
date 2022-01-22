@@ -11,13 +11,14 @@
 
   .view-mode-notification {
     margin-top: -1em;
+    text-align: center;
   }
 
   .user-section {
     display: flex;
     flex-direction: column;
     gap: 2em;
-    padding-top: 3em;
+    padding: 3em 1em;
   }
 
   .user-med-group-container {
@@ -29,36 +30,57 @@
     align-items: center;
   }
 }
+@media screen and (max-width: 1024px) {
+  .easy-mypage {
+    width: 80%;
+  }
+}
 
 @media screen and (max-width: 860px) {
   .mypage {
     width: 80%;
   }
-}
-
-@media screen and (max-width: 760px) {
-  .mypage {
+  .easy-mypage {
     width: 90%;
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 760px) {
+  .mypage {
+    height: calc(100vh - 70px);
+    width: 90%;
+    .user-section {
+      padding-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
   .mypage {
     display: flex;
     flex-direction: column;
     justify-content: unset;
-    margin-top: 0.5em;
     overflow-y: scroll;
+    padding-top: 2em;
 
     .user-section {
       display: flex;
       flex-direction: column;
+      padding-right: 1em;
       gap: 1em;
       padding-top: 1em;
     }
 
     .user-med-group-container {
       overflow-y: unset;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .mypage {
+    .user-med-group-container {
+      padding: 1em 0;
     }
   }
 }

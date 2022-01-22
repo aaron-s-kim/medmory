@@ -62,7 +62,9 @@ const SignInForm = () => {
             placeholder='Password'
           />
         </div>
-        <button type='submit' className='sign-in-btn'>Sign In</button>
+        <button type='submit' className='sign-in-btn'>
+          Sign In
+        </button>
       </form>
     </div>
   );

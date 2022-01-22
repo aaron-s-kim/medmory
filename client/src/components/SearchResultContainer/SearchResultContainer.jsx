@@ -7,16 +7,14 @@ import { getEncryptedEmail } from 'utils/data-shape';
 
 import './searchResultContainer.scss';
 
-const SearchResultContainer = ({
-  userResult,
-  userBond,
-
-  searchWord,
-}) => {
+const SearchResultContainer = ({ userResult, userBond, searchWord }) => {
   const [userResultLocalState, setUserResultLocalState] = useState([]);
 
   useEffect(() => {
     setUserResultLocalState([...userResult]);
+    if (searchWord === '') {
+      setUserResultLocalState([]);
+    }
   }, [userResult]);
 
   const inviteUserToBond = userIdToInvite => {
@@ -51,10 +49,12 @@ const SearchResultContainer = ({
         ? userResultLocalState.map(searchedUser => (
             <div className='user-on-search' key={searchedUser.id}>
               <UserSearchImage userImageUrl={searchedUser.imageUrl} />
-              <p>
+              <p className='user-on-search-name'>
                 {searchedUser.firstName}, {searchedUser.lastName}
               </p>
-              <p>{getEncryptedEmail(searchedUser.email)}</p>
+              <p className='user-on-search-email'>
+                {getEncryptedEmail(searchedUser.email)}
+              </p>
               {searchedUser.bondId ? (
                 <p className='invite-btn bonded'>bonded</p>
               ) : searchedUser.pendingInvite ? (
@@ -64,7 +64,7 @@ const SearchResultContainer = ({
                   className={`invite-btn ${!userBond && 'disabled-btn'}`}
                   onClick={() => inviteUserToBond(searchedUser.id)}
                 >
-                  Invite +
+                  Invite+
                 </p>
               )}
             </div>

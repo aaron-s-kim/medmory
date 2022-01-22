@@ -9,6 +9,7 @@
   .nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
     width: 100%;
     max-width: 1024px;
@@ -16,12 +17,34 @@
     .link-group {
       display: flex;
       align-items: center;
+
+      .easy-mode-indicator {
+        margin-right: 1em;
+      }
     }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .nav-container {
+    padding: 1.2em 1em;
   }
 }
 
 @media screen and (max-width: 680px) {
   .nav-container {
-    padding: 1em 1em;
+    padding: 1.4em 1em;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .nav-container {
+    padding: 1.7em 2em;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .nav-container {
+    padding: 1.7em 1.5em;
   }
 }

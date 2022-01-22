@@ -27,6 +27,8 @@ const AddMedPopup = ({
   careTakerId,
   complianceTime,
   closePopup,
+  viewMode,
+  easyMode,
 }) => {
   const setState = useContext(SetStateContext);
   const { bond, user } = useContext(StateContext);
@@ -89,6 +91,7 @@ const AddMedPopup = ({
   };
 
   const handleChangeOnMedGroup = e => {
+    if (viewMode) return;
     const { value, name } = e.target;
     setMedGroupInput({ ...medGroupInput, [name]: value });
   };
@@ -129,9 +132,13 @@ const AddMedPopup = ({
   };
 
   return (
-    <div className='med-group-popup'>
+    <div
+      className={`med-group-popup ${viewMode && 'view-mode-popup'} ${
+        easyMode && 'easy-mode-popup'
+      }`}
+    >
       <form onSubmit={startSavingMedGroup}>
-        <div className='med-group-info-container'>
+        <div className={'med-group-info-container'}>
           <input
             className='med-group-name-input'
             name='newName'
@@ -140,9 +147,10 @@ const AddMedPopup = ({
             placeholder='Med group name'
             onChange={handleChangeOnMedGroup}
             required={true}
+            autoComplete='off'
           />
         </div>
-        <div className='med-group-info-container'>
+        <div className={'med-group-info-container'}>
           <strong>Detail</strong>
           <input
             className='med-group-detail-input'
@@ -151,9 +159,10 @@ const AddMedPopup = ({
             value={newMedGroupDetail}
             placeholder='Detail'
             onChange={handleChangeOnMedGroup}
+            autoComplete='off'
           />
         </div>
-        <div className='med-group-info-container'>
+        <div className={'med-group-info-container'}>
           <strong>Compliance time(hr)</strong>
           <input
             className='med-group-compliance-time-input'
@@ -162,14 +171,16 @@ const AddMedPopup = ({
             value={newComplianceTime}
             placeholder='Hour'
             onChange={handleChangeOnMedGroup}
+            autoComplete='off'
           />
         </div>
-        <div className='med-group-info-container'>
+        <div className={'med-group-info-container'}>
           <strong>Notify</strong>
 
           {bond &&
             (getFilteredBondUsers(user.id, bond.bondUsers).length > 0 ? (
               <select
+                className='med-group-care-taker-input'
                 name='newCareTakerId'
                 onChange={handleChangeOnMedGroup}
                 value={newCareTakerId}
@@ -195,7 +206,7 @@ const AddMedPopup = ({
             <strong>Name</strong>
             <strong>Dosage</strong>
             <strong>Quantity</strong>
-            <strong></strong>
+            {!viewMode && <strong></strong>}
           </div>
           {meds.map(med => (
             <Med
@@ -203,25 +214,29 @@ const AddMedPopup = ({
               {...med}
               setMedsIdToHide={setMedsIdToHide}
               medsIdToHide={medsIdToHide}
+              viewMode={viewMode}
             />
           ))}
         </div>
-        {medInputArr.map((medInputObj, i, medInputArr) => (
-          <MedInput
-            key={i}
-            id={i}
-            setMedInputArr={setMedInputArr}
-            addMedInput={addMedInput}
-            numOfMedInput={medInputArr.length}
-          />
-        ))}
-        <div className='save-med-group-btn-container'>
-          <button type='submit' className='save-med-group-btn'>
-            Save
-          </button>
-        </div>
+        {!viewMode &&
+          medInputArr.map((medInputObj, i, medInputArr) => (
+            <MedInput
+              key={i}
+              id={i}
+              setMedInputArr={setMedInputArr}
+              addMedInput={addMedInput}
+              numOfMedInput={medInputArr.length}
+            />
+          ))}
+        {!viewMode && (
+          <div className='save-med-group-btn-container'>
+            <button type='submit' className='save-med-group-btn'>
+              Save
+            </button>
+          </div>
+        )}
       </form>
-      {medGroupId && (
+      {!viewMode && medGroupId && (
         <div className='delete-med-group-btn-container'>
           <button
             type='button'

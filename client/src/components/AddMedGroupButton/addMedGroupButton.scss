@@ -19,8 +19,39 @@
   }
 }
 
+.easy-add-med-group-button-container {
+  @include easy-med-group-property;
+  .add-med-group-btn {
+    font-size: 1.2em;
+    padding: 0.4em 2em;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .easy-add-med-group-button-container {
+    .add-med-group-btn {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .easy-add-med-group-button-container {
+    .add-med-group-btn {
+      width: 80%;
+    }
+  }
+}
+
 @media screen and (max-width: 550px) {
   .add-med-group-button-container {
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .add-med-group-button-container {
+    width: 90%;
   }
 }

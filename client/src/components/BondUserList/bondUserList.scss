@@ -1,0 +1,13 @@
+.bond-user-list {
+  width: 70%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(255, 255, 255, 0.482);
+}
+
+@media screen and (max-width: 560px) {
+  .bond-user-list {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

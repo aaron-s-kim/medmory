@@ -60,13 +60,16 @@ const Mypage = ({ history, match }) => {
 
   if (!isAuth) return <Redirect to='/' />;
   return (
-    <div className='mypage'>
-      {!viewMode && medGroupToDisplay.medGroupName && (
-        <MedGroupPopup {...medGroupToDisplay} closePopup={closePopup} />
+    <div className={`mypage ${user.easyMode && 'easy-mypage'}`}>
+      {medGroupToDisplay.medGroupName && (
+        <MedGroupPopup
+          {...medGroupToDisplay}
+          closePopup={closePopup}
+          viewMode={viewMode && userToView}
+          easyMode={user.easyMode}
+        />
       )}
-      {!viewMode && medGroupToDisplay.medGroupName && (
-        <Overlay closePopup={closePopup} />
-      )}
+      {medGroupToDisplay.medGroupName && <Overlay closePopup={closePopup} />}
       <div className='user-section'>
         {viewMode && userToView && (
           <h2 className='view-mode-notification'>
@@ -78,6 +81,7 @@ const Mypage = ({ history, match }) => {
         <UserProfile
           user={viewMode && userToView.user ? userToView.user : user}
           viewMode={viewMode && userToView}
+          easyMode={user.easyMode}
         />
       </div>
       <div className='user-med-group-container'>
@@ -90,7 +94,7 @@ const Mypage = ({ history, match }) => {
                 {...medGroupItem}
                 history={history}
                 setMedgroupToDisplay={setMedgroupToDisplay}
-                viewMode={viewMode && userToView}
+                // viewMode={viewMode && userToView}
               />
             ))
           : userMedGroupArr.length > 0 &&
@@ -101,11 +105,14 @@ const Mypage = ({ history, match }) => {
                 {...medGroupItem}
                 history={history}
                 setMedgroupToDisplay={setMedgroupToDisplay}
-                // viewMode={viewMode}
+                easyMode={user.easyMode}
               />
             ))}
         {!(viewMode && userToView.user) && (
-          <AddMedGroupButton setMedgroupToDisplay={setMedgroupToDisplay} />
+          <AddMedGroupButton
+            setMedgroupToDisplay={setMedgroupToDisplay}
+            easyMode={user.easyMode}
+          />
         )}
       </div>
     </div>

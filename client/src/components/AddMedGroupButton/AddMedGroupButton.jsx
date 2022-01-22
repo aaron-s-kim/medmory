@@ -2,9 +2,13 @@ import React from 'react';
 
 import './addMedGroupButton.scss';
 
-const AddMedGroupButton = ({ setMedgroupToDisplay }) => {
+const AddMedGroupButton = ({ setMedgroupToDisplay, easyMode }) => {
   return (
-    <div className='add-med-group-button-container'>
+    <div
+      className={`add-med-group-button-container ${
+        easyMode && 'easy-add-med-group-button-container'
+      }`}
+    >
       <h3 className='message'>Add medication group</h3>
       <p
         className='add-med-group-btn'

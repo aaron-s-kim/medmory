@@ -34,3 +34,13 @@
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  .searchpage {
+    width: 95%;
+    .search-bar-container {
+      width: 100%;
+      min-width: unset;
+    }
+  }
+}

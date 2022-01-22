@@ -1,0 +1,19 @@
+@import 'assets/styles/variable';
+
+@media screen and (max-width: 760px) {
+  .logo-container {
+    .logo {
+      width: 130px;
+      height: 25px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo-container {
+    .logo {
+      width: 110px;
+      height: 21px;
+    }
+  }
+}

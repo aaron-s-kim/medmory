@@ -15,7 +15,9 @@
     height: 150px;
     border: none;
     border-radius: 50%;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
   .user-info-container {
@@ -25,6 +27,10 @@
   }
 }
 
+.easy-user-profile-container {
+  font-size: 1.3em;
+}
+
 @media screen and (max-width: 680px) {
   .user-profile-container {
     .user-image {
@@ -32,9 +38,12 @@
       height: 120px;
     }
   }
+  .easy-user-profile-container {
+    font-size: 1.2em;
+  }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 560px) {
   .user-profile-container {
     display: flex;
     flex-direction: row;
@@ -51,6 +60,19 @@
       margin-left: 1em;
       text-align: start;
       gap: 0.5em;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .user-profile-container {
+    .user-image {
+      width: 80px;
+      height: 80px;
+    }
+
+    .user-info-container {
+      font-size: 0.9em;
     }
   }
 }

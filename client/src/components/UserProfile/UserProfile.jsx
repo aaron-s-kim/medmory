@@ -1,12 +1,18 @@
 import React from 'react';
 
+import EasyModeButton from 'components/EasyModeButton/EasyModeButton';
+
 import defaultAvatar from 'assets/images/avatar.png';
 
 import './userProfile.scss';
 
-const UserProfile = ({ user, viewMode }) => {
+const UserProfile = ({ user, viewMode, easyMode }) => {
   return (
-    <div className='user-profile-container'>
+    <div
+      className={`user-profile-container ${
+        easyMode && 'easy-user-profile-container'
+      }`}
+    >
       {user.imageUrl ? (
         <div
           className='user-image'
@@ -21,13 +27,11 @@ const UserProfile = ({ user, viewMode }) => {
         <h3>
           {user.firstName} {user.lastName}
         </h3>
-        <h3>{user.email}</h3>
         {!viewMode && (
-          <div>
-            <h3>
-              <strong>Easy mode: </strong> off
-            </h3>
-          </div>
+          <>
+            <h3>{user.email}</h3>
+            <EasyModeButton user={user} />
+          </>
         )}
       </div>
     </div>

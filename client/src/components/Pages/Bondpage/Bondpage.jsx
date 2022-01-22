@@ -1,26 +1,25 @@
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import axios from 'axios';
+
+import BondInfoSection from 'components/BondInfoSection/BondInfoSection';
+import BondUserList from 'components/BondUserList/BondUserList';
+
 import { StateContext, SetStateContext } from 'context/StateProvider';
 
-import logoImage from 'assets/images/logo.svg';
-import default_avatar from 'assets/images/avatar.png';
-
-import { getFilteredBondUsers } from 'utils/data-shape';
-
 import './bondpage.scss';
-import axios from 'axios';
 
 const Bondpage = ({ history }) => {
   const { isAuth, bond, user } = useContext(StateContext);
   const setState = useContext(SetStateContext);
-  
+
   const INITIAL_NEW_BOND_INPUT = {
     id: '',
     newBondName: '',
     newBondImageUrl: '',
     bondUsers: [],
-  }
-  const [ newBondInput, setNewBondInput ] = useState(INITIAL_NEW_BOND_INPUT);
+  };
+  const [newBondInput, setNewBondInput] = useState(INITIAL_NEW_BOND_INPUT);
   const { newBondName, newBondImageUrl } = newBondInput;
 
   const handleChangeOnNewBond = e => {
@@ -30,29 +29,27 @@ const Bondpage = ({ history }) => {
 
   const createNewBond = e => {
     e.preventDefault();
-    
+
     const reqBody = {
       name: newBondName,
       image_url: newBondImageUrl,
-    }
+    };
 
-      axios
-        .post('/bonds', reqBody)
-        .then(res => {
-          setState(prev => ({
-            ...prev,
-            bond: {
-              id: res.data.id,
-              name: res.data.name,
-              imageUrl: res.data.image_url,
-              bondUsers: [user],
-            }
-          }))
-        })
-        .catch(err => console.error(err));
-  }
-
-
+    axios
+      .post('/bonds', reqBody)
+      .then(res => {
+        setState(prev => ({
+          ...prev,
+          bond: {
+            id: res.data.id,
+            name: res.data.name,
+            imageUrl: res.data.image_url,
+            bondUsers: [user],
+          },
+        }));
+      })
+      .catch(err => console.error(err));
+  };
 
   if (!isAuth) return <Redirect to='/' />;
 
@@ -60,40 +57,8 @@ const Bondpage = ({ history }) => {
     <div className='bond-page-container'>
       {bond ? (
         <div className='show-bond-view'>
-          <div className='beside-bond-user-list'>
-            <img
-              src={bond.imageUrl ? bond.imageUrl : logoImage}
-              width='300px'
-              alt='bond'
-            />
-            <div className='bond-name-container'>
-              {isAuth && <h2>{bond.name}</h2>}
-              <div className='number-of-bond-users'>
-                <h4>{bond.bondUsers.length - 1} other people in this bond:</h4>
-              </div>
-            </div>
-          </div>
-          <div className='bond-user-list'>
-            <div className='inner-bond-user-list'>
-            {getFilteredBondUsers(user.id, bond.bondUsers).map(user => (
-              <div
-                key={user.id}
-                className='bond-user-container'
-                onClick={() => history.push(`/mypage/${user.id}`)}
-              >
-                <img
-                  src={user.imageUrl ? user.imageUrl : default_avatar}
-                  width='70px'
-                  alt='user'
-                />
-                <p>
-                  <strong>{`${user.firstName} ${user.lastName}`}</strong>
-                </p>
-                <p>Email: {user.email}</p>
-              </div>
-            ))}
-              </div>
-            </div>
+          <BondInfoSection bond={bond} />
+          <BondUserList user={user} bond={bond} history={history} />
         </div>
       ) : (
         <>

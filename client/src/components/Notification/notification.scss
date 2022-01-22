@@ -9,7 +9,7 @@
   gap: 1em;
   border-radius: 10px;
   height: 90px;
-  margin-bottom: -1em;
+  margin: -1em 0;
 
   .notification-option-container {
     display: flex;
@@ -40,5 +40,24 @@
         border-bottom: solid black 1px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .notification {
+    width: 70%;
+    margin: -1em auto 1em auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .notification {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .notification {
+    width: 90%;
   }
 }

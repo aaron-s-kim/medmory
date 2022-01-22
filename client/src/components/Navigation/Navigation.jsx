@@ -11,6 +11,7 @@ import './navigation.scss';
 const Navigation = ({ location }) => {
   const { user } = useContext(StateContext);
   const { pathname } = location;
+
   return (
     <div className='nav-container'>
       <div className='nav'>
@@ -18,22 +19,38 @@ const Navigation = ({ location }) => {
         <div className='link-group'>
           {user && (
             <>
-              <CustomLink
-                urlTo='/user-search'
-                linkName='Search'
-                matchingUrl={pathname === '/user-search'}
-              />
-              <CustomLink
-                urlTo={`/mypage/${user.id}`}
-                linkName='My page'
-                matchingUrl={pathname === `/mypage/${user.id}`}
-              />
-              <CustomLink
-                urlTo='/bond'
-                linkName='My bond'
-                matchingUrl={pathname === '/bond'}
-              />
-              <SignOutButton />
+              {user.easyMode ? (
+                <h1 className='easy-mode-indicator'>
+                  <i>EASY</i>
+                </h1>
+              ) : (
+                <>
+                  <CustomLink
+                    urlTo='/user-search'
+                    linkName='Search'
+                    matchingUrl={pathname === '/user-search'}
+                  >
+                    <i className='fas fa-search'></i>
+                  </CustomLink>
+                  <CustomLink
+                    urlTo={`/mypage/${user.id}`}
+                    linkName='My page'
+                    matchingUrl={pathname === `/mypage/${user.id}`}
+                  >
+                    <i className='fas fa-user'></i>
+                  </CustomLink>
+                  <CustomLink
+                    urlTo='/bond'
+                    linkName='My bond'
+                    matchingUrl={pathname === '/bond'}
+                  >
+                    <i className='fas fa-users'></i>
+                  </CustomLink>
+                </>
+              )}
+              <SignOutButton easyMode={user.easyMode}>
+                <i className='fas fa-sign-out'></i>
+              </SignOutButton>
             </>
           )}
         </div>

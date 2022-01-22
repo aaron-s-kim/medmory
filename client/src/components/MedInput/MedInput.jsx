@@ -47,6 +47,7 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
         value={name}
         onChange={handleChange}
         placeholder='Medication name'
+        autoComplete='off'
       />
 
       <input
@@ -56,7 +57,12 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
         onChange={handleChange}
         placeholder='Dosage'
       />
-      <select name='measure' onChange={handleChange} value={measure}>
+      <select
+        name='measure'
+        onChange={handleChange}
+        value={measure}
+        className='measure'
+      >
         <option value='mg' default>
           mg
         </option>
@@ -72,7 +78,12 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
         onChange={handleChange}
         placeholder='Quantity'
       />
-      <select name='pillType' onChange={handleChange} value={pillType}>
+      <select
+        name='pillType'
+        onChange={handleChange}
+        value={pillType}
+        className='type'
+      >
         <option value='tablet' default>
           Tablet(s)
         </option>
@@ -84,7 +95,7 @@ const MedInput = ({ id, setMedInputArr, addMedInput, numOfMedInput }) => {
         onClick={addMoreInput}
         className={isHidden ? 'add-med-input-btn-show' : 'add-med-input-btn'}
       >
-        <i class='fas fa-plus'></i>
+        <i className='fas fa-plus'></i>
       </span>
     </div>
   );
