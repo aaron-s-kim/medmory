@@ -7,11 +7,9 @@ import Bondpage from 'components/Pages/Bondpage/Bondpage';
 import UserSearchpage from 'components/Pages/UserSearchpage/UserSearchpage';
 import ViewUserpage from 'components/Pages/ViewUserpage/ViewUserpage';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
-import Notification from 'components/Notification/Notification';
 import Mypage from 'components/Pages/Mypage/Mypage';
-import Overlay from 'components/Overlay/Overlay';
 
-import { StateContext, SetStateContext } from './context/StateProvider';
+import { SetStateContext } from './context/StateProvider';
 
 import { getAuthUserData } from 'utils/data-fetch';
 
@@ -19,7 +17,6 @@ import 'App.scss';
 import Meddetailspage from 'components/Pages/Meddetailspage/Meddetailspage';
 
 const App = () => {
-  const { pendingInvite, isAuth } = useContext(StateContext);
   const setState = useContext(SetStateContext);
 
   useEffect(() => {
@@ -29,9 +26,7 @@ const App = () => {
   return (
     <div className='app'>
       <Navigation />
-      {/* {pendingInvite && <Notification />} */}
       <div className='page-container'>
-        {/* {isAuth && <Overlay background={true} />} */}
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route exact path='/user-search' component={UserSearchpage} />
@@ -43,7 +38,6 @@ const App = () => {
           <Route exact path='/graphpage' component={Graphpage} />
         </Switch>
       </div>
-      {/* <footer className='footer'>MedMory</footer> */}
     </div>
   );
 };
