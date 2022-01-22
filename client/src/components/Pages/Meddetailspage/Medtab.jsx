@@ -17,4 +17,4 @@ const Medtab = (props) => {
     </div>
   );
 };
-export default Medtab;
+export default Medtab; // test
