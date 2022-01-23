@@ -3,7 +3,7 @@
 .sign-in-box {
   // margin-top: auto;
   // margin-bottom: auto;
-  margin-left: 15%;
+  margin-left: calc(1em + 10%);
   width: 350px;
   height: 300px;
   border-radius: 5px;
@@ -44,14 +44,19 @@
         }
       }
     }
+    .sign-in-forgot {
+      font-size: 1em;
+      font-weight: bold;
+    }
 
     .sign-in-btn {
       @include button-effect;
       width: 230px;
+      font-weight: bold;
       padding: 0.5em;
       border: none;
       background-color: $sub-main;
-      border-radius: 1em;
+      border-radius: 0.75em;
       margin-top: 1em;
       color: white;
       font-size: 1.5em;

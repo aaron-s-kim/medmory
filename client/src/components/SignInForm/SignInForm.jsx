@@ -42,7 +42,7 @@ const SignInForm = () => {
     <div className='sign-in-box'>
       <form className='sign-in-form' onSubmit={handleSubmit}>
         <div className='sign-in-title'>
-          <h2>Please Sign in</h2>
+          <h2>Please sign in</h2>
         </div>
         <div className='sign-in-input-box'>
           <input
@@ -62,8 +62,11 @@ const SignInForm = () => {
             placeholder='Password'
           />
         </div>
+        <div className='sign-in-forgot'>
+          Forgot password?
+        </div>
         <button type='submit' className='sign-in-btn'>
-          Sign In
+          Sign in
         </button>
       </form>
     </div>

@@ -12,17 +12,8 @@
     position: relative;
     margin-top: 2em;
     margin-bottom: 2em;
-    background-color: rgba(238, 238, 238, 0.8);
+    // background-color: rgba(238, 238, 238, 0.8);
     height: calc(90vh - 70px - 4em);
-  }
-  .sign-in-page-container {
-    // margin-top: 10vh;
-    // background-color: rgba(60, 202, 227, 0.452);
-    // height: 50vh;
-    color: white;
-    padding: 0.5em;
-
-
   }
 }
 
@@ -32,26 +23,8 @@
 
     .page-container {
       height: calc(100vh - 70px);
-      margin: 0;
-      background-color: rgba(238, 238, 238, 0.6);
-    }
-
-    .sign-in-page-container {
-      margin-top: 10vh;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: rgba(60, 202, 227, 0.452);
-      height: fit-content;
-      width: 80%;
-      max-width: 384px;
-      color: white;
-      padding: 0.5em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-  
-  
+      margin: 0px;
+      // background-color: rgba(238, 238, 238, 0.6);
     }
   }
 }
