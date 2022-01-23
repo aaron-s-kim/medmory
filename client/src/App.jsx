@@ -16,7 +16,7 @@ import { getAuthUserData } from 'utils/data-fetch';
 import 'App.scss';
 import Meddetailspage from 'components/Pages/Meddetailspage/Meddetailspage';
 
-const App = ({ user }) => {
+const App = () => {
   const setState = useContext(SetStateContext);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const App = ({ user }) => {
   return (
     <div className='app'>
       <Navigation />
-      <div className={user ? 'page-container' : 'sign-in-page-container'}>
+      <div className='page-container'>
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route exact path='/user-search' component={UserSearchpage} />

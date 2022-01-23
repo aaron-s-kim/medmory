@@ -1,10 +1,42 @@
 @import 'assets/styles/variable';
 .homepage {
-  padding-top: 150px;
+  // padding-top: px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.sign-in-container {
+  width: fit-content;
+  margin-top: 15vh;
+  color: white;
+  padding: 0.5em;
+  // margin-bottom: auto;
+  // margin-top: auto;
 }
 
 @media screen and (max-width: 760px) {
   .homepage {
-    padding-top: 180px;
+    // padding-top: 180px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: left;
+  
+    .sign-in-container {
+      width: fit-content;
+      margin-top: 10vh;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(60, 202, 227, 0.452);
+      height: fit-content;
+      width: 80%;
+      max-width: 384px;
+      color: white;
+      padding: 0.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  
+    }
   }
 }
