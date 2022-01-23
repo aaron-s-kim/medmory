@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
 import { SetStateContext } from '../../context/StateProvider';
-
+import { setItemLocalStorage } from 'utils/data-persist';
 import './signInForm.scss';
 
 const SignInForm = () => {
@@ -29,9 +29,11 @@ const SignInForm = () => {
         setState({
           ...res.data,
           isAuth: true,
-          isLoading: false,
         });
-        localStorage.setItem('userId', res.data.user.id);
+        setItemLocalStorage({
+          ...res.data,
+          isAuth: true,
+        });
       })
       .catch(err => console.error(err));
   };
