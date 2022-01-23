@@ -9,6 +9,7 @@ export const SetStateContext = React.createContext();
 export const INITIAL_STATE = {
   isLoading: true,
   isAuth: false,
+  // isAuth: localStorage.getItem('userId') ? true : false,
   user: null,
   userMedGroupArr: [],
   bond: null,
@@ -22,6 +23,9 @@ const StateProvider = ({ children }) => {
   let bondInviteChannel;
 
   useEffect(() => {
+    getAuthUserData(setState);
+    const userId = localStorage.getItem('userId');
+    console.log(userId);
     createSubscription();
 
     return () => {

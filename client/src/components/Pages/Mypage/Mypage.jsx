@@ -19,7 +19,7 @@ import { getAuthUserData } from 'utils/data-fetch';
 import './mypage.scss';
 
 const Mypage = ({ history, match }) => {
-  const { isAuth, user, userMedGroupArr, bond, pendingInvite } =
+  const { isLoading, isAuth, user, userMedGroupArr, bond, pendingInvite } =
     useContext(StateContext);
   const setState = useContext(SetStateContext);
 
