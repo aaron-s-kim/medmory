@@ -12,6 +12,7 @@ const SignInForm = () => {
     email: '',
     password: '',
   };
+  
   const [inputState, setInputState] = useState(INITIAL_INPUT);
   const { email, password } = inputState;
 

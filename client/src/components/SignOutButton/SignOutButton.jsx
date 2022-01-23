@@ -1,11 +1,7 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
 
-import {
-  StateContext,
-  SetStateContext,
-  INITIAL_STATE,
-} from 'context/StateProvider';
+import { StateContext, SetStateContext } from 'context/StateProvider';
 import { clearLocalStorage } from 'utils/data-persist';
 
 import './signOutButton.scss';
@@ -18,8 +14,14 @@ const SignOutButton = ({ children, easyMode }) => {
     axios
       .delete(`/auth/sign-out/${user.id}`)
       .then(() => {
-        clearLocalStorage()
-        setState(INITIAL_STATE);
+        clearLocalStorage();
+        setState({
+          isAuth: false,
+          user: null,
+          userMedGroupArr: [],
+          bond: null,
+          pendingInvite: null,
+        });
       })
       .catch(err => console.log(err.response.data.error));
   };
