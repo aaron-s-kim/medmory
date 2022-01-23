@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get 'auth/user', to: 'users#get_auth_user_data'
   post 'auth/sign-in', to: 'users#sign_in'
   delete 'auth/sign-out/:user_id', to: 'users#sign_out'
+  
+  mount ActionCable.server => '/cable'
 end
