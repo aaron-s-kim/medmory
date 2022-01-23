@@ -2,19 +2,16 @@
 
 .nav-container {
   width: 100%;
-  padding: 1em 3em;
+  padding: 1em 2em;
   background-color: #fff;
   height: 70px;
-  position: fixed-top;
-
   
   .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    margin-left: 5%;
-    width: 100%;
+    width: 80%;
     // max-width: 1024px;
 
     .link-group {
@@ -29,34 +26,14 @@
 }
 
 @media screen and (max-width: 760px) {
-  // .nav-container {
-  //   padding: 1.2em 1em;
-  // }
-}
-
-@media screen and (max-width: 680px) {
   .nav-container {
     padding: 1.4em 1em;
-    .nav {
-      margin: 0 auto;
-    }
   }
 }
 
 @media screen and (max-width: 560px) {
   .nav-container {
-    padding: 1.7em 2em;
-    .nav {
-      margin: 0 auto;
-    }
+    padding: 1.7em 1.5em;
   }
 }
 
-@media screen and (max-width: 380px) {
-  .nav-container {
-    padding: 1.7em 1.5em;
-    .nav {
-      margin: 0 auto;
-    }
-  }
-}
