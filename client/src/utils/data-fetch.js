@@ -7,6 +7,7 @@ export const getAuthUserData = setState => {
       setState({
         ...res.data,
         isAuth: true,
+        isLoading: false,
       })
     )
     .catch(err => console.log(err.response.data.error));

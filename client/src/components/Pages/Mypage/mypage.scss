@@ -77,9 +77,18 @@
   }
 }
 
+@media screen and (max-width: 680px) {
+  .mypage {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 420px) {
   .mypage {
     .user-med-group-container {
+      padding: 1em 0;
+    }
+    .user-section {
       padding: 1em 0;
     }
   }

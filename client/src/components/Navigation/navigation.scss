@@ -5,13 +5,13 @@
   padding: 1em 2em;
   background-color: #fff;
   height: 70px;
-  
+
   .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
     // max-width: 1024px;
 
     .link-group {
@@ -21,6 +21,13 @@
       .easy-mode-indicator {
         margin-right: 1em;
       }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .nav-container {
+    .nav {
+      width: 100%;
     }
   }
 }
@@ -36,4 +43,3 @@
     padding: 1.7em 1.5em;
   }
 }
-

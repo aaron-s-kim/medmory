@@ -8,17 +8,17 @@ import UserSearchpage from 'components/Pages/UserSearchpage/UserSearchpage';
 import ViewUserpage from 'components/Pages/ViewUserpage/ViewUserpage';
 import Graphpage from './components/Pages/Graphpage/Graphpage';
 import Mypage from 'components/Pages/Mypage/Mypage';
+import Meddetailspage from 'components/Pages/Meddetailspage/Meddetailspage';
 
 import { SetStateContext } from './context/StateProvider';
 
 import { getAuthUserData } from 'utils/data-fetch';
 
 import 'App.scss';
-import Meddetailspage from 'components/Pages/Meddetailspage/Meddetailspage';
 
 const App = () => {
   const setState = useContext(SetStateContext);
-
+  console.log()
   useEffect(() => {
     getAuthUserData(setState);
   }, []);
