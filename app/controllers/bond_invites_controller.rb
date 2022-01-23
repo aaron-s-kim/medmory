@@ -4,6 +4,7 @@ class BondInvitesController < ApplicationController
     existing_user_pending_invite = BondInvite.where(user_id: bond_invite_params[:user_id]).destroy_all
 
     if bond_invite.save
+      ActionCable.server.broadcast 'bond_invites_channel', { bondInvite: bond_invite }
       render json: bond_invite
     else
       render json: { error: "Bond invite cannot be created."}
