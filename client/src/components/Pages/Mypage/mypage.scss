@@ -30,6 +30,7 @@
     align-items: center;
   }
 }
+
 @media screen and (max-width: 1024px) {
   .easy-mypage {
     width: 80%;
@@ -48,7 +49,7 @@
 @media screen and (max-width: 760px) {
   .mypage {
     height: calc(100vh - 70px);
-    width: 90%;
+    width: 100%;
     .user-section {
       padding-right: 0;
     }
@@ -74,12 +75,6 @@
     .user-med-group-container {
       overflow-y: unset;
     }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .mypage {
-    width: 100%;
   }
 }
 

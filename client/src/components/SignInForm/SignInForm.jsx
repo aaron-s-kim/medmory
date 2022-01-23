@@ -25,12 +25,14 @@ const SignInForm = () => {
 
     axios
       .post('/auth/sign-in', reqBody)
-      .then(res =>
+      .then(res => {
         setState({
           ...res.data,
           isAuth: true,
-        })
-      )
+          isLoading: false,
+        });
+        localStorage.setItem('userId', res.data.user.id);
+      })
       .catch(err => console.error(err));
   };
 
@@ -38,6 +40,7 @@ const SignInForm = () => {
     const { value, name } = e.target;
     setInputState({ ...inputState, [name]: value });
   };
+
   return (
     <div className='sign-in-box'>
       <form className='sign-in-form' onSubmit={handleSubmit}>
@@ -62,9 +65,7 @@ const SignInForm = () => {
             placeholder='Password'
           />
         </div>
-        <div className='sign-in-forgot'>
-          Forgot password?
-        </div>
+        <div className='sign-in-forgot'>Forgot password?</div>
         <button type='submit' className='sign-in-btn'>
           Sign in
         </button>
