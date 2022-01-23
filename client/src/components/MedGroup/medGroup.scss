@@ -2,13 +2,9 @@
 
 .med-group-containter {
   @include med-group-property;
-  // background-color: rgba(238, 238, 238, 0.9); // rgba(60, 202, 227, 0.6);
-  background-color: rgba(99, 206, 225, 0.852);
-  // background-color: rgba(60, 202, 227, 0.852);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 
   .med-group-name {
-    color: white; //rgba(60, 202, 227, 0.6);
+    // color: white; //rgba(60, 202, 227, 0.6);
     text-shadow: 0 0 2px $dark-blue;
     font-size: 1.3em;
     width: 100%;
@@ -16,18 +12,19 @@
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
     // border-bottom: solid #01649e 2px;
-    border-bottom: solid white 2px;
+    border-bottom: solid #eee 2px;
   }
 
   .message-taken {
-    color: white;
+    // color: white;
     // text-shadow: 0 0 1px $dark-blue;
     font-weight: bold;
     font-size: 1.1em;
     text-align: center;
     margin: 0.5em 0;
+
     .fa-check-circle {
-      color: #008e6d;
+      // color: #008e6d;
       color: white;
       font-size: 1.2em;
     }
@@ -54,7 +51,8 @@
       border: none;
       border-radius: 4px;
       background-color: #009b12;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+        0 3px 10px 0 rgba(0, 0, 0, 0.19);
       padding: 0.4em 1em;
       font-weight: bold;
       color: #eee;
@@ -73,20 +71,21 @@
     .med-group-edit-btn {
       @include med-group-button-propery;
       background-color: $lighter-dark-blue;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+        0 3px 10px 0 rgba(0, 0, 0, 0.19);
       &:hover {
         background-color: $dark-blue;
       }
-
     }
     .med-group-detail-btn {
       @include med-group-button-propery;
       background-color: $orange-needle;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+        0 3px 10px 0 rgba(0, 0, 0, 0.19);
       &:hover {
         background-color: $sub-main;
       }
-      
+
       // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     }
   }

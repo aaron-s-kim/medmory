@@ -7,6 +7,7 @@ export const StateContext = React.createContext();
 export const SetStateContext = React.createContext();
 
 export const INITIAL_STATE = {
+  isLoading: true,
   isAuth: false,
   user: null,
   userMedGroupArr: [],
@@ -31,7 +32,7 @@ const StateProvider = ({ children }) => {
   const createSubscription = () => {
     bondInviteChannel = cable.subscriptions.create(
       { channel: 'BondInvitesChannel' },
-      { received: res => getAuthUserData(setState) }
+      { received: () => getAuthUserData(setState) }
     );
   };
 

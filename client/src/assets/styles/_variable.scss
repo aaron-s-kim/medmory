@@ -13,7 +13,6 @@ $lighter-dark-blue: #1c6ead;
 $dark-blue: #01649e;
 $orange-needle: #ff8b1f;
 
-
 @mixin button-effect {
   font-size: 1em;
   cursor: pointer;
@@ -29,9 +28,13 @@ $orange-needle: #ff8b1f;
   width: 90%;
   padding: 1em 1em;
   borer: none;
-  background-color: $bright;
   border-radius: 3px;
   margin-bottom: 1em;
+  // background-color: rgba(238, 238, 238, 0.9); // rgba(60, 202, 227, 0.6);
+  background-color: rgba(99, 206, 225, 0.852);
+  // background-color: rgba(60, 202, 227, 0.852);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  color: #eee;
 }
 
 @mixin easy-med-group-property {
