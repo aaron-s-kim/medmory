@@ -59,12 +59,12 @@ const MedGroup = ({
     >
       <h3 className='med-group-name'>{name}</h3>
       {isCompliedToday ? (
-        <p className='message-taken'>Status: Confirmed ✅ </p>
+        <p className='message-taken'>Confirmed <i className="fas fa-check-circle fa-fw"> </i></p>
       ) : (
         <div className='message-not-taken-container'>
-          <p className='message-not-taken'>Status: Unconfirmed</p>
+          {/* <p className='message-not-taken'>Status: Unconfirmed </p> */}
           <p className='take-btn' onClick={takeMedGroup}>
-            Confirm
+            Take Medication <i className="far fa-check-circle fa-fw"></i>
           </p>
         </div>
       )}

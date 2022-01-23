@@ -9,11 +9,16 @@ $bright: rgb(241, 240, 240);
 $outline: rgb(177, 172, 172);
 $checked: #12b104;
 
+$lighter-dark-blue: #1c6ead;
+$dark-blue: #01649e;
+$orange-needle: #ff8b1f;
+
+
 @mixin button-effect {
   font-size: 1em;
   cursor: pointer;
   &:hover {
-    opacity: 0.9;
+    // opacity: 0.9;
   }
   &:active {
     opacity: 1;
