@@ -76,7 +76,6 @@ good_guy = User.create(
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/ali.jpeg",
   bond_id: 1,
 )
-)
 
 smart_guy = User.create(
   first_name: 'Smarty',
