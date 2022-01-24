@@ -12,9 +12,7 @@ const Homepage = () => {
   if (user) return <Redirect to={`/mypage/${user.id}`} />;
   return (
     <div className='homepage'>
-      <div className='sign-in-container'>
-        <SignInForm />
-      </div>
+      <SignInForm />
     </div>
   );
 };
