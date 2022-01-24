@@ -37,7 +37,7 @@ grandpa = User.create(
   first_name: 'Galiber',
   last_name: 'Lee',
   phone_number: ENV['AARON_NUMBER'],
-  email: 'Galiber.lee@squidy.com',
+  email: 'galiber.lee@squidy.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/grandpa.jpeg",
 )
@@ -55,7 +55,7 @@ poor_girl = User.create(
 bad_girl = User.create(
   first_name: 'Stacy',
   last_name: 'Robert',
-  email: 'Stacy.robert@example.com',
+  email: 'stacy.robert@example.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/bad-girl.jpeg",
 )
@@ -63,7 +63,7 @@ bad_girl = User.create(
 bad_guy = User.create(
   first_name: 'Oliver',
   last_name: 'Greedy',
-  email: 'Oliver.Greedy@badbad.com',
+  email: 'oliver.greedy@badbad.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/bad-guy.jpeg",
 )
@@ -71,7 +71,7 @@ bad_guy = User.create(
 good_guy = User.create(
   first_name: 'Ali',
   last_name: 'Express',
-  email: 'Ali.Express@strong.com',
+  email: 'ali.express@strong.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/ali.jpeg",
   bond_id: 1,
@@ -80,7 +80,7 @@ good_guy = User.create(
 smart_guy = User.create(
   first_name: 'Smarty',
   last_name: 'Lee',
-  email: 'Smarty.Lee@UbcAndSfu.com',
+  email: 'smarty.lee@UbcAndSfu.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/smart-guy.jpeg",
   bond_id: 1,
