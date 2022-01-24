@@ -4,7 +4,7 @@ class BondInvitesController < ApplicationController
     existing_user_pending_invite = BondInvite.where(user_id: bond_invite_params[:user_id]).destroy_all
 
     if bond_invite.save
-      ActionCable.server.broadcast 'bond_invites_channel', { bondInvite: bond_invite }
+      ActionCable.server.broadcast 'bond_invites_channel', { bondInviteCreated: bond_invite }
       render json: bond_invite
     else
       render json: { error: "Bond invite cannot be created."}
@@ -15,6 +15,7 @@ class BondInvitesController < ApplicationController
     bond_invite = BondInvite.find_by(id: params[:id])
 
     if bond_invite.destroy
+      ActionCable.server.broadcast 'bond_invites_channel', { bondInviteDeleted: bond_invite }
       render json: { message: "Bond invite has been deleted"}
     else
       render json: { error: bond_invite.errors.full_messages }, status: 422

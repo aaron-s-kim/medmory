@@ -27,7 +27,7 @@ const SearchResultContainer = ({ userResult, userBond, searchWord }) => {
 
     axios
       .post('/bond_invites', reqBody)
-      .then(() => console.log('invite'))
+      .then(() => {})
       .catch(err => console.log(err.response.data.error));
 
     setUserResultLocalState(prevState => {
