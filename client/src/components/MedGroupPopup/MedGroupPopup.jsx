@@ -151,7 +151,7 @@ const AddMedPopup = ({
           />
         </div>
         <div className={'med-group-info-container'}>
-          <strong>Detail</strong>
+          {/* <strong>Detail</strong> */}
           <input
             className='med-group-detail-input'
             name='newMedGroupDetail'
@@ -200,8 +200,8 @@ const AddMedPopup = ({
 
           {!bond && <small>You are not bonded yet</small>}
         </div>
-        <strong>Registered medications</strong>
         <div className='med-table'>
+        <strong>Registered medications</strong>
           <div className='med-table-head'>
             <strong>Name</strong>
             <strong>Dosage</strong>
