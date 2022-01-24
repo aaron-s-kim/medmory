@@ -27,7 +27,7 @@ son = User.create(
     first_name: 'Jason',
     last_name: 'Lee',
     phone_number: ENV['JEFF_NUMBER'],
-    email: 'json.winner@squidy.com',
+    email: 'jason.winner@squidy.com',
     password: '123',
     image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/son.jpeg",
     bond_id: 1
@@ -55,7 +55,6 @@ poor_girl = User.create(
 bad_girl = User.create(
   first_name: 'Stacy',
   last_name: 'Robert',
-  phone_number: ENV['CONNOR_NUMBER'],
   email: 'Stacy.robert@example.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/bad-girl.jpeg",
@@ -64,16 +63,33 @@ bad_girl = User.create(
 bad_guy = User.create(
   first_name: 'Oliver',
   last_name: 'Greedy',
-  phone_number: ENV['CONNOR_NUMBER'],
   email: 'Oliver.Greedy@badbad.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/bad-guy.jpeg",
 )
 
+good_guy = User.create(
+  first_name: 'Ali',
+  last_name: 'Express',
+  email: 'Ali.Express@strong.com',
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/ali.jpeg",
+  bond_id: 1,
+)
+)
+
+smart_guy = User.create(
+  first_name: 'Smarty',
+  last_name: 'Lee',
+  email: 'Smarty.Lee@UbcAndSfu.com',
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/smart-guy.jpeg",
+  bond_id: 1,
+)
+
 doc = User.create(
   first_name: 'Hamilton',
   last_name: 'Organer',
-  phone_number: ENV['CONNOR_NUMBER'],
   email: 'bad.doctor@organsell.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/doc.jpeg",
@@ -82,7 +98,6 @@ doc = User.create(
 rec = User.create(
   first_name: 'rectang',
   last_name: 'gang',
-  phone_number: ENV['CONNOR_NUMBER'],
   email: 'rectang.gang@gangang.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/rec.jpeg",
@@ -91,19 +106,17 @@ rec = User.create(
 cir = User.create(
   first_name: 'circle',
   last_name: 'gang',
-  phone_number: ENV['CONNOR_NUMBER'],
   email: 'circle.gang@gangang.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/circle.jpeg",
 )
 
-cir = User.create(
-  first_name: 'circle',
+tri = User.create(
+  first_name: 'triangle',
   last_name: 'gang',
-  phone_number: ENV['CONNOR_NUMBER'],
-  email: 'circle.gang@gangang.com',
+  email: 'triangle.gang@gangang.com',
   password: '123',
-  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/circle.jpeg",
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/tri.jpeg",
 )
 
 15.times do
@@ -113,85 +126,43 @@ cir = User.create(
     email: Faker::Internet.user[:email],
     password: '123',
     image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}",
-    bond_id: rand(1..2)
+    bond_id: 2
   )
 end
-
-30.times do
-  User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.user[:email],
-    password: '123',
-    image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}",
-  )
-end
-
-User.create(
-  first_name: 'Jason',
-  last_name: 'Kim',
-  email: 'json.kim@dosdps.com',
-  password: '123'
-)
-
-User.create(
-  first_name: 'Yarovski',
-  last_name: 'Robert',
-  email: 'Yarovski.Robert@vdemopru.com',
-  password: '123'
-)
-
-User.create(
-  first_name: 'Jesse',
-  last_name: 'Robert',
-  email: 'Jesse.Robert@idkwtosa.com',
-  password: '123'
-)
 
 puts "Creating med groups..."
 
 med_group1 = MedGroup.create(
   name: 'Life saver',
   detail: 'take daily',
-  user_id: jeff.id
+  user_id: son.id
 )
 
 med_group2 = MedGroup.create(
   name: 'Vitamins',
   detail: 'take daily',
   compliance_time: 10,
-  user_id: aaron.id,
-  message_to: jeff.id
+  user_id: son.id,
 )
 
 med_group3 = MedGroup.create(
   name: 'Vitamins',
   detail: 'take daily',
   compliance_time: 10,
-  user_id: connor.id,
-  message_to: aaron.id
+  user_id: grandpa.id,
 )
 
 med_group4 = MedGroup.create(
-  name: 'The Drugs',
-  detail: 'take twice a day',
-  compliance_time: 12,
-  user_id: aaron.id,
-  message_to: jeff.id
-)
-
-med_group5 = MedGroup.create(
   name: 'Hypertension Medications',
-  detail: 'take once a day',
-  compliance_time: 12,
-  user_id: aaron.id,
-  message_to: connor.id
+  detail: 'take daily',
+  compliance_time: 13,
+  user_id: grandpa.id,
 )
 
 puts "Creating meds..."
 
 Med.create(
-  name: 'life saver pill 1',
+  name: 'pill 1',
   dosage: 120,
   measure: 'mcg',
   num: 1,
@@ -200,7 +171,7 @@ Med.create(
 )
 
 Med.create(
-  name: 'life saver pill 2',
+  name: 'pill 2',
   dosage: 10,
   measure: 'mcg',
   num: 1,
@@ -228,7 +199,7 @@ Med.create(
 
 Med.create(
   name: 'Vitamin C',
-  dosage: 500,
+  dosage: 1000,
   measure: 'mg',
   num: 1,
   pill_type: 'tablet',
@@ -236,15 +207,15 @@ Med.create(
 )
 
 Med.create(
-  name: 'Multi vitamins',
+  name: 'Omega 3',
   num: 1,
-  pill_type: 'capsule',
+  pill_type: 'softgel',
   med_group_id: med_group3.id
 )
 
 Med.create(
-  name: 'Marine Stimpack',
-  dosage: 500,
+  name: 'Amlodipine',
+  dosage: 200,
   measure: 'mg',
   num: 1,
   pill_type: 'tablet',
@@ -252,11 +223,11 @@ Med.create(
 )
 
 Med.create(
-  name: 'NZT-48',
-  dosage: 500,
+  name: 'Perindopril',
+  dosage: 10,
   measure: 'mg',
   num: 1,
-  pill_type: 'pill',
+  pill_type: 'tablet',
   med_group_id: med_group4.id
 )
 
@@ -265,7 +236,7 @@ puts "Creating med group histories..."
 for i in 1..23 do
   MedHistory.create(
   med_group_id: med_group1.id
-).update(created_at: "Jan #{i} 2022 #{rand(7..22)}:00")
+).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
 for i in 1..23 do
@@ -274,27 +245,15 @@ for i in 1..23 do
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..23 do
+for i in 1..22 do
   MedHistory.create(
   med_group_id: med_group3.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..23 do
+for i in 1..22 do
   MedHistory.create(
   med_group_id: med_group4.id
-).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
-end
-
-for i in 1..15 do
-  MedHistory.create(
-  med_group_id: med_group5.id
-).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
-end
-
-for i in 18..19 do
-  MedHistory.create(
-  med_group_id: med_group5.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
