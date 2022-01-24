@@ -34,8 +34,6 @@ const Graphpage = (props) => {
   const [datastate, setDatastate] = useState([]);
   const color = ["#3BAFE5", "#FE7701", "#8884d8", "#82ca9d"] // blue, orange, purple, green
 
-  console.log(medGroupObj);
-
   useEffect(() => {
     const promises = userMedGroupArr.map(medGroupItem => {
       const medGroupUrl = `/med_groups/${medGroupItem.id}`;
@@ -122,7 +120,7 @@ const Graphpage = (props) => {
         />
 
         <ReferenceLine y={complianceTime} label="Compliance Time" stroke="red" strokeWidth={1} strokeDasharray="10 10" />
-        <Legend verticalAlign="top" />
+        {/* <Legend verticalAlign="top" /> */}
         <Tooltip />
 
         {/* <defs>
