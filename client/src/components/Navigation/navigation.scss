@@ -12,14 +12,13 @@
     align-items: center;
     margin: 0 auto;
     width: 90%;
-    // max-width: 1024px;
 
     .link-group {
       display: flex;
       align-items: center;
 
       .easy-mode-indicator {
-        margin-right: 1em;
+        margin: 0 1em;
       }
     }
   }
