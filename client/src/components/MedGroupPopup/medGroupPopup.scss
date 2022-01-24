@@ -16,10 +16,7 @@
 
 @mixin med-group-input-property {
   border: none;
-  border-bottom: solid grey 2px;
   background-color: rgb(255, 255, 255);
-  margin-top: 0.5em;
-  margin-bottm: 0.5em;
   &:focus {
     outline: none;
     border-bottom: solid $sub-main 2px;
@@ -38,59 +35,61 @@
   overflow-y: scroll;
   left: 20vw;
   top: 12vh;
-  
 
   .med-group-info-container {
     display: flex;
     justify-content: left;
+    align-items: center;
     gap: 1em;
     color: #8e8e8e;
-    font-family: 'Montserrat', sans-serif;
     padding-left: 2em;
     padding-top: 1em;
-    // margin-bottom: 0.5em;
+    text-align: center;
 
+    > input {
+      font-size: 1em;
+    }
+    > select {
+      font-size: 1em;
+    }
     .med-group-name-input {
       font-size: 1.5em;
       padding: 0.2em;
       width: 100%;
-      color: #8e8e8e;
-      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+      color: $dark;
       @include med-group-input-property;
       background-color: transparent;
-      ;
+      border-bottom: solid grey 2px;
     }
 
     .med-group-detail-input {
       width: 100%;
-      padding-left:0.2em;
-      color: #8e8e8e;
+      padding-left: 0.2em;
+      color: $dark;
       overflow-x: scroll;
-      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
       @include med-group-input-property;
       background-color: transparent;
     }
 
     .med-group-compliance-time-input {
-      width: 10%;
+      width: 150px;
       padding-left: 1em;
-      color: #8e8e8e;
-      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+      color: $dark;
+      vertical-align: middle;
       @include med-group-input-property;
       background-color: transparent;
     }
 
     .med-group-care-taker-input {
       padding-left: 1em;
-      color: #8e8e8e;
-      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+      color: $dark;
       @include med-group-input-property;
       background-color: transparent;
     }
   }
 
   .med-table {
-    color: #8e8e8e;
+    color: $dark;
     margin: 0.6em 0;
     margin-top: 2em;
     display: flex;
@@ -102,13 +101,11 @@
       // background-color: $main;
       text-align: center;
       margin-top: 1em;
-      padding-left: 1em;
       border-bottom: 2px solid #8e8e8e;
       > strong {
         margin: 0.3em;
       }
     }
-
   }
 
   .save-med-group-btn-container {
@@ -124,7 +121,7 @@
       background-color: $orange-needle;
       padding: 0.5em;
       &:hover {
-        background-color: $sub-main
+        background-color: $sub-main;
       }
     }
   }
@@ -137,7 +134,6 @@
       font-weight: bold;
       @include med-group-popup-button;
       @include button-effect;
-    
     }
   }
 }
@@ -302,7 +298,6 @@
     padding: 2em 0.3em;
 
     .med-group-info-container {
-  
     }
   }
 }
