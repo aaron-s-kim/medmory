@@ -6,45 +6,44 @@ import { StateContext } from '../../../context/StateProvider';
 
 import './meddetailspage.scss';
 
-const Meddetailspage = (props) => {
+const Meddetailspage = props => {
   const { isAuth, user, userMedGroupArr } = useContext(StateContext);
   const [currentTab, setCurrentTab] = useState(-1);
   const medGroupId = props.location.medGroupId;
 
-  const handleClick = e => { setCurrentTab(e) };
+  const handleClick = e => {
+    setCurrentTab(e);
+  };
 
   // clicking History from Mypage selects correct tab
-  useEffect(() => 
-    userMedGroupArr.forEach((medGroupItem, i) => {
-      if (medGroupId === medGroupItem.id) handleClick(i)
-    }),
-  []);
+  useEffect(
+    () =>
+      userMedGroupArr.forEach((medGroupItem, i) => {
+        if (medGroupId === medGroupItem.id) handleClick(i);
+      }),
+    []
+  );
 
   return (
     <div className='meddetailspage'>
-
       <h2>Medication Compliance History</h2>
-      <div className="tab">
+      <div className='tab'>
         {userMedGroupArr.map((medGroupItem, i) => (
-          <button
+          <p
             key={medGroupItem.name}
             className={currentTab === i ? 'active' : ''}
             onClick={() => handleClick(i)}
           >
             {medGroupItem.name}
-          </button>
-          ))
-        }
+          </p>
+        ))}
       </div>
 
-      <div className="tabcontent">
-        {currentTab !== -1 &&
-          <Medtab
-            medGroupObj={userMedGroupArr[currentTab]}
-          />
-        }
+      <div className='tabcontent'>
+        {currentTab !== -1 && (
+          <Medtab medGroupObj={userMedGroupArr[currentTab]} />
+        )}
       </div>
-
     </div>
   );
 };
