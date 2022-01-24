@@ -94,7 +94,7 @@ const Mypage = ({ history, match }) => {
                 {...medGroupItem}
                 history={history}
                 setMedgroupToDisplay={setMedgroupToDisplay}
-                // viewMode={viewMode && userToView}
+                viewMode={viewMode && userToView}
               />
             ))
           : userMedGroupArr.length > 0 &&
