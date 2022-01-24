@@ -10,12 +10,14 @@
     width: 100%;
     text-align: center;
     padding-bottom: 0.5em;
-    border-bottom: solid #eee 2px;
+    border-bottom: solid white 2px;
   }
 
   .add-med-group-btn {
     @include med-group-button-propery;
     margin-top: 1em;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+         0 3px 10px 0 rgba(0, 0, 0, 0.19);
     &:hover {
       background-color: $sub-main;
     }
@@ -28,6 +30,7 @@
     font-size: 1.2em;
     padding: 0.4em 2em;
     width: 50%;
+
   }
 }
 
