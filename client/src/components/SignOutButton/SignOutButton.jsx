@@ -30,8 +30,8 @@ const SignOutButton = ({ children, easyMode }) => {
       onClick={signOut}
       className={`sign-out-button ${easyMode && 'easy-sign-out-btn'}`}
     >
-      {children}
       <span className='sign-out-name'>Sign out</span>
+      {children}
     </div>
   );
 };
