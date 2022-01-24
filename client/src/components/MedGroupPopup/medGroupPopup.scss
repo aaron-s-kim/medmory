@@ -11,12 +11,15 @@
   padding: 0.3em;
   border-radius: 3px;
   border: none;
+  color: #eee;
 }
 
 @mixin med-group-input-property {
   border: none;
-  border-bottom: solid grey 1px;
-  background-color: #eee;
+  border-bottom: solid grey 2px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 0.5em;
+  margin-bottm: 0.5em;
   &:focus {
     outline: none;
     border-bottom: solid $sub-main 2px;
@@ -26,63 +29,103 @@
 .med-group-popup {
   z-index: 999;
   position: fixed;
-  background-color: $bright;
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 2em 1em;
   border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   width: 60vw;
-  height: 60vh;
+  height: 70vh;
   overflow-y: scroll;
   left: 20vw;
-  top: 15vh;
+  top: 12vh;
+  
 
   .med-group-info-container {
     display: flex;
+    justify-content: left;
     gap: 1em;
-    margin-bottom: 0.5em;
+    color: #8e8e8e;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 2em;
+    padding-top: 1em;
+    // margin-bottom: 0.5em;
 
     .med-group-name-input {
       font-size: 1.5em;
+      padding: 0.2em;
+      width: 100%;
+      color: #8e8e8e;
+      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
       @include med-group-input-property;
+      background-color: transparent;
+      ;
     }
 
     .med-group-detail-input {
-      width: 300px;
+      width: 100%;
+      padding-left:0.2em;
+      color: #8e8e8e;
+      overflow-x: scroll;
+      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
       @include med-group-input-property;
+      background-color: transparent;
     }
 
     .med-group-compliance-time-input {
-      width: 140px;
+      width: 10%;
+      padding-left: 1em;
+      color: #8e8e8e;
+      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
       @include med-group-input-property;
+      background-color: transparent;
     }
 
     .med-group-care-taker-input {
+      padding-left: 1em;
+      color: #8e8e8e;
+      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
       @include med-group-input-property;
+      background-color: transparent;
     }
   }
 
   .med-table {
+    color: #8e8e8e;
     margin: 0.6em 0;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     .med-table-head {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      background-color: $main;
+      // background-color: $main;
       text-align: center;
+      margin-top: 1em;
+      padding-left: 1em;
+      border-bottom: 2px solid #8e8e8e;
       > strong {
         margin: 0.3em;
       }
     }
+
   }
 
   .save-med-group-btn-container {
     @include med-group-popup-button-container;
 
     .save-med-group-btn {
-      background-color: $sub-main;
+      background-color: white;
       margin-top: 1em;
       color: #eee;
       font-weight: bold;
       @include med-group-popup-button;
       @include button-effect;
+      background-color: $orange-needle;
+      padding: 0.5em;
+      &:hover {
+        background-color: $sub-main
+      }
     }
   }
   .delete-med-group-btn-container {
@@ -91,8 +134,10 @@
     .delete-med-group-btn {
       background-color: $danger;
       margin: 2em auto 1em auto;
+      font-weight: bold;
       @include med-group-popup-button;
       @include button-effect;
+    
     }
   }
 }
@@ -197,6 +242,7 @@
 
       .med-group-compliance-time-input {
         width: 100px;
+        // border: solid grey 1px;
       }
     }
 
@@ -254,5 +300,9 @@
     left: 0;
     top: 15vh;
     padding: 2em 0.3em;
+
+    .med-group-info-container {
+  
+    }
   }
 }
