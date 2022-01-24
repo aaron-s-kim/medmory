@@ -12,8 +12,8 @@ puts "Start seeding..."
 puts "Creating a bond..."
 
 Bond.create(
-  name: 'First bond',
-  image_url: 'https://www.cheatsheet.com/wp-content/uploads/2021/10/Rainn-Wilson.jpg',
+  name: 'Squid bond',
+  image_url: 'https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/bond.jpeg',
 )
 
 Bond.create(
@@ -23,30 +23,87 @@ Bond.create(
 
 puts "Creating users..."
 
-jeff = User.create(
-    first_name: 'Jeff',
-    last_name: 'Kim',
+son = User.create(
+    first_name: 'Jason',
+    last_name: 'Lee',
     phone_number: ENV['JEFF_NUMBER'],
-    email: 'jeff.kim@example.com',
+    email: 'json.winner@squidy.com',
     password: '123',
+    image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/son.jpeg",
     bond_id: 1
   )
 
-aaron = User.create(
-  first_name: 'Aaron',
-  last_name: 'Kim',
+grandpa = User.create(
+  first_name: 'Galiber',
+  last_name: 'Lee',
   phone_number: ENV['AARON_NUMBER'],
-  email: 'aaron.kim@example.com',
+  email: 'Galiber.lee@squidy.com',
   password: '123',
-  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/avatar-aaron.png",
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/grandpa.jpeg",
 )
 
-connor = User.create(
-  first_name: 'Connor',
+poor_girl = User.create(
+  first_name: 'Holly',
+  last_name: 'Mcdonals',
+  phone_number: ENV['CONNOR_NUMBER'],
+  email: 'holly.jolly@christmas.com',
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/poor-girl.jpeg",
+  bond_id: 1,
+)
+
+bad_girl = User.create(
+  first_name: 'Stacy',
   last_name: 'Robert',
   phone_number: ENV['CONNOR_NUMBER'],
-  email: 'connor.robert@example.com',
-  password: '123'
+  email: 'Stacy.robert@example.com',
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/bad-girl.jpeg",
+)
+
+bad_guy = User.create(
+  first_name: 'Oliver',
+  last_name: 'Greedy',
+  phone_number: ENV['CONNOR_NUMBER'],
+  email: 'Oliver.Greedy@badbad.com',
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/bad-guy.jpeg",
+)
+
+doc = User.create(
+  first_name: 'Hamilton',
+  last_name: 'Organer',
+  phone_number: ENV['CONNOR_NUMBER'],
+  email: 'bad.doctor@organsell.com',
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/doc.jpeg",
+)
+
+rec = User.create(
+  first_name: 'rectang',
+  last_name: 'gang',
+  phone_number: ENV['CONNOR_NUMBER'],
+  email: 'rectang.gang@gangang.com',
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/rec.jpeg",
+)
+
+cir = User.create(
+  first_name: 'circle',
+  last_name: 'gang',
+  phone_number: ENV['CONNOR_NUMBER'],
+  email: 'circle.gang@gangang.com',
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/circle.jpeg",
+)
+
+cir = User.create(
+  first_name: 'circle',
+  last_name: 'gang',
+  phone_number: ENV['CONNOR_NUMBER'],
+  email: 'circle.gang@gangang.com',
+  password: '123',
+  image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/circle.jpeg",
 )
 
 15.times do

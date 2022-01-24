@@ -60,10 +60,15 @@ const MedGroup = ({
         </p>
       ) : (
         <div className='message-not-taken-container'>
-          {/* <p className='message-not-taken'>Status: Unconfirmed </p> */}
-          <p className='take-btn' onClick={takeMedGroup}>
-            Take Medication <i className='far fa-check-circle fa-fw'></i>
-          </p>
+          {viewMode ? (
+            <p className='message-not-taken'>
+              Unconfirmed <i className='fas fa-times'></i>
+            </p>
+          ) : (
+            <p className='take-btn' onClick={takeMedGroup}>
+              Take Medication <i className='far fa-check-circle fa-fw'></i>
+            </p>
+          )}
         </div>
       )}
       <div className='med-group-btn-container'>

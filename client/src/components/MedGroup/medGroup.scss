@@ -20,7 +20,7 @@
     font-size: 1.1em;
     text-align: center;
     margin: 0.5em 0;
-
+    color: #009b12;
     .fa-check-circle {
       font-size: 1.2em;
     }
@@ -37,6 +37,8 @@
     }
     .message-not-taken {
       font-weight: bold;
+      font-size: 1.2em;
+      color: $danger;
     }
 
     .take-btn {
