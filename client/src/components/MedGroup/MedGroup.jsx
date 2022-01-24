@@ -18,7 +18,7 @@ const MedGroup = ({
   careTakerId,
   meds,
   easyMode,
-  history,
+  viewMode,
 }) => {
   const setState = useContext(SetStateContext);
 
@@ -42,10 +42,6 @@ const MedGroup = ({
     });
   };
 
-  // const goToDetail = () => {
-  //   console.log('to detail');
-  // };
-
   const medGroupDetails = {
     pathname: '/med-group-details',
     medGroupId,
@@ -59,12 +55,14 @@ const MedGroup = ({
     >
       <h3 className='med-group-name'>{name}</h3>
       {isCompliedToday ? (
-        <p className='message-taken'>Confirmed <i className="fas fa-check-circle fa-fw"> </i></p>
+        <p className='message-taken'>
+          Confirmed <i className='fas fa-check-circle fa-fw'> </i>
+        </p>
       ) : (
         <div className='message-not-taken-container'>
           {/* <p className='message-not-taken'>Status: Unconfirmed </p> */}
           <p className='take-btn' onClick={takeMedGroup}>
-            Take Medication <i className="far fa-check-circle fa-fw"></i>
+            Take Medication <i className='far fa-check-circle fa-fw'></i>
           </p>
         </div>
       )}
@@ -72,7 +70,7 @@ const MedGroup = ({
         <p className='med-group-edit-btn' onClick={goToEdit}>
           More
         </p>
-        {!easyMode && (
+        {!easyMode && !viewMode && (
           <Link to={medGroupDetails} className='med-group-detail-btn'>
             History
           </Link>
