@@ -4,27 +4,22 @@
   @include med-group-property;
 
   .med-group-name {
-    // color: white; //rgba(60, 202, 227, 0.6);
     text-shadow: 0 0 2px $dark-blue;
     font-size: 1.3em;
     width: 100%;
     text-align: center;
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
-    // border-bottom: solid #01649e 2px;
     border-bottom: solid #eee 2px;
   }
 
   .message-taken {
-    // color: white;
-    // text-shadow: 0 0 1px $dark-blue;
     font-weight: bold;
     font-size: 1.1em;
     text-align: center;
     margin: 0.5em 0;
 
     .fa-check-circle {
-      // color: #008e6d;
       color: white;
       font-size: 1.2em;
     }
@@ -40,10 +35,6 @@
       margin: 0.5em 0;
     }
     .message-not-taken {
-      // color: #b80b25;
-      // color: $orange-needle;
-      // color: $danger;
-      color: dark;
       font-weight: bold;
     }
 
@@ -77,16 +68,16 @@
         background-color: $dark-blue;
       }
     }
+
     .med-group-detail-btn {
       @include med-group-button-propery;
-      background-color: $orange-needle;
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
         0 3px 10px 0 rgba(0, 0, 0, 0.19);
+      margin-top: 1em;
+      margin-bottom: 1em;
       &:hover {
         background-color: $sub-main;
       }
-
-      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     }
   }
 }

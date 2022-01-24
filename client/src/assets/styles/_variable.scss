@@ -17,7 +17,7 @@ $orange-needle: #ff8b1f;
   font-size: 1em;
   cursor: pointer;
   &:hover {
-    // opacity: 0.9;
+    opacity: 0.9;
   }
   &:active {
     opacity: 1;
@@ -30,9 +30,7 @@ $orange-needle: #ff8b1f;
   borer: none;
   border-radius: 3px;
   margin-bottom: 1em;
-  // background-color: rgba(238, 238, 238, 0.9); // rgba(60, 202, 227, 0.6);
   background-color: rgba(99, 206, 225, 0.852);
-  // background-color: rgba(60, 202, 227, 0.852);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   color: #eee;
 }
@@ -50,7 +48,7 @@ $orange-needle: #ff8b1f;
   padding: 0.3em;
   font-weight: bold;
   color: #eee;
-  background-color: $sub-main;
+  background-color: $orange-needle;
   text-decoration: none;
   @include button-effect;
 }
