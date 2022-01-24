@@ -1,7 +1,7 @@
 @import 'assets/styles/variable';
 
 .mypage {
-  width: 70%;
+  width: 80%;
   max-width: 880px;
   margin: 0 auto;
   height: calc(90vh - 70px - 4em);
@@ -35,8 +35,8 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .my-page {
-    width: 100%;
+  .mypage {
+    width: 90%;
   }
   .easy-mypage {
     width: 90%;
@@ -44,6 +44,10 @@
 }
 
 @media screen and (max-width: 860px) {
+  .mypage {
+    width: 100%;
+  }
+
   .easy-mypage {
     width: 100%;
   }
@@ -51,8 +55,8 @@
 
 @media screen and (max-width: 760px) {
   .mypage {
+    padding-top: 2em;
     height: calc(100vh - 70px);
-    width: 100%;
     .user-section {
       padding-right: 0;
     }

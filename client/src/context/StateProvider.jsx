@@ -2,19 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { createConsumer } from '@rails/actioncable';
 
 import { getAuthUserData } from 'utils/data-fetch';
+import { getItemLocalStorage } from 'utils/data-persist';
 
 export const StateContext = React.createContext();
 export const SetStateContext = React.createContext();
 
-export const INITIAL_STATE = {
-  isLoading: true,
-  isAuth: false,
-  // isAuth: localStorage.getItem('userId') ? true : false,
-  user: null,
-  userMedGroupArr: [],
-  bond: null,
-  pendingInvite: null,
-};
+export const INITIAL_STATE = getItemLocalStorage()
+  ? getItemLocalStorage()
+  : {
+      isAuth: false,
+      user: null,
+      userMedGroupArr: [],
+      bond: null,
+      pendingInvite: null,
+    };
 
 const StateProvider = ({ children }) => {
   const [state, setState] = useState(INITIAL_STATE);
@@ -24,8 +25,7 @@ const StateProvider = ({ children }) => {
 
   useEffect(() => {
     getAuthUserData(setState);
-    const userId = localStorage.getItem('userId');
-    console.log(userId);
+
     createSubscription();
 
     return () => {

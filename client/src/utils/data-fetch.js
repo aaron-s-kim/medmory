@@ -1,14 +1,19 @@
 import axios from 'axios';
 
+import { setItemLocalStorage } from './data-persist';
+
 export const getAuthUserData = setState => {
   axios
     .get('/auth/user')
-    .then(res =>
+    .then(res => {
       setState({
         ...res.data,
         isAuth: true,
-        isLoading: false,
-      })
-    )
+      });
+      setItemLocalStorage({
+        ...res.data,
+        isAuth: true,
+      });
+    })
     .catch(err => console.log(err.response.data.error));
 };

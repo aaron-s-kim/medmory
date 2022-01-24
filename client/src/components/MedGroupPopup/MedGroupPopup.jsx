@@ -11,14 +11,6 @@ import { getFilteredBondUsers } from 'utils/data-shape';
 
 import './medGroupPopup.scss';
 
-const INITIAL_MED_INPUT = {
-  name: '',
-  dosage: '',
-  measure: 'mg',
-  num: '',
-  pillType: 'tablet',
-};
-
 const AddMedPopup = ({
   meds,
   medGroupId,
@@ -33,6 +25,13 @@ const AddMedPopup = ({
   const setState = useContext(SetStateContext);
   const { bond, user } = useContext(StateContext);
 
+  const INITIAL_MED_INPUT = {
+    name: '',
+    dosage: '',
+    measure: 'mg',
+    num: '',
+    pillType: 'tablet',
+  };
   const INITIAL_MED_GROUP_INPUT = {
     newName: medGroupName,
     newComplianceTime: complianceTime,
