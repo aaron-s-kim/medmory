@@ -34,10 +34,10 @@ son = User.create(
   )
 
 grandpa = User.create(
-  first_name: 'Galiber',
+  first_name: 'Alfred',
   last_name: 'Lee',
   phone_number: ENV['AARON_NUMBER'],
-  email: 'galiber.lee@squidy.com',
+  email: 'alfred.lee@squidy.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/grandpa.jpeg",
 )
@@ -69,9 +69,9 @@ bad_guy = User.create(
 )
 
 good_guy = User.create(
-  first_name: 'Ali',
-  last_name: 'Express',
-  email: 'ali.express@strong.com',
+  first_name: 'Aliabdul',
+  last_name: 'Strongman',
+  email: 'aliabdul.strongman@strong.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/ali.jpeg",
   bond_id: 1,
