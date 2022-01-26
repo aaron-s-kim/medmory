@@ -118,6 +118,14 @@ tri = User.create(
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/tri.jpeg",
 )
 
+tri = User.create(
+  first_name: 'Demo',
+  last_name: 'User',
+  email: 'demo.user@example.com',
+  password: '123',
+  image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}",
+)
+
 15.times do
   User.create(
     first_name: Faker::Name.first_name,
