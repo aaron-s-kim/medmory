@@ -3,7 +3,8 @@
 @mixin med-input-property {
   font-size: 0.9em;
   padding: 0.2em 0;
-
+  border: none;
+  
   &:focus {
     outline: none;
   }
