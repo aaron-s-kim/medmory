@@ -118,14 +118,6 @@ tri = User.create(
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/tri.jpeg",
 )
 
-tri = User.create(
-  first_name: 'Demo',
-  last_name: 'User',
-  email: 'demo.user@example.com',
-  password: '123',
-  image_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}",
-)
-
 15.times do
   User.create(
     first_name: Faker::Name.first_name,
@@ -140,7 +132,7 @@ end
 puts "Creating med groups..."
 
 med_group1 = MedGroup.create(
-  name: 'Life saver',
+  name: 'My meds',
   detail: 'take daily',
   user_id: son.id
 )
@@ -240,25 +232,25 @@ Med.create(
 
 puts "Creating med group histories..."
 
-for i in 1..23 do
+for i in 1..26 do
   MedHistory.create(
   med_group_id: med_group1.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..23 do
+for i in 1..26 do
   MedHistory.create(
   med_group_id: med_group2.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..22 do
+for i in 1..26 do
   MedHistory.create(
   med_group_id: med_group3.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..22 do
+for i in 1..26 do
   MedHistory.create(
   med_group_id: med_group4.id
 ).update(created_at: "Jan #{i} 2022 #{rand(7..16)}:00")
