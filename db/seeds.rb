@@ -95,24 +95,24 @@ doc = User.create(
 )
 
 rec = User.create(
-  first_name: 'rectang',
-  last_name: 'gang',
+  first_name: 'Rectang',
+  last_name: 'Gang',
   email: 'rectang.gang@gangang.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/rec.jpeg",
 )
 
 cir = User.create(
-  first_name: 'circle',
-  last_name: 'gang',
+  first_name: 'Circle',
+  last_name: 'Gang',
   email: 'circle.gang@gangang.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/circle.jpeg",
 )
 
 tri = User.create(
-  first_name: 'triangle',
-  last_name: 'gang',
+  first_name: 'Triangle',
+  last_name: 'Gang',
   email: 'triangle.gang@gangang.com',
   password: '123',
   image_url: "https://raw.githubusercontent.com/aaron-s-kim/medmory/master/client/src/assets/images/tri.jpeg",
