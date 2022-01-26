@@ -5,7 +5,7 @@ export const getFilteredUsersByFirstName = (authUserId, searchWord, allUsers) =>
   allUsers
     .filter(user => {
       if (authUserId === user.id) return false;
-      return user.firstName.toLowerCase().includes(searchWord);
+      return user.firstName.toLowerCase().includes(searchWord.toLowerCase());
     })
     .slice(0, 6);
 

@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import axios from 'axios';
 
 import SuggestedUserContainer from 'components/SuggestedUserContainer/SuggestedUserContainer';
 import SearchResultContainer from 'components/SearchResultContainer/SearchResultContainer';
 
 import { StateContext } from 'context/StateProvider';
-
+import { getAllUsersPromise } from 'utils/data-fetch';
 import {
   getFilteredUsersByFirstName,
   getFilteredUsersByLastName,
@@ -21,8 +20,7 @@ const UserSearchpage = () => {
   const [userSuggestion, setUserSuggestion] = useState([]);
 
   const getSearchResult = searchWordInput => {
-    axios
-      .get('/users')
+    getAllUsersPromise()
       .then(res =>
         setUserResult(
           getFilteredUsersByFirstName(user.id, searchWordInput, res.data)
@@ -32,8 +30,7 @@ const UserSearchpage = () => {
   };
 
   const getSuggestedUsers = () => {
-    axios
-      .get('/users')
+    getAllUsersPromise()
       .then(res =>
         setUserSuggestion(getFilteredUsersByLastName(user, res.data))
       )
@@ -56,6 +53,7 @@ const UserSearchpage = () => {
     const { value } = e.target;
     setSearchWord(value);
   };
+  
   if (!isAuth) return <Redirect to='/' />;
   return (
     <div className='searchpage'>

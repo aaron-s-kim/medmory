@@ -17,3 +17,5 @@ export const getAuthUserData = setState => {
     })
     .catch(err => console.log(err.response.data.error));
 };
+
+export const getAllUsersPromise = () => axios.get('/users');
