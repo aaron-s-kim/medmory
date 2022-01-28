@@ -1,28 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-- Ruby version
-
-- System dependencies
-
-- Configuration
-
-- Database creation
-
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
-
 # Medmory
 
 ## Contents
@@ -96,7 +71,14 @@ AARON_NUMBER=
 $ bundle install
 ```
 
-4. Install client dependencies:
+4. Create postgreSQL database for rails server:
+```bash
+# in root dir
+$ rails db:create
+$ rails db:reset
+```
+
+5. Install client dependencies:
 
 ```bash
 # in root dir
@@ -104,7 +86,7 @@ $ cd client
 $ npm install
 ```
 
-5. Run server and client in a separate terminal
+6. Run server and client in a separate terminal
 
 ```bash
 # in root dir
