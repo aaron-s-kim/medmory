@@ -58,7 +58,7 @@ web view: bond page
 ![sample5](https://github.com/aaron-s-kim/medmory/blob/master/sample-images/web-bondpage.png?raw=true)
 
 ERD
-![sample6](https://github.com/aaron-s-kim/medmory/blob/master/sample-images/erd.png?raw=true)
+![sample6](https://github.com/aaron-s-kim/medmory/blob/master/sample-images/erd.jpg?raw=true)
 
 ## Tech stack
 
