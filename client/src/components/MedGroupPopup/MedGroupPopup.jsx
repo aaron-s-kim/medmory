@@ -150,7 +150,6 @@ const AddMedPopup = ({
           />
         </div>
         <div className={'med-group-info-container'}>
-          {/* <strong>Detail</strong> */}
           <input
             className='med-group-detail-input'
             name='newMedGroupDetail'
