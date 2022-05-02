@@ -232,25 +232,25 @@ Med.create(
 
 puts "Creating med group histories..."
 
-for i in 1..26 do
+for i in 1..30 do
   MedHistory.create(
   med_group_id: med_group1.id
 ).update(created_at: "Apr #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..26 do
+for i in 1..30 do
   MedHistory.create(
   med_group_id: med_group2.id
 ).update(created_at: "Apr #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..26 do
+for i in 1..30 do
   MedHistory.create(
   med_group_id: med_group3.id
 ).update(created_at: "Apr #{i} 2022 #{rand(7..16)}:00")
 end
 
-for i in 1..26 do
+for i in 1..30 do
   MedHistory.create(
   med_group_id: med_group4.id
 ).update(created_at: "Apr #{i} 2022 #{rand(7..16)}:00")
